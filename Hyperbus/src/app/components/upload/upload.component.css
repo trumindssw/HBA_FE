@@ -1,0 +1,247 @@
+body
+{
+    position: absolute;
+}
+        
+.leftletter1{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 38px;
+    color: #2B2B2B;
+    
+}
+    
+#card-letter1{
+
+    position: absolute;
+    width: 528px;
+    height: 38px;
+    left: 96px;
+    top: 168px;
+    
+}
+    
+.leftletter2{
+    
+    position: absolute;
+    width: 198px;
+    height: 28px;
+    left: 96px;
+    top: 254px;
+    
+}
+    
+#card-letter2{
+    
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: #303030;    
+}
+    
+.leftletter3{
+    
+    position: absolute;
+    width: 221px;
+    height: 19px;
+    left: 96px;
+    top: 290px;    
+}
+    
+#card-letter3{
+    
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #595959;
+    
+}
+    
+    
+    
+    
+#ViewPreviousRequests{
+    
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 24px;
+    gap: 10px;
+    font-size: 14px;
+    
+
+    position: absolute;
+    width: 205px;
+    height: 41px;
+    left: 1139px;
+    top: 165px;
+    background: #FFFFFF;
+    border: 1px solid #344DA1;
+    border-radius: 8px;
+    
+}
+    
+#middle-lable1{
+    
+    position: absolute;
+    width: 73px;
+    height: 16px;
+    left: 437px;        
+    top: 254px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: #595959;
+    
+}
+    
+#middle-box{
+     
+    box-sizing: border-box;
+    position: absolute;        
+    width: 907px;        
+    height: 48px;       
+    left: 437px;        
+    top: 279px;
+    background: #F7F8FA;    
+    border: 1px solid #CACACA;
+    border-radius: 8px;
+
+}
+    
+.inside-box-text::placeholder{
+    
+    position: absolute;
+    width: 72px;
+    height: 19px;
+    left: 453px;
+    top: 294px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #303030;    
+}
+
+hr{
+    position: absolute;
+    width: 1259px;
+    height: 0px;
+    left: 85px;
+    top: 367px;
+
+    /* Neutral/Neutral Out alpha */
+
+    border: 1px solid #EAEAEA;
+
+}
+
+.leftletter4{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    
+    /* Text/Text Grey alpha */
+    
+    color: #303030;
+}
+
+#card-letter4{
+    position: absolute;
+    width: 307px;
+    height: 28px;
+    left: 96px;
+    top: 407px;
+}
+
+.leftletter5{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    /* identical to box height */
+
+
+    /* Text/Text Grey beta */
+
+    color: #595959;
+}
+
+#card-letter5{
+    position: absolute;
+    width: 178px;
+    height: 19px;
+    left: 96px;
+    top: 443px;
+}
+
+#DownloadSampleId{
+    box-sizing: border-box;
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 24px;
+    gap: 10px;
+
+    position: absolute;
+    width: 247px;
+    height: 41px;
+    left: 1097px;
+    top: 407px;
+
+    background: #FFFFFF;
+    /* Text/Text Blue */
+
+    border: 1px solid #344DA1;
+    border-radius: 8px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.download-text{
+    position: absolute;
+width: 199px;
+height: 17px;
+left: 24px;
+top: 12px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+
+
+/* Text/Text Blue */
+
+color: #344DA1;
+
+
+}
+
+
+
+
+
+

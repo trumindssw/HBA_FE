@@ -1,0 +1,26 @@
+.logs-left-text{
+    position: absolute;
+    width: 528px;
+    height: 38px;
+    left: 152px;
+    top: 169px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 38px;
+    /* identical to box height */
+    /* Icon/Icon Grey alpha */
+    color: #2B2B2B;
+}
+
+/* .left-arrow{
+    position: absolute;
+    left: 15.52%;
+    right: 17.4%;
+    top: 17.44%;
+    bottom: 17.5%;
+    background: #303030;
+    
+} */

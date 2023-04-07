@@ -1,0 +1,143 @@
+.side-body{
+    /* background-color:  #CFE2F3;
+    border-radius: 5px; */
+
+    position: absolute;
+    width: 526px;
+    height: 879px;
+    left: 16px;
+    top: 129px;
+
+    background: #CFE2F3;
+    border-radius: 0px 0px 8px 8px;
+}
+
+.body-container{
+    display: grid;
+    grid-template-columns: 1.5fr 4fr;
+    grid-template-rows: 550px 500px;
+    border-radius: 5px;
+}
+
+.sign-in-text{
+
+  position: absolute;
+  width: 125px;
+  height: 47px;
+  left: 742px;
+  top: 224px;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 47px;
+  color: #303030;
+
+    
+    /* display:grid;
+    padding-top: 40px;
+    padding-right: 220px;
+    justify-content: center; */
+}
+
+.label-username{
+  position: absolute;
+  width: 64px;
+  height: 16px;
+  left: 742px;
+  top: 319px;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #595959;
+}
+
+.label-password{
+  position: absolute;
+  width: 62px;
+  height: 16px;
+  left: 742px;
+  top: 420px;
+  
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #595959;
+}
+
+/* label{
+    padding:12px 12px 12px 0;
+    display: inline-block;
+    color: #595959;
+    
+} */
+
+button {
+  position: absolute;
+  width: 496px;
+  height: 52px;
+  left: 742px;
+  top: 529px;
+  background: #344DA1;
+  border-radius: 8px;
+  color: white;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 21px;
+
+    /* background-color: #344DA1;
+    width: 160%;
+    padding: 12px 20px;
+    color: white;
+    border: none;
+    border-radius: 8px; */
+    
+  }
+
+  
+
+input[type=text], select, textarea {
+  box-sizing: border-box;
+  position: absolute;
+  width: 496px;
+  height: 52px;
+  left: 742px;
+  top: 344px;
+  background: #FFFFFF;
+  border: 1px solid #EAEAEA;
+  border-radius: 8px;
+
+
+    /* width: 150%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    resize: vertical; */
+  }  
+
+  input[type=password], select, textarea {
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 496px;
+    height: 52px;
+    left: 742px;
+    top: 445px;
+    background: #FFFFFF;
+    border: 1px solid #EAEAEA;
+    border-radius: 8px;
+
+    /* width: 150%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    resize: vertical; */
+  }    
