@@ -3,31 +3,63 @@
 
     </div>
     <div class="sign-in-form">
-        <form>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <h2 class="sign-in-text"><b>Sign In</b></h2>
             <div class="form-group">
-                <p>
+                <div>
                     <label class="label-username">Username</label>
-                    <input type="text">
-                </p>
+                    <input type="text" formControlName="username"  [ngClass]="{ 'is-invalid': submitted && f['fusername'].errors }">
+                    <!-- <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                        <div *ngIf="f.username.errors.required">Username is required</div>
+                    </div> -->
+                </div>
             </div>
     
             <div class="form-group">
-                <p>
+                <div>
                     <label class="label-password">Password</label>
-                    <input type="password">
-                </p>
+                    <input type="password" formControlName="password"  [ngClass]="{ 'is-invalid': submitted && f['fpassword'].errors }">
+                    <!-- <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                    </div> -->
+                </div>
             </div>
             
-            <nav>
-                <button  text="Sign In" type="submit" routerLink="/upload">Sign In</button>
-            </nav>
             
+                <button [disabled]="loading" text="Sign In" type="submit" >
+                    <span *ngIf="loading" ></span>
+                    Sign In
+                </button>
+            
+                <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
             
         </form>   
     </div>
 </div>
 
+
+<div class="card1"></div>
+    <div class="card3">
+
+        <h1 class="login-title"> Sign In </h1>
+
+        <form action="demo\src\app\upload\upload.component.html" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+            <label for="inputEmail3" id="title-username">Username</label>
+            <input type="email" class="form-control" id="input-email" formControlName="username"  [ngClass]="{ 'is-invalid': submitted && f['fusername'].errors }">
+
+            <label for="inputPassword3" id="title-password">Password</label>
+            <input type="password" class="form-control" id="input-password" type="password" formControlName="password"  [ngClass]="{ 'is-invalid': submitted && f['fpassword'].errors }">
+
+            <Button id="signIn-button" [disabled]="loading" text="Sign In" type="submit"  >
+                <span *ngIf="loading" ></span>
+                Sign In 
+            </Button>
+
+            <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+        </form>
+
+</div>
 <!-- <router-outlet></router-outlet> -->
 
 

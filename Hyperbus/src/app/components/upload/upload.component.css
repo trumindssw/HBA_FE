@@ -220,26 +220,134 @@ hr{
 
 .download-text{
     position: absolute;
-width: 199px;
-height: 17px;
-left: 24px;
-top: 12px;
+    width: 199px;
+    height: 17px;
+    left: 24px;
+    top: 12px;
 
-font-family: 'Inter';
-font-style: normal;
-font-weight: 500;
-font-size: 14px;
-line-height: 17px;
-/* identical to box height */
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
 
 
-/* Text/Text Blue */
+    /* Text/Text Blue */
 
-color: #344DA1;
+    color: #344DA1;
 
 
 }
 
+
+  .error {
+      color: #f00;
+  }
+  
+  .dragarea {
+       /* font-size: 7rem; */
+     /* border: 3px solid #bbb;
+      padding: 1.5rem;
+      background-color: #fff;
+      color: #bbb;
+
+      box-sizing: border-box; */
+
+        position: absolute;
+        width: 907px;
+        height: 194px;
+        left: 437px;
+        top: 480px;
+
+        background: #FFFFFF;
+        /* Neutral/Neutral Out beta */
+
+        border: 1px dashed #CACACA;
+        border-radius: 8px;
+  }
+  
+  .droparea {
+    /* font-size: 1.5rem;
+    border: 3px dashed #bbb;
+    padding: 1.5rem;
+    background-color: #eff;
+    color: #aaa; */
+
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 907px;
+    height: 194px;
+    left: 437px;
+    top: 480px;
+
+    background: #FFFFFF;
+    /* Neutral/Neutral Out beta */
+
+    border: 1px dashed #CACACA;
+    border-radius: 8px;
+  }
+
+  
+  /* .img-drop{
+    
+
+
+
+background: #EAEAEA;
+
+
+position: absolute;
+width: 48px;
+height: 48px;
+left: 867px;
+top: 545px;
+
+  } */
+#card-letter6{
+    position: absolute;
+width: 249px;
+height: 21px;
+left: 437px;
+top: 706px;
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 21px;
+/* identical to box height */
+
+
+/* Text/Text Grey alpha */
+
+color: #303030;
+}
+
+.temp-none{
+    position: absolute;
+width: 43px;
+height: 21px;
+left: 437px;
+top: 751px;
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 21px;
+/* identical to box height */
+
+
+/* Text/Text Grey beta */
+
+color: #595959;
+}
+  
+  
+
+  
 
 
 

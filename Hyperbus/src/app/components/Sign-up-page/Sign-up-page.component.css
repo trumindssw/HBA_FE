@@ -1,6 +1,5 @@
-.side-body{
-    /* background-color:  #CFE2F3;
-    border-radius: 5px; */
+/* .side-body{
+    
 
     position: absolute;
     width: 526px;
@@ -35,11 +34,7 @@
   color: #303030;
 
     
-    /* display:grid;
-    padding-top: 40px;
-    padding-right: 220px;
-    justify-content: center; */
-}
+} 
 
 .label-username{
   position: absolute;
@@ -71,12 +66,7 @@
   color: #595959;
 }
 
-/* label{
-    padding:12px 12px 12px 0;
-    display: inline-block;
-    color: #595959;
-    
-} */
+
 
 button {
   position: absolute;
@@ -93,12 +83,6 @@ button {
   font-size: 18px;
   line-height: 21px;
 
-    /* background-color: #344DA1;
-    width: 160%;
-    padding: 12px 20px;
-    color: white;
-    border: none;
-    border-radius: 8px; */
     
   }
 
@@ -116,11 +100,7 @@ input[type=text], select, textarea {
   border-radius: 8px;
 
 
-    /* width: 150%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    resize: vertical; */
+    
   }  
 
   input[type=password], select, textarea {
@@ -135,9 +115,281 @@ input[type=text], select, textarea {
     border: 1px solid #EAEAEA;
     border-radius: 8px;
 
-    /* width: 150%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    resize: vertical; */
-  }    
+   
+  }     */
+
+  body{
+
+position: absolute;
+    
+    }
+    
+    
+    
+    
+.card1{
+    
+ /* Rectangle 20615 */
+    
+    
+    
+position: absolute;
+    
+width: 526px;
+    
+height: 879px;
+    
+left: 16px;
+    
+top: 129px;
+    
+    
+    
+background: #CFE2F3;
+    
+border-radius: 0px 0px 8px 8px;
+    
+}
+    
+    
+    
+    
+    
+    .card3 {
+    
+width: 496px;
+    
+margin: 224px 0 0 742px;
+    
+    }
+    
+    
+    
+    
+    .login-title{
+    
+position: absolute;
+    
+width: 125px;
+    
+height: 47px;
+    
+left: 742px;
+    
+top: 224px;
+    
+    
+    
+    
+font-family: 'Roboto';
+    
+font-style: normal;
+    
+font-weight: 700;
+    
+font-size: 40px;
+    
+line-height: 47px;
+    
+/* identical to box height */
+    
+    
+    
+    
+    
+/* Text/Text Grey alpha */
+    
+    
+    
+    
+color: #303030;
+    
+    }
+    
+    
+    
+    
+    #title-username {
+    
+position: absolute;
+    
+width: 64px;
+    
+height: 16px;
+    
+left: 742px;
+    
+top: 319px;
+    
+    
+    
+    
+font-family: 'Roboto';
+    
+font-style: normal;
+    
+font-weight: 500;
+    
+font-size: 14px;
+    
+line-height: 16px;
+    
+    
+    
+    
+/* Text/Text Grey beta */
+    
+    
+    
+    
+color: #595959;
+    
+    }
+    
+    
+    
+    
+    #input-email {
+    
+box-sizing: border-box;
+    
+    
+    
+    
+position: absolute;
+    
+width: 496px;
+    
+height: 52px;
+    
+left: 742px;
+    
+top: 344px;
+    
+    
+    
+/* Background/Background Day */
+    
+    
+    
+background: #FFFFFF;
+    
+/* Neutral/Neutral Out alpha */
+    
+    
+    
+border: 1px solid #EAEAEA;
+    
+border-radius: 8px; 
+    
+    }
+    
+    
+    
+    
+    #title-password {
+    
+position: absolute;
+    
+width: 62px;
+    
+height: 16px;
+    
+left: 742px;
+    
+top: 420px;
+    
+    
+    
+font-family: 'Roboto';
+    
+font-style: normal;
+    
+font-weight: 500;
+    
+font-size: 14px;
+    
+line-height: 16px;
+    
+    
+    
+/* Text/Text Grey beta */
+    
+    
+    
+color: #595959;
+    
+    
+    
+    }
+    
+    
+    
+    
+    #input-password  {
+    
+box-sizing: border-box;
+    
+    
+    
+    
+position: absolute;
+    
+width: 496px;
+    
+height: 52px;
+    
+left: 742px;
+    
+top: 445px;
+    
+    
+    
+/* Background/Background Day */
+    
+    
+    
+background: #FFFFFF;
+    
+/* Neutral/Neutral Out alpha */
+    
+    
+    
+border: 1px solid #EAEAEA;
+    
+border-radius: 8px; 
+    
+    }
+    
+    
+    
+    
+    #signIn-button {
+    
+position: absolute;
+    
+width: 496px;
+    
+height: 52px;
+    
+left: 742px;
+    
+top: 529px;
+    
+    
+    
+    
+/* Primary/Primary Blue
+    
+    
+    
+    
+Primary
+    
+*/
+    
+background: #344DA1;
+    
+border-radius: 8px;
+    
+    }

@@ -14,5 +14,38 @@
       Download = "test_image" class="download-text">
         <button type = "button" class="DownloadSampleClass" id="DownloadSampleId" [style.color]="'#344DA1'"> Download Sample File Format </button>
     </a>
+
+    <div draggable="true" ngClass="{{dragAreaClass}}">
+      <div class="row">
+          <div class="col-md-12 text-center" >
+            Drag your file here
+            <div>
+              <img src="/assets/images/drop-logo" class="img-drop">
+            </div>
+            <div>
+              <a href="javascript:void(0)" (click)="file.click()">
+                or select a file from computer
+              </a>
+            </div>
+              
+              <input type="file"
+                     #file
+                     [multiple]="true"
+                     (change)="onFileChange($event)"
+                     style="display:none" />
+          <div class="dragged-files-wrapper" *ngIf="draggedFiles">
+            <div class="file" *ngFor="let file of draggedFiles">
+              {{file}}
+            </div>
+          </div>
+          </div>
+          </div>
+      </div>
+      <!-- <div class="error" *ngIf="error">
+        Upload XLSX format only
+    </div> -->
+
+    <p class="leftletter6" id="card-letter6">Previously Uploaded Data Files</p>
+    <p class="temp-none" id="temp-noneId">None</p>
     
 </div>
