@@ -13,6 +13,7 @@ export class AuthenticationService {
     private userSubject: BehaviorSubject<User | null>;
     public user: Observable<User | null>;
     // public apiUrl= 'http://localhost:4000';
+    private _loginUrl="http://localhost:5000/login";
 
     constructor(
         private router: Router,
@@ -27,8 +28,9 @@ export class AuthenticationService {
     }
 
     login(username: string, password: string) {
-        return this.http.post<any>(`${environment.apiUrl}/users/authenticate`, { username, password })
+        return this.http.post<any>(this._loginUrl, { username, password })
             .pipe(map(user => {
+                console.log(user)
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('user', JSON.stringify(user));
                 this.userSubject.next(user);

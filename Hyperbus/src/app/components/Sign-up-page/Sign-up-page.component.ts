@@ -24,7 +24,11 @@ export class BodyComponent implements OnInit {
       private authenticationService: AuthenticationService,
       private http: HttpClient
       )
-      { }
+      { // redirect to home if already logged in
+        if (this.authenticationService.userValue) {  
+       this.router.navigate(['/upload']);
+        }
+      }
 
   ngOnInit():void {
       this.loginForm = this.formBuilder.group({
@@ -39,6 +43,7 @@ export class BodyComponent implements OnInit {
   onSubmit() {
    
       this.submitted = true;
+      console.log("hEYYYYYY");
 
       // stop here if form is invalid
       if (this.loginForm.invalid) {
@@ -52,7 +57,7 @@ export class BodyComponent implements OnInit {
           .subscribe({
               next: () => {
                   // get return url from route parameters or default to '/'
-                  const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+                  const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/upload';
                   this.router.navigate([returnUrl]);
               },
               error: (error :any) => {
