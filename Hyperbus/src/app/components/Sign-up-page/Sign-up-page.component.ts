@@ -52,8 +52,8 @@ export class BodyComponent implements OnInit {
           .subscribe({
               next: () => {
                   // get return url from route parameters or default to '/'
-                  const returnUrl = this.route.snapshot.queryParams['upload'] || '/';
-                  this.router.navigate(["upload"]);
+                  const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+                  this.router.navigate([returnUrl]);
               },
               error: (error :any) => {
                   this.error = error;

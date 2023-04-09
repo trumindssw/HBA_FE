@@ -16,7 +16,8 @@ import { BodyComponent } from './components/Sign-up-page/Sign-up-page.component'
   declarations: [
     AppComponent,
     HeaderComponent,
-    routingComponents
+    routingComponents,
+    
 
   ],
   imports: [
