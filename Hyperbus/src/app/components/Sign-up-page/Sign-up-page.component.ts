@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
-import { AuthenticationService } from 'src/app/authentication.service';
+import { AuthenticationService } from '../../_services/authentication.service';
 
 import { HttpClient } from '@angular/common/http';
 
@@ -52,14 +52,26 @@ export class BodyComponent implements OnInit {
 
       this.error = '';
       this.loading = true;
-      this.authenticationService.login(this.f['fusername'].value, this.f['fpassword'].value)
+      this.authenticationService.login(this.f['username'].value, this.f['password'].value)
           .pipe(first())
-          .subscribe({
-              next: () => {
-                  // get return url from route parameters or default to '/'
+          .subscribe((req:any)=>{
+              // next: () => {
+              //     // get return url from route parameters or default to '/'
+              //     const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/upload';
+              //     this.router.navigate([returnUrl]);
+
+
+
+              // },
+              if(req.status===1)
+              {
                   const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/upload';
                   this.router.navigate([returnUrl]);
-              },
+              }
+              else{
+                console.log("Wrong username or password");
+              }
+            
               error: (error :any) => {
                   this.error = error;
                   this.loading = false;

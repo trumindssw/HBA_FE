@@ -59,13 +59,17 @@ export class UploadComponent implements OnInit {
 
   saveFiles(files: FileList) {
 
-    if (files[0].type != ".XLSX") this.error = "Upload XLSX format only";
+    if (files[0].type != "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") this.error = "Upload XLSX format only";
     else {
       this.error = "";
       console.log(files[0].size,files[0].name,files[0].type);
       this.draggedFiles = files;
       console.log(files);
     }
+
+    // console.log(files[0].size,files[0].name,files[0].type);
+    //   this.draggedFiles = files;
+    //   console.log(files);
   }
 
   

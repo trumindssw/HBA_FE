@@ -6,13 +6,13 @@ import { map } from 'rxjs/operators';
 
 import { environment } from 'src/environments/environment.development';
 
-import { User } from './_models/user';
+import { User } from '../_models/user';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
     private userSubject: BehaviorSubject<User | null>;
     public user: Observable<User | null>;
-    // public apiUrl= 'http://localhost:4000';
+    
     private _loginUrl="http://localhost:5000/login";
 
     constructor(
@@ -31,8 +31,12 @@ export class AuthenticationService {
         return this.http.post<any>(this._loginUrl, { username, password })
             .pipe(map(user => {
                 console.log(user)
+
+                
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('user', JSON.stringify(user));
+                if(user.status===1)
+                localStorage.setItem('user', JSON.stringify(user.data));
+                
                 this.userSubject.next(user);
                 return user;
             }));

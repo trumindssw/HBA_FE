@@ -8,9 +8,9 @@
             <div class="form-group">
                 <div>
                     <label class="label-username">Username</label>
-                    <input type="text" formControlName="username"  [ngClass]="{ 'is-invalid': submitted && f['fusername'].errors }">
-                    <div *ngIf="submitted && f['fusername'].errors" class="invalid-feedback">
-                        <div *ngIf="f['fusername'].errors['required']">Username is required</div>
+                    <input type="text" formControlName="username"  [ngClass]="{ 'is-invalid': submitted && f['username'].errors }">
+                    <div *ngIf="submitted && f['username'].errors" class="invalid-feedback">
+                        <div *ngIf="f['username'].errors['required']">Username is required</div>
                     </div>
                 </div>
             </div>
@@ -18,9 +18,9 @@
             <div class="form-group">
                 <div>
                     <label class="label-password">Password</label>
-                    <input type="password" formControlName="password"  [ngClass]="{ 'is-invalid': submitted && f['fpassword'].errors }">
-                    <div *ngIf="submitted && f['fpassword'].errors" class="invalid-feedback">
-                        <div *ngIf="f['fpassword'].errors['required']">Password is required</div>
+                    <input type="password" formControlName="password"  [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
+                    <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                        <div *ngIf="f['password'].errors['required']">Password is required</div>
                     </div>
                 </div>
             </div>
