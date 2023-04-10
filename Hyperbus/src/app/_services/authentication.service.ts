@@ -31,12 +31,13 @@ export class AuthenticationService {
         return this.http.post<any>(this._loginUrl, { username, password })
             .pipe(map(user => {
                 console.log(user)
-
+                
+                if(user.statue == 0)
+                return user;                
                 
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
-                if(user.status===1)
-                localStorage.setItem('user', JSON.stringify(user.data));
                 
+                localStorage.setItem('user', JSON.stringify(user));
                 this.userSubject.next(user);
                 return user;
             }));

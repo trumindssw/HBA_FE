@@ -54,23 +54,23 @@ export class BodyComponent implements OnInit {
       this.loading = true;
       this.authenticationService.login(this.f['username'].value, this.f['password'].value)
           .pipe(first())
-          .subscribe((req:any)=>{
-              // next: () => {
-              //     // get return url from route parameters or default to '/'
-              //     const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/upload';
-              //     this.router.navigate([returnUrl]);
-
-
-
-              // },
-              if(req.status===1)
-              {
-                  const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/upload';
-                  this.router.navigate([returnUrl]);
-              }
-              else{
-                console.log("Wrong username or password");
-              }
+          .subscribe({
+              next: (res) => {
+                console.log("$%#$", res)
+                  // get return url from route parameters or default to '/'
+                  if(res.status == 1)
+                  {
+                      const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/upload';
+                      console.log(returnUrl)
+                      this.router.navigate([returnUrl]);
+                  }
+                  else
+                  {
+                    this.loginForm.reset();
+                    this.loading=false;
+                    this.router.navigate(['./']);
+                  }
+                },
             
               error: (error :any) => {
                   this.error = error;
