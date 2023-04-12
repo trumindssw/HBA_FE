@@ -69,24 +69,48 @@ body
 #ViewPreviousRequests{
     
     box-sizing: border-box;
+
+    /* Auto layout */
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 12px 24px;
     gap: 10px;
-    font-size: 14px;
-    
 
     position: absolute;
     width: 205px;
     height: 41px;
     left: 1139px;
     top: 165px;
+
     background: #FFFFFF;
+    /* Text/Text Blue */
+
     border: 1px solid #344DA1;
     border-radius: 8px;
-    
+        
+}
+
+#previous-button-text{
+    position: absolute;
+    width: 157px;
+    height: 17px;
+    left: 24px;
+    top: 12px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+/* identical to box height */
+
+
+/* Text/Text Blue */
+
+color: #344DA1;
 }
     
 #middle-lable1{
@@ -187,11 +211,14 @@ hr{
     height: 19px;
     left: 96px;
     top: 443px;
+    color: #595959;
 }
 
 #DownloadSampleId{
     box-sizing: border-box;
-    /* Auto layout */
+
+/* Auto layout */
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -210,15 +237,11 @@ hr{
 
     border: 1px solid #344DA1;
     border-radius: 8px;
-
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 17px;
 }
 
-.download-text{
+
+
+#download-sample-button-text{
     position: absolute;
     width: 199px;
     height: 17px;
@@ -236,8 +259,6 @@ hr{
     /* Text/Text Blue */
 
     color: #344DA1;
-
-
 }
 
 
@@ -345,7 +366,25 @@ line-height: 21px;
 color: #595959;
 }
   
-  
+#drag-text{
+    position: absolute;
+width: 124px;
+height: 17px;
+left: 825px;
+top: 512px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+
+
+/* Text/Text Grey beta */
+
+color: #595959;
+}  
 
   
 
