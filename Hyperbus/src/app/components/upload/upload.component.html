@@ -24,7 +24,6 @@
          
         </button>
   </a>
-
   <div draggable="true" ngClass="{{dragAreaClass}}">
     <div class="row">
         <div class="col-md-12 text-center" >
@@ -43,11 +42,6 @@
                    [multiple]="true"
                    (change)="onFileChange($event)"
                    style="display:none" />
-        <div class="dragged-files-wrapper" *ngIf="draggedFiles">
-          <div class="file" *ngFor="let file of draggedFiles">
-            {{file}}
-          </div>
-        </div>
         </div>
         </div>
     </div>

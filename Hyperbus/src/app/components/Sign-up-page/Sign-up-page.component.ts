@@ -55,7 +55,7 @@ export class BodyComponent implements OnInit {
       this.authenticationService.login(this.f['username'].value, this.f['password'].value)
           .pipe(first())
           .subscribe({
-              next: (res) => {
+              next: (res: any) => {
                 console.log("$%#$", res)
                   // get return url from route parameters or default to '/'
                   if(res.status == 1)

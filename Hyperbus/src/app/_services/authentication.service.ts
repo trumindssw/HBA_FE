@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 import { environment } from 'src/environments/environment.development';
 
 import { User } from '../_models/user';
+import { map } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -29,17 +29,17 @@ export class AuthenticationService {
 
     login(username: string, password: string) {
         return this.http.post<any>(this._loginUrl, { username, password })
-            .pipe(map(user => {
-                console.log(user)
+            .pipe(map((res: { status: number; data: string; })  => {
+                console.log(res)
                 
-                if(user.statue == 0)
-                return user;                
+                if(res.status == 0)
+                return res;                
                 
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 
-                localStorage.setItem('user', JSON.stringify(user));
-                this.userSubject.next(user);
-                return user;
+                localStorage.setItem('user', String(res.data));
+                this.userSubject.next(res);
+                return res;
             }));
     }
 
