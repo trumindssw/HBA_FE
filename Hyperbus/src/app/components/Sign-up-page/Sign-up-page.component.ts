@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
-import { AuthenticationService } from 'src/app/authentication.service';
+import { AuthenticationService } from '../../_services/authentication.service';
 
 import { HttpClient } from '@angular/common/http';
 
@@ -24,7 +24,11 @@ export class BodyComponent implements OnInit {
       private authenticationService: AuthenticationService,
       private http: HttpClient
       )
-      { }
+      { // redirect to home if already logged in
+        if (this.authenticationService.userValue) {  
+       this.router.navigate(['/upload']);
+        }
+      }
 
   ngOnInit():void {
       this.loginForm = this.formBuilder.group({
@@ -39,6 +43,7 @@ export class BodyComponent implements OnInit {
   onSubmit() {
    
       this.submitted = true;
+      console.log("hEYYYYYY");
 
       // stop here if form is invalid
       if (this.loginForm.invalid) {
@@ -47,14 +52,27 @@ export class BodyComponent implements OnInit {
 
       this.error = '';
       this.loading = true;
-      this.authenticationService.login(this.f['fusername'].value, this.f['fpassword'].value)
+      this.authenticationService.login(this.f['username'].value, this.f['password'].value)
           .pipe(first())
           .subscribe({
-              next: () => {
+              next: (res: any) => {
+                console.log("$%#$", res)
                   // get return url from route parameters or default to '/'
-                  const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-                  this.router.navigate([returnUrl]);
-              },
+                  if(res.status == 1)
+                  {
+                      const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/upload';
+                      console.log(returnUrl)
+                      this.router.navigate([returnUrl]);
+                  }
+                  else
+                  {
+                    // this.loginForm.reset();
+                    this.loading=false;
+                    this.error=res.message;
+                    this.router.navigate(['./']);
+                  }
+                },
+            
               error: (error :any) => {
                   this.error = error;
                   this.loading = false;

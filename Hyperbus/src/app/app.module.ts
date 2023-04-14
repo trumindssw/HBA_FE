@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { BodyComponent } from './components/Sign-up-page/Sign-up-page.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -23,9 +24,10 @@ import { BodyComponent } from './components/Sign-up-page/Sign-up-page.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { HostListener } from '@angular/core';
+import { Uploadservice } from 'src/app/_services/upload.service';
 
 @Component({
 selector: 'app-upload',
@@ -15,9 +16,14 @@ export class UploadComponent implements OnInit {
   public error: any ;
   public dragAreaClass: any;
   public draggedFiles: any;
+  public fl: any;
+  public chosen = false;
+  public message = "";
   
 
-  constructor(private router: Router) { }
+  constructor(
+      private router: Router,
+      private UploadService: Uploadservice) { }
   ngOnInit(){
     this.dragAreaClass = "dragarea";
   }
@@ -27,8 +33,15 @@ export class UploadComponent implements OnInit {
   }
 
   onFileChange(event: any) {
-    let files: FileList = event.target.files;
-    this.saveFiles(files);
+    if(event.target.value) {
+
+            this.fl = <File>event.target.files[0];
+      
+            this.chosen=true;
+      
+            this.saveFiles();
+      
+          }
   }
 
   @HostListener("dragover", ["$event"]) onDragOver(event: any) {
@@ -52,25 +65,40 @@ export class UploadComponent implements OnInit {
     event.preventDefault();
     event.stopPropagation();
     if (event.dataTransfer.files) {
-      let files: FileList = event.dataTransfer.files;
-      this.saveFiles(files);
+      this.fl = <File>event.dataTransfer.files[0];
+      this.saveFiles();
     }
   }
 
-  saveFiles(files: FileList) {
+  saveFiles() {
+    let fd =new FormData();
 
-    if (files[0].type != ".XLSX") this.error = "Upload XLSX format only";
-    else {
-      this.error = "";
-      console.log(files[0].size,files[0].name,files[0].type);
-      this.draggedFiles = files;
-      console.log(files);
-    }
+    if(this.fl) {
+
+      fd.append("file", this.fl, this.fl.name);
+
+      this.UploadService.UploadExcel(fd).subscribe((res) => {
+
+        console.log("#$EDCRFVTGHBJ: ", res)
+
+        if(res.status == 1) {
+
+          this.error = false;
+
+          this.message = res.message;
+
+        } else {
+
+          this.error = true;
+
+          this.message = res.message;
+
+        }
+
+      });
   }
-
+  }
   
-
-
 }
 
 
