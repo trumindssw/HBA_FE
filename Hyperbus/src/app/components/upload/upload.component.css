@@ -63,7 +63,25 @@ body
     
 }
     
-    
+#edu-text{
+    position: absolute;
+width: 72px;
+height: 19px;
+left: 453px;
+top: 294px;
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 19px;
+/* identical to box height */
+
+
+/* Text/Text Grey alpha */
+
+color: #303030;
+}    
     
     
 #ViewPreviousRequests{
@@ -155,7 +173,7 @@ color: #344DA1;
     font-weight: 500;
     font-size: 16px;
     line-height: 19px;
-    color: #303030;    
+    color: #303030;
 }
 
 hr{
@@ -265,6 +283,24 @@ hr{
   .error {
       color: #f00;
   }
+
+  #spanId1{
+    color: #344DA1;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  #spanId2{
+    color: #595959;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+  }
   
   .dragarea {
        /* font-size: 7rem; */
@@ -346,7 +382,7 @@ line-height: 21px;
 color: #303030;
 }
 
-.temp-none{
+#temp-noneId{
     position: absolute;
 width: 43px;
 height: 21px;
@@ -366,25 +402,9 @@ line-height: 21px;
 color: #595959;
 }
   
-#drag-text{
-    position: absolute;
-width: 124px;
-height: 17px;
-left: 825px;
-top: 512px;
-
-font-family: 'Inter';
-font-style: normal;
-font-weight: 500;
-font-size: 14px;
-line-height: 17px;
-/* identical to box height */
 
 
-/* Text/Text Grey beta */
 
-color: #595959;
-}  
 
   
 

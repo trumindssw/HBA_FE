@@ -152,6 +152,23 @@ input[type=text], select, textarea {
 
 }
 
+#error-msg3{
+  position: absolute;
+  width: 496px;
+  height: 92px;
+  left: 742px;
+  top: 660px;
+ 
+  border-radius: 8px;
+  
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+
+}
+
 
 
 

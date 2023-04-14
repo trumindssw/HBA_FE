@@ -32,24 +32,26 @@
             <img src="/assets/vectors/upload-logo.svg" class="img-drop">
           </div>
           <div>
+            <span id="spanId2">or </span>
             <a href="javascript:void(0)" (click)="file.click()">
-              or select a file from computer
+              
+              <span id="span1Id">select a file from computer</span>
             </a>
           </div>
             
-            <input type="file"
-                   #file
-                   [multiple]="true"
-                   (change)="onFileChange($event)"
-                   style="display:none" />
-        </div>
-        </div>
+          <input type="file"
+          #file
+          [multiple]="true"
+          (change)="onFileChange($event)"
+          style="display:none" />
+      </div>
     </div>
-    <div class="error" *ngIf="error">
-      Upload XLSX format only
   </div>
+  <!-- <div class="error" *ngIf="error">
+    Upload XLSX format only
+  </div> -->
 
   <p class="leftletter6" id="card-letter6">Previously Uploaded Data Files</p>
   <p class="temp-none" id="temp-noneId">None</p>
-  
-</div>
+
+  </div>
