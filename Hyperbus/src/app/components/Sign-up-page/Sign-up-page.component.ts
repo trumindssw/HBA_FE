@@ -6,6 +6,7 @@ import { first } from 'rxjs/operators';
 import { AuthenticationService } from '../../_services/authentication.service';
 
 import { HttpClient } from '@angular/common/http';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-body',
@@ -44,13 +45,14 @@ export class BodyComponent implements OnInit {
    
       this.submitted = true;
       console.log("hEYYYYYY");
-
+      this.error = '';
       // stop here if form is invalid
       if (this.loginForm.invalid) {
+          
           return;
       }
 
-      this.error = '';
+      
       this.loading = true;
       this.authenticationService.login(this.f['username'].value, this.f['password'].value)
           .pipe(first())
@@ -70,12 +72,17 @@ export class BodyComponent implements OnInit {
                     this.loading=false;
                     this.error=res.message;
                     this.router.navigate(['./']);
+                    this.submitted=false;
+                    // this.loginForm.reset();
+                    
                   }
                 },
             
               error: (error :any) => {
                   this.error = error;
                   this.loading = false;
+                  console.log(error);
+                  
               }
           });
   }
