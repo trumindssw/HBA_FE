@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { HttpClient } from '@angular/common/http';
 import { HostListener } from '@angular/core';
 import { Uploadservice } from 'src/app/_services/upload.service';
-
+import { saveAs } from 'file-saver';
 @Component({
 selector: 'app-upload',
 templateUrl: './upload.component.html',
@@ -19,12 +19,23 @@ export class UploadComponent implements OnInit {
   public fl: any;
   public chosen = false;
   public message = "";
+  public requests: any
+  files:any
+  file:any
+
   
 
   constructor(
       private router: Router,
+      private httpClient: HttpClient,
       private UploadService: Uploadservice) { }
   ngOnInit(){
+    this.UploadService.getAllFiles().subscribe(
+      response => {
+        console.log(response.data);
+        this.files = response.data;
+      }
+    )
     this.dragAreaClass = "dragarea";
   }
   onBtn(){
@@ -32,16 +43,38 @@ export class UploadComponent implements OnInit {
   this.router.navigate(['/previousrequests']);
   }
 
-  onFileChange(event: any) {
-    if(event.target.value) {
+  downloadFile(fileNames: string){
 
-            this.fl = <File>event.target.files[0];
-      
-            this.chosen=true;
-      
-            this.saveFiles();
-      
-          }
+    console.log("download button clicked!");
+   
+
+    this.UploadService.downloadFile(fileNames).subscribe(
+      response => {
+        console.log(response.data);
+        let blob = new Blob([response], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"});
+
+      console.log(blob)
+
+      const file = new File([blob],fileNames, { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+
+       saveAs(file);
+        
+
+      }
+    );
+
+
+  }
+
+
+  onFileChange(event: any) 
+  {
+    if(event.target.value) 
+    {
+        this.fl = <File>event.target.files[0];
+        this.chosen=true;
+        this.saveFiles();
+    }
   }
 
   @HostListener("dragover", ["$event"]) onDragOver(event: any) {
@@ -70,33 +103,36 @@ export class UploadComponent implements OnInit {
     }
   }
 
-  saveFiles() {
+  saveFiles() 
+  {
     let fd =new FormData();
 
-    if(this.fl) {
+      if(this.fl) 
+   {
 
-      fd.append("file", this.fl, this.fl.name);
+       fd.append("file", this.fl, this.fl.name);
 
-      this.UploadService.UploadExcel(fd).subscribe((res) => {
+       this.UploadService.UploadExcel(fd).subscribe((res) => {
 
-        console.log("#$EDCRFVTGHBJ: ", res)
+       console.log("#$EDCRFVTGHBJ: ", res)
 
-        if(res.status == 1) {
+        if(res.status == 1) {
 
-          this.error = false;
+           this.error = false;
 
-          this.message = res.message;
+           this.message = res.message;
 
-        } else {
+        } else 
+        {
 
-          this.error = true;
+           this.error = true;
 
-          this.message = res.message;
+           this.message = res.message;
 
-        }
+        }
 
-      });
-  }
+      });
+   }
   }
   
 }
