@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({ providedIn: 'root' })
 
 export class PreviousRequestsService {
 
-    private url="http://localhost:5000/request/getAllRequests"
+    private url=environment.apiUrl + "/request/getAllRequests"
     constructor(
         private http: HttpClient
     ) {}

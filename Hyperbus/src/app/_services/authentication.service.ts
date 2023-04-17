@@ -13,7 +13,7 @@ export class AuthenticationService {
     private userSubject: BehaviorSubject<User | null>;
     public user: Observable<User | null>;
     
-    private _loginUrl="http://localhost:5000/login";
+    private _loginUrl = environment.apiUrl + "/login";
 
     constructor(
         private router: Router,

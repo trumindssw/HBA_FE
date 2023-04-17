@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({ providedIn: 'root' })
 
 export class DownloadService {
 
-    private url="http://localhost:5000/excel/download/"
+    private url= environment.apiUrl + "/excel/download/"
     constructor(
         private http: HttpClient
     ) {}

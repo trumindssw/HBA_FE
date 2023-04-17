@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({ providedIn: 'root' })
 
 export class Uploadservice {
 
-    private uploadUrl="http://localhost:5000/excel/upload"
-    private getAllFilesUrl = "http://localhost:5000/excel/getUploadedFiles"
-    private downloadfileUrl = "http://localhost:5000/excel/download/"
+    private uploadUrl=environment.apiUrl + "/excel/upload"
+    private getAllFilesUrl = environment.apiUrl + "/excel/getUploadedFiles"
+    private downloadfileUrl = environment.apiUrl + "/excel/download/"
     request: any;
     constructor(
         private router: Router,
