@@ -1,154 +1,171 @@
 .side-body{
     
 
-    position: absolute;
-    width: 526px;
-    height: 879px;
-    left: 16px;
-    top: 129px;
+  position: absolute;
+  width: 526px;
+  height: 879px;
+  left: 16px;
+  top: 129px;
 
-    background: #CFE2F3;
-    border-radius: 0px 0px 8px 8px;
+  background: #CFE2F3;
+  border-radius: 0px 0px 8px 8px;
 }
 
 .body-container{
-    display: grid;
-    grid-template-columns: 1.5fr 4fr;
-    grid-template-rows: 550px 500px;
-    border-radius: 5px;
+  display: grid;
+  grid-template-columns: 1.5fr 4fr;
+  grid-template-rows: 550px 500px;
+  border-radius: 5px;
 }
 
 .sign-in-text{
 
-  position: absolute;
-  width: 125px;
-  height: 47px;
-  left: 742px;
-  top: 224px;
+position: absolute;
+width: 125px;
+height: 47px;
+left: 742px;
+top: 224px;
 
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 40px;
-  line-height: 47px;
-  color: #303030;
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 700;
+font-size: 40px;
+line-height: 47px;
+color: #303030;
 
-    
+  
 } 
 
 .label-username{
-  position: absolute;
-  width: 64px;
-  height: 16px;
-  left: 742px;
-  top: 319px;
+position: absolute;
+width: 64px;
+height: 16px;
+left: 742px;
+top: 319px;
 
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 16px;
-  color: #595959;
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 16px;
+color: #595959;
 }
 
 .label-password{
-  position: absolute;
-  width: 62px;
-  height: 16px;
-  left: 742px;
-  top: 420px;
-  
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 16px;
-  color: #595959;
+position: absolute;
+width: 62px;
+height: 16px;
+left: 742px;
+top: 420px;
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 16px;
+color: #595959;
 }
 
 
 
 button {
-  position: absolute;
-  width: 496px;
-  height: 52px;
-  left: 742px;
-  top: 529px;
-  background: #344DA1;
-  border-radius: 8px;
-  color: white;
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 21px;
-
-    
-  }
+position: absolute;
+width: 496px;
+height: 52px;
+left: 742px;
+top: 529px;
+background: #344DA1;
+border-radius: 8px;
+color: white;
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 600;
+font-size: 18px;
+line-height: 21px;
 
   
+}
+
+
 
 input[type=text], select, textarea {
+box-sizing: border-box;
+position: absolute;
+width: 496px;
+height: 52px;
+left: 742px;
+top: 344px;
+background: #FFFFFF;
+border: 1px solid #EAEAEA;
+border-radius: 8px;
+
+
+  
+}  
+
+input[type=password], select, textarea {
   box-sizing: border-box;
+
   position: absolute;
   width: 496px;
   height: 52px;
   left: 742px;
-  top: 344px;
+  top: 445px;
   background: #FFFFFF;
   border: 1px solid #EAEAEA;
   border-radius: 8px;
 
-
-    
-  }  
-
-  input[type=password], select, textarea {
-    box-sizing: border-box;
-
-    position: absolute;
-    width: 496px;
-    height: 52px;
-    left: 742px;
-    top: 445px;
-    background: #FFFFFF;
-    border: 1px solid #EAEAEA;
-    border-radius: 8px;
-
-   
-  } 
+ 
+} 
 
 #error-msg1{
-  position: absolute;
-  width: 496px;
-  height: 92px;
-  left: 742px;
-  top: 600px;
- 
-  border-radius: 8px;
-  
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 21px;
+position: absolute;
+width: 496px;
+height: 92px;
+left: 742px;
+top: 600px;
+
+border-radius: 8px;
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 21px;
 
 }
 
 #error-msg2{
-  position: absolute;
-  width: 496px;
-  height: 92px;
-  left: 742px;
-  top: 630px;
- 
-  border-radius: 8px;
-  
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 21px;
+position: absolute;
+width: 496px;
+height: 92px;
+left: 742px;
+top: 630px;
+
+border-radius: 8px;
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 21px;
+
+}
+
+#error-msg3{
+position: absolute;
+width: 496px;
+height: 92px;
+left: 742px;
+top: 660px;
+
+border-radius: 8px;
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 21px;
 
 }
 
@@ -156,4 +173,3 @@ input[type=text], select, textarea {
 
 
 
- 

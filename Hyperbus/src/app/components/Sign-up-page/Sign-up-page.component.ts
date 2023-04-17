@@ -66,8 +66,9 @@ export class BodyComponent implements OnInit {
                   }
                   else
                   {
-                    this.loginForm.reset();
+                    // this.loginForm.reset();
                     this.loading=false;
+                    this.error=res.message;
                     this.router.navigate(['./']);
                   }
                 },

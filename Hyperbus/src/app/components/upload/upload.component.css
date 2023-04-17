@@ -328,65 +328,116 @@ top: 545px;
   } */
 #card-letter6{
     position: absolute;
-width: 249px;
-height: 21px;
-left: 437px;
-top: 706px;
+    width: 249px;
+    height: 21px;
+    left: 437px;
+    top: 706px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    /* identical to box height */
 
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 500;
-font-size: 18px;
-line-height: 21px;
-/* identical to box height */
 
-
-/* Text/Text Grey alpha */
+    /* Text/Text Grey alpha */
 
 color: #303030;
 }
 
 .temp-none{
     position: absolute;
-width: 43px;
-height: 21px;
-left: 437px;
-top: 751px;
+    width: 43px;
+    height: 21px;
+    left: 437px;
+    top: 751px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    /* identical to box height */
 
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 500;
-font-size: 18px;
-line-height: 21px;
-/* identical to box height */
 
+    /* Text/Text Grey beta */
 
-/* Text/Text Grey beta */
-
-color: #595959;
+    color: #595959;
 }
   
 #drag-text{
     position: absolute;
-width: 124px;
-height: 17px;
-left: 825px;
-top: 512px;
+    width: 124px;
+    height: 17px;
+    left: 825px;
+    top: 512px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
 
-font-family: 'Inter';
-font-style: normal;
-font-weight: 500;
-font-size: 14px;
-line-height: 17px;
-/* identical to box height */
 
-
-/* Text/Text Grey beta */
+    /* Text/Text Grey beta */
 
 color: #595959;
 }  
 
-  
+.previous-files-table {
+    position: absolute;
+    width: 903px;
+    top: 750px;
+    left: 437px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500px;
+    font-size: 14px;
+    line-height: 17px;
+    /* color: #595959; */
+   
+}
+table.previous-files-table{
+    /* Set the height of table body */
+    height: 80px; 
+    
+              
+    /* Set vertical scroll */
+    overflow-y: auto;
+      
+    /* Hide the horizontal scroll */
+    overflow-x: hidden;
+}
+table.previous-files-table tbody, table.previous-files-table {
+    display: block;
+}
+
+
+#spanId1{
+
+    color: #344DA1;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+
+}
+
+ #spanId2{
+
+    color: #595959;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+
+}
+
+
+
+
+
 
 
 
