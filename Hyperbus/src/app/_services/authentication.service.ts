@@ -10,8 +10,7 @@ import { map } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-    private userSubject: BehaviorSubject<User | null>;
-    public user: Observable<User | null>;
+    private userSubject: String;
     
     private _loginUrl = environment.apiUrl + "/login";
 
@@ -19,12 +18,12 @@ export class AuthenticationService {
         private router: Router,
         private http: HttpClient
     ) {
-        this.userSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('user')!));
-        this.user = this.userSubject.asObservable();
+        console.log(localStorage.getItem('user'))
+        this.userSubject = localStorage.getItem('user')!;
     }
 
     public get userValue() {
-        return this.userSubject.value;
+        return this.userSubject;
     }
 
     login(username: string, password: string) {
@@ -38,7 +37,6 @@ export class AuthenticationService {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 
                 localStorage.setItem('user', String(res.data));
-                this.userSubject.next(res);
                 return res;
             }));
     }

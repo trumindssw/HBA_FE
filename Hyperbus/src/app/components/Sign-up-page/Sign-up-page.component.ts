@@ -27,7 +27,8 @@ export class BodyComponent implements OnInit {
       )
       { // redirect to home if already logged in
         if (this.authenticationService.userValue) {  
-       this.router.navigate(['/upload']);
+          console.log("YEs Pls redirect")
+          this.router.navigate(['/upload']);
         }
       }
 
