@@ -43,10 +43,9 @@ export class Uploadservice {
 
         console.log(token)
         let headers = new HttpHeaders({
-            'Authorization': 'Bearer ' + token,
-            responseType:'blob'
+            'Authorization': 'Bearer ' + token
         });	
-        let options = {headers: headers}
+        let options = {headers: headers, observe: 'response' as 'body', responseType: 'blob' as 'json'}
 		return this.http.get<any>(this.downloadfileUrl+fileNames,options)
    }
 

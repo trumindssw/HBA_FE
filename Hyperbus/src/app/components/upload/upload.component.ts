@@ -48,19 +48,15 @@ export class UploadComponent implements OnInit {
   downloadFile(fileNames: string){
 
     console.log("download button clicked!");
-    
    
 
     this.UploadService.downloadFile(fileNames).subscribe(
       response => {
         console.log(response);
-        let blob = new Blob([response], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"});
+        let blob = new Blob([response.body], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"});
+        const file = new File([blob],fileNames, { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
 
-      console.log(blob)
-
-      const file = new File([blob],fileNames, { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
-
-       saveAs(file,fileNames);
+       saveAs(file);
         
 
       }
