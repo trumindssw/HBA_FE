@@ -25,45 +25,66 @@
         </button>
   </a>
 
-      <div draggable="true" ngClass="{{dragAreaClass}}">
-
-         <div class="row">
-    
-          <div class="col-md-12 text-center" >
-    
-             Drag your file here
-    
-                <div>
-    
-                   <img src="/assets/vectors/upload-logo.svg" class="img-drop">
-    
-                 </div>
-    
-                  <div>
-    
-                    <span id="spanId2">or </span>
-    
-                      <a href="javascript:void(0)" (click)="file.click()">
-                         <span id="span1Id">select a file from computer</span>
-    
-                      </a>
-    
-                  </div>
-            
-            <input type="file"
-                   #file
-                   [multiple]="true"
-                   (change)="onFileChange($event)"
-                   style="display:none" />
-        </div>
-        <div>
-          {{message}}
-        </div>
-        </div>
+  <div *ngIf="message.length > 0" >
+    <p id="file-details">File Details</p>
+    <div *ngIf="colour">
+      <p id="message" [style.color]="'#007A78'">{{message}}</p>
     </div>
-    <div class="error" *ngIf="error">
-      Upload XLSX format only
+
+    <div *ngIf="!colour">
+      <p id="message" [style.color]="'#D3273E'">{{message}}</p>
+    </div>
+    
+
+    <div draggable="true" ngClass="{{dragAreaClass}}" id="drag-box-after">
+      <div class="row">
+       <div class="col-md-12 text-center"  >
+          Drag your file here
+             <div>
+                <img src="/assets/vectors/upload-logo.svg" class="img-drop">
+              </div>
+               <div>
+                 <span id="spanId2">or </span>
+                   <a href="javascript:void(0)" (click)="file.click()">
+                      <span id="span1Id">select a file from computer</span>
+                   </a>
+               </div>
+                 <input type="file"
+                       #file
+                       [multiple]="true"
+                       (change)="onFileChange($event)"
+                       style="display:none" />
+         </div>      
+     </div>
+    </div>
   </div>
+
+  <div *ngIf="message.length == 0" >
+    <div draggable="true" ngClass="{{dragAreaClass}}" id="drag-box-before">
+      <div class="row">
+       <div class="col-md-12 text-center" >
+          Drag your file here
+             <div>
+                <img src="/assets/vectors/upload-logo.svg" class="img-drop">
+              </div>
+               <div>
+                 <span id="spanId2">or </span>
+                   <a href="javascript:void(0)" (click)="file.click()">
+                      <span id="span1Id">select a file from computer</span>
+                   </a>
+               </div>
+                 <input type="file"
+                       #file
+                       [multiple]="true"
+                       (change)="onFileChange($event)"
+                       style="display:none" />
+         </div>      
+     </div>
+  </div>
+  </div>
+    <!-- <div class="error" *ngIf="error">
+      Upload XLSX format only
+  </div> -->
 
   <p class="leftletter6" id="card-letter6">Previously Uploaded Data Files</p>
   <table class="previous-files-table">

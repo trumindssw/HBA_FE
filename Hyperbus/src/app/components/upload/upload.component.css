@@ -486,6 +486,78 @@ table, th, td {
 
 }
 
+#drag-box-after{
+    box-sizing: border-box;
+
+position: absolute;
+width: 907px;
+height: 194px;
+left: 437px;
+/* top: 671px; */
+top: 560px;
+background: #FFFFFF;
+/* Neutral/Neutral Out beta */
+
+border: 1px dashed #CACACA;
+border-radius: 8px;
+}
+
+#drag-box-before{
+    box-sizing: border-box;
+
+position: absolute;
+width: 907px;
+height: 194px;
+left: 437px;
+top: 480px;
+
+background: #FFFFFF;
+/* Neutral/Neutral Out beta */
+
+border: 1px dashed #CACACA;
+border-radius: 8px;
+}
+
+#file-details{
+    position: absolute;
+    width: 79px;
+    height: 19px;
+    left: 437px;
+    top: 480px;
+    
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    /* identical to box height */
+    
+    
+    /* Text/Text Grey alpha */
+    
+    color: #303030;
+}
+
+#message{
+    position: absolute;
+    width: 139px;
+    height: 19px;
+    left: 437px;
+    top: 523px;
+    
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    /* identical to box height */
+    
+    
+    /* Semantic/Semantic Green */
+    
+    color: #007A78;
+}
+
 
 
 
