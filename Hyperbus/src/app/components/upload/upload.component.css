@@ -416,6 +416,9 @@ color: #303030;
 }
 /* Text/Text Grey beta */
 
+#tab {
+    padding-bottom: 15%;
+}
 
 .previous-files-table {
     position: absolute;
@@ -426,7 +429,7 @@ color: #303030;
     font-style: normal;
     font-weight: 500px;
     font-size: 14px;
-    line-height: 17px;
+    /* line-height: 17px; */
     
      /* color: #595959;  */
    
@@ -457,10 +460,13 @@ table, th, td {
          border-collapse: collapse;
       }
       th, td {
-         padding-top: 2px;
-         padding-bottom: 5px;
-         padding-left: 10px;
-         padding-right: 140px;
+         padding-top: 10px;
+         padding-bottom: 10px;
+         /* padding-left: 10px; */
+         /* padding-right: 40px; */
+      }
+      td {
+        border-bottom: 1px solid #EAEAEA;
       }
 
 
@@ -486,7 +492,7 @@ table, th, td {
 
 }
 
-#drag-box-after{
+.drag-box-after{
     box-sizing: border-box;
 
 position: absolute;
@@ -502,7 +508,7 @@ border: 1px dashed #CACACA;
 border-radius: 8px;
 }
 
-#drag-box-before{
+.drag-box-before{
     box-sizing: border-box;
 
 position: absolute;
@@ -540,16 +546,13 @@ border-radius: 8px;
 
 #message{
     position: absolute;
-    width: 139px;
-    height: 19px;
     left: 437px;
     top: 523px;
     
     font-family: 'Roboto';
     font-style: normal;
-    font-weight: 700;
+    font-weight: 300;
     font-size: 16px;
-    line-height: 19px;
     /* identical to box height */
     
     
