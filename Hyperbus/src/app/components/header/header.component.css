@@ -1,9 +1,10 @@
-header{
+.head{
     position: absolute;
     width: 1408px;
     height: 112px;
     left: 16px;
     top: 16px;
+    right: 16px;
 
     background: #3D85C6;
     border-radius: 8px 8px 0px 0px;
@@ -15,7 +16,7 @@ header{
     position: absolute;
     width: 162px;
     height: 28px;
-    left: 1230px;
+    left: 1200px;
     top: 40px;
 
     font-family: 'Roboto';
@@ -38,7 +39,7 @@ header{
     position: absolute;
     width: 195px;
     height: 28px;
-    left: 1197px;
+    left: 1190px;
     top: 76px;
 
     font-family: 'Roboto';
