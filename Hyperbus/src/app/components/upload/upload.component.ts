@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { HostListener } from '@angular/core';
 import { Uploadservice } from 'src/app/_services/upload.service';
 import { saveAs } from 'file-saver';
-import * as XLSX from 'xlsx';
+// import * as XLSX from 'xlsx';
 @Component({
 selector: 'app-upload',
 templateUrl: './upload.component.html',
