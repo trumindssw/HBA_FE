@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { HostListener } from '@angular/core';
 import { Uploadservice } from 'src/app/_services/upload.service';
 import { saveAs } from 'file-saver';
+import * as XLSX from 'xlsx';
 @Component({
 selector: 'app-upload',
 templateUrl: './upload.component.html',
@@ -46,18 +47,19 @@ export class UploadComponent implements OnInit {
   downloadFile(fileNames: string){
 
     console.log("download button clicked!");
+    
    
 
     this.UploadService.downloadFile(fileNames).subscribe(
       response => {
-        console.log(response.data);
+        console.log(response);
         let blob = new Blob([response], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"});
 
       console.log(blob)
 
       const file = new File([blob],fileNames, { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
 
-       saveAs(file);
+       saveAs(file,fileNames);
         
 
       }

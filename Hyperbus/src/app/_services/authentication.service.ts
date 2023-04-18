@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { map } from 'rxjs';
 
-import { JwtHelperService } from '@auth0/angular-jwt'
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 const helper = new JwtHelperService();
 
