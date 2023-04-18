@@ -4,9 +4,11 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 import { environment } from 'src/environments/environment.development';
-
-import { User } from '../_models/user';
 import { map } from 'rxjs';
+
+import { JwtHelperService } from '@auth0/angular-jwt'
+
+const helper = new JwtHelperService();
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -39,6 +41,19 @@ export class AuthenticationService {
                 localStorage.setItem('user', String(res.data));
                 return res;
             }));
+    }
+
+    isTokenExpired(): boolean {
+        let token = localStorage.getItem('user');
+        if(!token) {
+            return true;
+        } else {
+            const date = helper.getTokenExpirationDate(token);
+            console.log(date);
+            if(date === undefined || date == null) return false;
+            return !(date.valueOf() > new Date().valueOf());
+        }
+        
     }
 
     
