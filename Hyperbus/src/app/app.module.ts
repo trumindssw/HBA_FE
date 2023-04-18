@@ -8,6 +8,7 @@ import { HeaderComponent } from './components/header/header.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { BodyComponent } from './components/Sign-up-page/Sign-up-page.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthGuard } from './_guards';
 
 
 
@@ -27,7 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [HttpClientModule],
+  providers: [HttpClientModule, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

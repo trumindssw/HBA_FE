@@ -24,6 +24,7 @@
          
         </button>
   </a>
+
       <div draggable="true" ngClass="{{dragAreaClass}}">
 
          <div class="row">
@@ -49,11 +50,14 @@
     
                   </div>
             
-                     <input type="file"
+            <input type="file"
                    #file
                    [multiple]="true"
                    (change)="onFileChange($event)"
                    style="display:none" />
+        </div>
+        <div>
+          {{message}}
         </div>
         </div>
     </div>
@@ -75,8 +79,9 @@
               
           </button>
         </td>
-        
+
       </tr>
     </tbody>
   </table>
+  
 </div>
