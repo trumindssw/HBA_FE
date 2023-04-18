@@ -393,7 +393,13 @@ color: #595959;
     font-weight: 500px;
     font-size: 14px;
     line-height: 17px;
-    /* color: #595959; */
+    
+     /* color: #595959;  */
+   
+}
+.previous-files-download{
+    border: none;
+    background-color:white;
    
 }
 table.previous-files-table{
@@ -407,9 +413,21 @@ table.previous-files-table{
     /* Hide the horizontal scroll */
     overflow-x: hidden;
 }
+
 table.previous-files-table tbody, table.previous-files-table {
     display: block;
+    
 }
+table, th, td {
+         /* border: 1.4px solid black; */
+         border-collapse: collapse;
+      }
+      th, td {
+         padding-top: 2px;
+         padding-bottom: 5px;
+         padding-left: 10px;
+         padding-right: 140px;
+      }
 
 
 #spanId1{
