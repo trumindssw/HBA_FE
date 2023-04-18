@@ -21,6 +21,7 @@ export class UploadComponent implements OnInit {
   public chosen = false;
   public message = "";
   public requests: any
+  public colour :any;
   files:any
   file:any
 
@@ -121,14 +122,14 @@ export class UploadComponent implements OnInit {
         if(res.status == 1) {
 
            this.error = false;
-
+           this.colour = true;
            this.message = res.message;
 
         } else 
         {
 
            this.error = true;
-
+           this.colour = false;
            this.message = res.message;
 
         }
