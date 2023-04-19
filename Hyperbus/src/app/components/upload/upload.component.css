@@ -362,12 +362,12 @@ left: 867px;
 top: 545px;
 
   } */
-#card-letter6{
+.leftletter6 ,.tag-before{
     position: absolute;
     width: 249px;
     height: 21px;
-    left: 437px;
-    top: 706px;
+    left: 220px;
+    top: 350px;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
@@ -380,6 +380,26 @@ top: 545px;
 
 color: #303030;
 }
+.tag-after{
+    position: absolute;
+    width: 249px;
+    height: 21px;
+    left: 220px;
+    top: 450px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    /* identical to box height */
+
+
+    /* Text/Text Grey alpha */
+
+color: #303030;
+
+}
+
 
 #temp-noneId{
     position: absolute;
@@ -423,17 +443,16 @@ color: #303030;
 .previous-files-table {
     position: absolute;
     width: 903px;
-    top: 750px;
-    left: 437px;
-    font-family: 'Inter';
+    top: 410px;
+    left: 210px;
+    font-family: 'Roboto';
     font-style: normal;
     font-weight: 500px;
     font-size: 14px;
-    /* line-height: 17px; */
     
-     /* color: #595959;  */
    
 }
+
 .previous-files-download{
     border: none;
     background-color:white;

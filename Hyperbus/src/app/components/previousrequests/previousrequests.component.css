@@ -610,12 +610,13 @@ padding: 17px 0 19px 16px;
 
     box-sizing: border-box;
     position: absolute;
-    width: 260px;
+    width: 323px;
     height: 48px;
     left: 96px;
     top: 610px;
     background: #F7F8FA;
     border-bottom: 1px solid #CDCDCD;
+    text-align: left;
     padding: 14.5px 50px 14.5px 8px;
 
 
@@ -625,10 +626,11 @@ padding: 17px 0 19px 16px;
     /* Frame 483797 */
     box-sizing: border-box;
     position: absolute;
-    width: 440px;
+    width: 294px;
     height: 48px;
-    left: 314px;
+    left: 419px;
     top: 610px;
+    text-align: left;
     background: #F7F8FA;
     border-bottom: 1px solid #CDCDCD;
     padding: 14.5px 30px 14.5px 14.5px;
@@ -640,10 +642,11 @@ padding: 17px 0 19px 16px;
 
     box-sizing: border-box;
     position: absolute;
-    width: 415px;
+    width: 353px;
     height: 48px;
-    left: 676px;
+    left: 713px;
     top: 610px;
+    text-align: left;
     background: #F7F8FA;
     border-bottom: 1px solid #CDCDCD;
     padding: 14.5px 50px 14.5px 16px;
@@ -655,16 +658,18 @@ padding: 17px 0 19px 16px;
 
     box-sizing: border-box;
     position: absolute;
-    width: 250px;
+    width: 277px;
     height: 48px;
-    left: 1091px;
+    left: 1066px;
     top: 610px;
+    /* text-align: left; */
     background: #F7F8FA;
     border-bottom: 1px solid #CDCDCD;
     padding: 14.5px 50px 14.5px 9px;
 
 }
  .table-title {
+    position: absolute;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 600;
@@ -675,30 +680,28 @@ padding: 17px 0 19px 16px;
     color: #2B2B2B;
 }
 
-
-
-
-  td,tr {
-    border: 1px solid #ddd; 
-    /* text-align: left; */
-    height: 40px;
-    flex: none;
-
-    width: 73px;
+  table,td,tr {
+    border: 1px solid #ddd;
+    border-top: 0;
+     border-bottom: 0;  
+     
+    /* flex: none; */
+    width: 730px;
     height: 19px;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 19px; 
-    text-align: center;
+   
     padding-top: 2px;
     padding-bottom: 5px;
-    padding-left: 65.6px;
-    padding-right: 140px;
-    bottom: 93.5px;
-    color: #595959;
+    padding-left: 13px;
+    padding-right: 207px;
     
+    /* color: #595959; */
+    box-sizing: border-box;
+  
  }
  .test{
     position: absolute;
@@ -708,20 +711,18 @@ padding: 17px 0 19px 16px;
     width: 10px;
     font-family: 'Roboto';
     font-style: normal;
-    font-weight: 400;
+    font-weight: 700;
     font-size: 16px;
     line-height: 19px;
-    /* identical to box height */
-
-    text-align: center;
-
-    /* Text/Text Grey beta */
-
     color: #595959;
-    
-    
-    
  }
+#one-line td{
+padding: 2px,400px,5px,13px;
+
+color: #007A78;
+}
+ 
+ 
  
 
 

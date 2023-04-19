@@ -61,7 +61,7 @@
   </div>
   </div>
 
-  <div id="tab">
+  <div [ngClass]="message.length == 0 ? 'tag-before' : 'tag-after'" >
     <p class="leftletter6" id="card-letter6">Previously Uploaded Data Files</p>
   <table class="previous-files-table">
     <tbody>
