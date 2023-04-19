@@ -81,10 +81,10 @@
         </thead>
         <tbody class="test">
             <tr *ngFor="let req of requests">
-                <td >{{req['requestID']}}</td>
+                <td width="">{{req['requestID']}}</td>
                 <td >{{req['subjectName']}}</td>
                 <td>{{req['createdAt']}}</td>
-                <td >{{req['statusMessage']}}</td>
+                <td [ngClass]="req['status']==1 ? 'green' : 'red'">{{req['statusMessage']}}</td>
             </tr>
         </tbody>
        

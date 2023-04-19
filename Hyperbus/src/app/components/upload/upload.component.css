@@ -359,12 +359,12 @@ left: 867px;
 top: 545px;
 
   } */
-#card-letter6{
+.leftletter6 ,.tag-before{
     position: absolute;
     width: 249px;
     height: 21px;
-    left: 400px;
-    top: 706px;
+    left: 200px;
+    top: 350px;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
@@ -377,6 +377,26 @@ top: 545px;
 
 color: #303030;
 }
+.tag-after{
+    position: absolute;
+    width: 249px;
+    height: 21px;
+    left: 200px;
+    top: 450px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    /* identical to box height */
+
+
+    /* Text/Text Grey alpha */
+
+color: #303030;
+
+}
+
 
 #temp-noneId{
     position: absolute;
@@ -417,18 +437,17 @@ color: #303030;
 
 .previous-files-table {
     position: absolute;
-    width: 807px;
-    top: 750px;
-    left: 400px;
-    font-family: 'Inter';
-    font-style: bold;
-    font-weight: 1000px;
+    width: 803px;
+    top: 410px;
+    left: 200px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500px;
     font-size: 14px;
-    /* line-height: 17px; */
     
-     /* color: #595959;  */
    
 }
+
 .previous-files-download{
     border: none;
     background-color:white;
@@ -523,7 +542,7 @@ border-radius: 8px;
     position: absolute;
     width: 79px;
     height: 19px;
-    left: 437px;
+    left: 397px;
     top: 480px;
     
     font-family: 'Roboto';
@@ -541,7 +560,7 @@ border-radius: 8px;
 
 #message{
     position: absolute;
-    left: 437px;
+    left: 397px;
     top: 523px;
     
     font-family: 'Roboto';

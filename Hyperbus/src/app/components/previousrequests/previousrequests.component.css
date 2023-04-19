@@ -6,7 +6,7 @@ body{
 
 
 position: absolute;
-left: 100.97px;
+left: 60.97px;
 right: 1317.56px;
 top: 177.58px;
 bottom: 1066.6;
@@ -31,7 +31,7 @@ outline: inherit;
 position: absolute;
 width: 528px;
 height: 38px;
-left: 152px;
+left: 112px;
 top: 169px;
 
 font-family: 'Roboto';
@@ -53,13 +53,13 @@ color: #2B2B2B;
     position: absolute;
     width: 110px;
     height: 28px;
-    left: 96px;
+    left: 56px;
     top: 263px;
 
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 600;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 28px;
 
     /* Icon/Icon Grey alpha */
@@ -71,15 +71,15 @@ color: #2B2B2B;
     /* Heading 2 */
 
     position: absolute;
-    width: 110px;
+    width: 100px;
     height: 28px;
-    left: 676px;
+    left: 626px;
     top: 263px;
 
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 600;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 28px;
 
     /* Text/Text Grey beta */
@@ -89,7 +89,7 @@ color: #2B2B2B;
 
 .box {
     box-sizing: border-box;
-    width: 207px;
+    width: 187px;
     height: 127px;
     background: #FFFFFF;
     /* Gray 400 */
@@ -101,31 +101,31 @@ color: #2B2B2B;
 
 #box1 {
     position: absolute;
-    left: 96px;
+    left: 56px;
     top: 315px;
 }
 
 #box2 {
     position: absolute;
-    left: 326px;
+    left: 276px;
     top: 315px;
 }
 
 #box3 {
     position: absolute;
-    left: 675px;
+    left: 625px;
     top: 315px;
 }
 
 #box4 {
     position: absolute;
-    left: 906px;
+    left: 836px;
     top: 315px;
 }
 
 #box5 {
     position: absolute;
-    left: 1137px;
+    left: 1047px;
     top: 315px;
 }
 
@@ -148,7 +148,7 @@ color: #2B2B2B;
     flex: none;
     order: 0;
     flex-grow: 0;
-    padding: 16px 16px 16px 0;
+    padding: 16px 16px 16px 16px;
 }
 .box-number{
    /* 427 */
@@ -159,7 +159,7 @@ color: #2B2B2B;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
-    font-size: 27.0717px;
+    font-size: 24px;
     line-height: 33px;
     /* identical to box height */
     /* Gray 900 */
@@ -168,7 +168,7 @@ color: #2B2B2B;
     flex: none;
     order: 1;
     flex-grow: 0;
-   /* // padding: 30.77px 140px 16px 0; */
+   padding: 30.77px 140px 16px 16px;
 }
 .status{
     position: absolute;
@@ -191,8 +191,8 @@ color: #2B2B2B;
 position: absolute;
 width: 65px;
 height: 14px;
-left: 47.49px;
-top: 64.54px;
+/* left: 47.49px; */
+/* top: 94.54px; */
 
 font-family: 'Roboto';
 font-style: normal;
@@ -220,6 +220,7 @@ color: #000000;
     flex: none;
     order: 0;
     flex-grow: 0;
+    padding: 16px;
     
 }
 
@@ -230,7 +231,7 @@ color: #000000;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
-    font-size: 27.0717px;
+    font-size: 24px;
     line-height: 33px;
     /* identical to box height */
     /* Gray 900 */
@@ -239,6 +240,10 @@ color: #000000;
     flex: none;
     order: 1;
     flex-grow: 0;
+    padding: 30.77px 140px 16px 16px;
+}
+.label1, .label, .label2, .label3, .label4 {
+    padding-left: 16px;
 }
 .status1{
     /* 20% */
@@ -293,6 +298,7 @@ color: #000000;
     flex: none;
     order: 0;
     flex-grow: 0;
+    padding: 16px;
 }
 .box-number2{
     /* 420 */
@@ -312,6 +318,7 @@ color: #000000;
     flex: none;
     order: 1;
     flex-grow: 0;
+    padding: 30.77px 140px 16px 16px;
 }
 .status2{
     /* 10% */
@@ -366,6 +373,7 @@ color: #000000;
     flex: none;
     order: 0;
     flex-grow: 0;
+    padding: 16px;
 
 }
 .box-number3{
@@ -386,6 +394,7 @@ color: #000000;
     flex: none;
     order: 1;
     flex-grow: 0;
+    padding: 30.77px 140px 16px 16px;
 
 }
 .status3{
@@ -437,6 +446,7 @@ color: #000000;
     flex: none;
     order: 0;
     flex-grow: 0;
+    padding: 16px;
 
 }
 .box-number4{
@@ -457,6 +467,7 @@ color: #000000;
     flex: none;
     order: 1;
     flex-grow: 0;
+    padding: 30.77px 140px 16px 16px;
 
 }
 .status4{
@@ -504,7 +515,7 @@ color: #000000;
 position: absolute;
 width: 201px;
 height: 28px;
-left: 96px;
+left: 56px;
 top: 474px;
 
 font-family: 'Roboto';
@@ -522,12 +533,12 @@ color: #303030;
     position: absolute;
     width: 535px;
     height: 52px;
-    left: 96px;
+    left: 56px;
     top: 526px;
     /* Background/Background Day */
     background: #FFFFFF;
     /* Neutral/Neutral Out alpha */
-    border: 1px solid #EAEAEA;
+    border: 1px solid #b6b5b5;
     border-radius: 8px;
 }
 .logo-icon{
@@ -535,7 +546,7 @@ color: #303030;
 
 
 position: absolute;
-left: 115px;
+left: 75px;
 right: 1307.3px;
 top: 542.97px;
 bottom: 704.35px;
@@ -551,7 +562,7 @@ bottom: 704.35px;
 position: absolute;
 width: 43px;
 height: 16px;
-left: 140px;
+left: 100px;
 top: 543px;
 
 /* Text/Text Grey gamma */
@@ -569,12 +580,12 @@ height: 52px;
 /* Background/Background Day */
 background: #FFFFFF;
 /* Neutral/Neutral Out alpha */
-border: 1px solid #EAEAEA;
+border: 1px solid #828080;
 border-radius: 8px;
 }
 #filter-box1{
     position: absolute;
-    left: 1169px;
+    left: 1059px;
     top: 526px;
 }
 #filter-text{
@@ -610,13 +621,15 @@ padding: 17px 0 19px 16px;
 
     box-sizing: border-box;
     position: absolute;
-    width: 260px;
+    width: 323px;
     height: 48px;
-    left: 96px;
+    left: 56px;
     top: 610px;
-    background: #F7F8FA;
+    background: #e1e2e3;
     border-bottom: 1px solid #CDCDCD;
+    text-align: left;
     padding: 14.5px 50px 14.5px 8px;
+    padding-left: 16px;
 
 
 
@@ -625,11 +638,12 @@ padding: 17px 0 19px 16px;
     /* Frame 483797 */
     box-sizing: border-box;
     position: absolute;
-    width: 440px;
+    width: 294px;
     height: 48px;
-    left: 314px;
+    left: 369px;
     top: 610px;
-    background: #F7F8FA;
+    text-align: left;
+    background: #e1e2e3;
     border-bottom: 1px solid #CDCDCD;
     padding: 14.5px 30px 14.5px 14.5px;
 
@@ -640,11 +654,12 @@ padding: 17px 0 19px 16px;
 
     box-sizing: border-box;
     position: absolute;
-    width: 415px;
+    width: 353px;
     height: 48px;
-    left: 676px;
+    left: 650px;
     top: 610px;
-    background: #F7F8FA;
+    text-align: left;
+    background: #e1e2e3;
     border-bottom: 1px solid #CDCDCD;
     padding: 14.5px 50px 14.5px 16px;
 
@@ -655,16 +670,18 @@ padding: 17px 0 19px 16px;
 
     box-sizing: border-box;
     position: absolute;
-    width: 250px;
+    width: 210px;
     height: 48px;
-    left: 1091px;
+    left: 1000px;
     top: 610px;
-    background: #F7F8FA;
+    text-align: left;
+    background: #e1e2e3;
     border-bottom: 1px solid #CDCDCD;
     padding: 14.5px 50px 14.5px 9px;
 
 }
  .table-title {
+    position: absolute;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 600;
@@ -675,53 +692,53 @@ padding: 17px 0 19px 16px;
     color: #2B2B2B;
 }
 
-
-
-
-  td,tr {
-    border: 1px solid #ddd; 
-    /* text-align: left; */
-    height: 40px;
-    flex: none;
-
-    width: 73px;
+  td {
+    overflow:hidden; white-space:nowrap;
+    border: 1px solid #ddd;
+    border-top: 0;
+     border-bottom: 0;  
+     
+    /* flex: none; */
+    width: 780px;
     height: 19px;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 19px; 
-    text-align: center;
+    font-size: 14px;
+    line-height: 39px; 
+   
     padding-top: 2px;
     padding-bottom: 5px;
-    padding-left: 65.6px;
-    padding-right: 140px;
-    bottom: 93.5px;
-    color: #595959;
-    
+    padding-left: 13px;
+    padding-right: 207px;
+    /* margin: 10px; */
+    /* color: #595959; */
+    box-sizing: border-box;
+  
  }
  .test{
     position: absolute;
     top: 657px;
-    left: 96px;
+    left: 56px;
     right: 99px;
     width: 10px;
     font-family: 'Roboto';
     font-style: normal;
-    font-weight: 400;
+    font-weight: 700;
     font-size: 16px;
     line-height: 19px;
-    /* identical to box height */
-
-    text-align: center;
-
-    /* Text/Text Grey beta */
-
     color: #595959;
-    
-    
-    
  }
+.green{
+    padding: 2px,400px,5px,13px;
+    color: #007A78;
+}
+.red{
+    padding: 2px,400px,5px,13px;
+    color: #D3273E;
+}
+ 
+ 
  
 
 
