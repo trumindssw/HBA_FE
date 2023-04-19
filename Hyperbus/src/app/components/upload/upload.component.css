@@ -363,13 +363,8 @@ top: 545px;
     position: absolute;
     width: 249px;
     height: 21px;
-<<<<<<< HEAD
-    left: 220px;
-    top: 315px;
-=======
     left: 200px;
     top: 350px;
->>>>>>> 0af0f0f0fa60d2fa5f6e53f2867144f301457f9a
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
@@ -442,15 +437,9 @@ color: #303030;
 
 .previous-files-table {
     position: absolute;
-<<<<<<< HEAD
-    width: 903px;
-    top: 351px;
-    left: 210px;
-=======
     width: 803px;
     top: 410px;
     left: 200px;
->>>>>>> 0af0f0f0fa60d2fa5f6e53f2867144f301457f9a
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500px;
@@ -521,15 +510,9 @@ table, th, td {
     box-sizing: border-box;
 
 position: absolute;
-<<<<<<< HEAD
-width: 907px;
-height: 120px;
-left: 437px;
-=======
 width: 807px;
-height: 194px;
+height: 154px;
 left: 400px;
->>>>>>> 0af0f0f0fa60d2fa5f6e53f2867144f301457f9a
 /* top: 671px; */
 top: 560px;
 background: #FFFFFF;
@@ -543,15 +526,9 @@ border-radius: 8px;
     box-sizing: border-box;
 
 position: absolute;
-<<<<<<< HEAD
-width: 907px;
-height: 120px;
-left: 437px;
-=======
 width: 807px;
-height: 194px;
+height: 154px;
 left: 400px;
->>>>>>> 0af0f0f0fa60d2fa5f6e53f2867144f301457f9a
 top: 480px;
 
 background: #FFFFFF;
@@ -559,6 +536,10 @@ background: #FFFFFF;
 
 border: 1px dashed #9c9a9a;
 border-radius: 8px;
+}
+
+#rowdrag {
+    padding: 25px;
 }
 
 #file-details{
@@ -585,6 +566,7 @@ border-radius: 8px;
     position: absolute;
     left: 397px;
     top: 523px;
+    height: 100px;
     
     font-family: 'Roboto';
     font-style: normal;
