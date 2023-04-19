@@ -1,6 +1,6 @@
 .head{
     position: absolute;
-    width: 1408px;
+    width: calc(100vw-32px);
     height: 112px;
     left: 16px;
     top: 16px;
@@ -16,7 +16,7 @@
     position: absolute;
     width: 162px;
     height: 28px;
-    left: 1200px;
+    left: 1050px;
     top: 40px;
 
     font-family: 'Roboto';
@@ -39,7 +39,7 @@
     position: absolute;
     width: 195px;
     height: 28px;
-    left: 1190px;
+    left: 1015px;
     top: 76px;
 
     font-family: 'Roboto';
@@ -78,5 +78,20 @@
     top: 40px;
 
 /* background: url(image3.png); */
+}
+
+.image {
+    margin: 25px;
+}
+
+.header-text {
+    text-align: right;
+    margin: 25px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 14px;
+    color: #FFFFFF;
 }
 

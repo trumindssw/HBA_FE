@@ -19,6 +19,19 @@ export class PreviousrequestsComponent implements OnInit {
       .subscribe(response => {
         console.log(response.data.data)
         this.requests = response && response.data && response.data.data;
+
+        if(this.requests && this.requests.length>0) {
+          this.requests.map((req: { createdAt: string | number | Date; }) => {
+            let dt = new Date(req.createdAt);
+            console.log(dt)
+            let month = dt.toLocaleString('default', { month: 'long' });
+            let yr = dt.getFullYear();
+            let date = dt.getDate();
+            let time = dt.getHours() + "." + dt.getMinutes();
+            console.log(month, date, yr, time )
+            req.createdAt = month + " " + date + ", " + yr + " " + time;
+          })
+        }
       })
   }
   onClick(){

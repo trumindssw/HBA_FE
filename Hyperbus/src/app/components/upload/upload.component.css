@@ -1,13 +1,9 @@
-body
-{
-    position: absolute;
-}
-        
+      
 .leftletter1{
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 600;
-    font-size: 32px;
+    font-size: 28px;
     line-height: 38px;
     color: #2B2B2B;
     
@@ -18,7 +14,7 @@ body
     position: absolute;
     width: 528px;
     height: 38px;
-    left: 96px;
+    left: 80px;
     top: 168px;
     
 }
@@ -28,7 +24,7 @@ body
     position: absolute;
     width: 198px;
     height: 28px;
-    left: 96px;
+    left: 80px;
     top: 254px;
     
 }
@@ -38,7 +34,7 @@ body
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 28px;
     color: #303030;    
 }
@@ -48,7 +44,7 @@ body
     position: absolute;
     width: 221px;
     height: 19px;
-    left: 96px;
+    left: 80px;
     top: 290px;    
 }
     
@@ -57,7 +53,7 @@ body
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 19px;
     color: #595959;
     
@@ -100,7 +96,7 @@ color: #303030;
     position: absolute;
     width: 205px;
     height: 41px;
-    left: 1139px;
+    left: 1000px;
     top: 165px;
 
     background: #FFFFFF;
@@ -120,7 +116,7 @@ color: #303030;
 
     font-family: 'Inter';
     font-style: normal;
-    font-weight: 500;
+    font-weight: 1000;
     font-size: 14px;
     line-height: 17px;
 /* identical to box height */
@@ -136,7 +132,7 @@ color: #344DA1;
     position: absolute;
     width: 73px;
     height: 16px;
-    left: 437px;        
+    left: 400px;        
     top: 254px;
     font-family: 'Roboto';
     font-style: normal;
@@ -151,13 +147,14 @@ color: #344DA1;
      
     box-sizing: border-box;
     position: absolute;        
-    width: 907px;        
+    width: 807px;        
     height: 48px;       
-    left: 437px;        
+    left: 400px;        
     top: 279px;
     background: #F7F8FA;    
     border: 1px solid #CACACA;
     border-radius: 8px;
+    padding: 12px;
 
 }
     
@@ -178,14 +175,14 @@ color: #344DA1;
 
 hr{
     position: absolute;
-    width: 1259px;
+    width: 1130px;
     height: 0px;
-    left: 85px;
+    left: 80px;
     top: 367px;
 
     /* Neutral/Neutral Out alpha */
 
-    border: 1px solid #EAEAEA;
+    border: 1px solid #bcb9b9;
 
 }
 
@@ -193,7 +190,7 @@ hr{
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 28px;
     
     /* Text/Text Grey alpha */
@@ -205,7 +202,7 @@ hr{
     position: absolute;
     width: 307px;
     height: 28px;
-    left: 96px;
+    left: 80px;
     top: 407px;
 }
 
@@ -213,7 +210,7 @@ hr{
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 19px;
     /* identical to box height */
 
@@ -227,7 +224,7 @@ hr{
     position: absolute;
     width: 178px;
     height: 19px;
-    left: 96px;
+    left: 80px;
     top: 443px;
     color: #595959;
 }
@@ -247,7 +244,7 @@ hr{
     position: absolute;
     width: 247px;
     height: 41px;
-    left: 1097px;
+    left: 960px;
     top: 407px;
 
     background: #FFFFFF;
@@ -268,7 +265,7 @@ hr{
 
     font-family: 'Inter';
     font-style: normal;
-    font-weight: 500;
+    font-weight: 1000;
     font-size: 14px;
     line-height: 17px;
     /* identical to box height */
@@ -312,7 +309,7 @@ hr{
       box-sizing: border-box; */
 
         position: absolute;
-        width: 907px;
+        width: 87px;
         height: 194px;
         left: 437px;
         top: 480px;
@@ -334,9 +331,9 @@ hr{
     box-sizing: border-box;
 
     position: absolute;
-    width: 907px;
+    width: 307px;
     height: 194px;
-    left: 437px;
+    left: 400px;
     top: 480px;
 
     background: #FFFFFF;
@@ -366,7 +363,7 @@ top: 545px;
     position: absolute;
     width: 249px;
     height: 21px;
-    left: 437px;
+    left: 400px;
     top: 706px;
     font-family: 'Roboto';
     font-style: normal;
@@ -416,18 +413,16 @@ color: #303030;
 }
 /* Text/Text Grey beta */
 
-#tab {
-    padding-bottom: 15%;
-}
+
 
 .previous-files-table {
     position: absolute;
-    width: 903px;
+    width: 807px;
     top: 750px;
-    left: 437px;
+    left: 400px;
     font-family: 'Inter';
-    font-style: normal;
-    font-weight: 500px;
+    font-style: bold;
+    font-weight: 1000px;
     font-size: 14px;
     /* line-height: 17px; */
     
@@ -466,7 +461,7 @@ table, th, td {
          /* padding-right: 40px; */
       }
       td {
-        border-bottom: 1px solid #EAEAEA;
+        border-bottom: 1px solid #c2bfbf;
       }
 
 
@@ -496,9 +491,9 @@ table, th, td {
     box-sizing: border-box;
 
 position: absolute;
-width: 907px;
+width: 807px;
 height: 194px;
-left: 437px;
+left: 400px;
 /* top: 671px; */
 top: 560px;
 background: #FFFFFF;
@@ -512,15 +507,15 @@ border-radius: 8px;
     box-sizing: border-box;
 
 position: absolute;
-width: 907px;
+width: 807px;
 height: 194px;
-left: 437px;
+left: 400px;
 top: 480px;
 
 background: #FFFFFF;
 /* Neutral/Neutral Out beta */
 
-border: 1px dashed #CACACA;
+border: 1px dashed #9c9a9a;
 border-radius: 8px;
 }
 
