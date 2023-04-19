@@ -36,6 +36,18 @@ export class UploadComponent implements OnInit {
       response => {
         console.log(response.data);
         this.files = response.data;
+        if(this.files && this.files.length>0) {
+          this.files.map((f: { createdAt: string | number | Date; }) => {
+            let dt = new Date(f.createdAt);
+            console.log(dt)
+            let month = dt.toLocaleString('default', { month: 'long' });
+            let yr = dt.getFullYear();
+            let date = dt.getDate();
+            let time = dt.getHours() + "." + dt.getMinutes();
+            console.log(month, date, yr, time )
+            f.createdAt = month + " " + date + ", " + yr + " " + time;
+          })
+        }
       }
     )
     this.dragAreaClass = "dragarea";
