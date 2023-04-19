@@ -7,5 +7,5 @@ body {
     max-height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
-    zoom: 89%;
+    /* zoom: 89%; */
 }
