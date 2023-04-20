@@ -7,8 +7,8 @@ import { saveAs } from 'file-saver';
 // import * as XLSX from 'xlsx';
 @Component({
 selector: 'app-upload',
-templateUrl: './upload.component.html',
-styleUrls: ['./upload.component.css']
+templateUrl: './upload1.component.html',
+styleUrls: ['./upload1.component.css']
 
 })
 
@@ -22,6 +22,7 @@ export class UploadComponent implements OnInit {
   public message = "";
   public requests: any
   public colour :any;
+  public array = true;
   files:any
   file:any
 
@@ -129,6 +130,7 @@ export class UploadComponent implements OnInit {
 
            this.error = false;
            this.colour = true;
+           console.log("Res.message: ", res.message)
            this.message = res.message;
 
         } else 
@@ -137,6 +139,11 @@ export class UploadComponent implements OnInit {
            this.error = true;
            this.colour = false;
            this.message = res.message;
+           if(res.message instanceof Array) {
+            this.array = true;
+           } else {
+            this.array = false;
+           }
 
         }
 

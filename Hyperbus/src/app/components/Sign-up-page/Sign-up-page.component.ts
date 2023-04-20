@@ -10,8 +10,8 @@ import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-body',
-  templateUrl: './Sign-up-page.component.html',
-  styleUrls: ['./Sign-up-page.component.css']
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
 export class BodyComponent implements OnInit {
   public loginForm!: FormGroup;

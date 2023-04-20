@@ -4,8 +4,8 @@ import { PreviousRequestsService } from 'src/app/_services/previousrequests.serv
 
 @Component({
   selector: 'app-previousrequests',
-  templateUrl: './previousrequests.component.html',
-  styleUrls: ['./previousrequests.component.css']
+  templateUrl: './previousrequests1.component.html',
+  styleUrls: ['./previousrequests1.component.css']
 })
 
 export class PreviousrequestsComponent implements OnInit {

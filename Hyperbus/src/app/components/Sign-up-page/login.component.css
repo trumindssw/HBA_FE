@@ -1,0 +1,108 @@
+@media only screen and (max-width: 780px) { 
+    #side-body { 
+      display: none; 
+    } 
+  }
+#side-body {
+    background: #CFE2F3;
+    border-radius: 0px 0px 8px 8px;
+    padding-bottom: 16px;
+}
+
+.row {
+    margin-left: 16px;
+    /* height: 10px; */
+}
+
+.sign-in-form {
+    margin-top: 10%;
+    margin-left: 10%;
+    margin-right: 20%;
+    margin-bottom: 5%;
+}
+
+.sign-in-text{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 47px;
+    color: #303030;
+    margin: 20px;
+} 
+
+.label-username{
+    margin: 0;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    /* line-height: 16px; */
+    color: #595959;
+    padding-bottom: 10px;
+}
+
+.label-password{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: #595959;
+    padding-bottom: 10px;
+}
+
+
+
+button {
+    width: 100%;
+    background: #344DA1;
+    border-radius: 8px;
+    color: white;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    padding: 10px;
+}
+
+#input {
+    width: 100%; 
+    box-sizing: border-box;
+    background: #FFFFFF;    
+    border: 1px solid #cdcaca;
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.input-row {
+    margin-bottom: 20px;
+}
+
+#error-msg1{
+    border-radius: 8px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+}
+
+#error-msg2{
+    border-radius: 8px;
+    font-family: 'Roboto';
+    font-style: normal;
+    /* font-weight: 500; */
+    font-size: 18px;
+    line-height: 21px;
+}
+
+#error-msg3{
+    border-radius: 8px;
+    font-family: 'Roboto';
+    font-style: normal;
+    /* font-weight: 500; */
+    font-size: 18px;
+    line-height: 21px;
+}
