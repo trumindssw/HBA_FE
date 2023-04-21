@@ -7,7 +7,8 @@ import { environment } from 'src/environments/environment.development';
 
 export class PreviousRequestsService {
 
-    private url=environment.apiUrl + "/request/getAllRequests"
+    private getAllRequestsUrl=environment.apiUrl + "/request/getAllRequests"
+    private getRequestCountsUrl=environment.apiUrl + "/request/getRequestCounts"
     constructor(
         private http: HttpClient
     ) {}
@@ -21,7 +22,19 @@ export class PreviousRequestsService {
 
         let options = {headers: headers}
 
-        return this.http.get<any>(this.url, options)
+        return this.http.get<any>(this.getAllRequestsUrl, options)
+    }
+
+    getRequestCounts() {
+        let token = localStorage.getItem('user') || "";
+        console.log(token)
+        let headers = new HttpHeaders({
+            'Authorization': 'Bearer ' + token
+        });
+
+        let options = {headers: headers}
+
+        return this.http.get<any>(this.getRequestCountsUrl, options)
     }
 
 }

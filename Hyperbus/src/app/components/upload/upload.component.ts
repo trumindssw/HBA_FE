@@ -35,7 +35,7 @@ export class UploadComponent implements OnInit {
   ngOnInit(){
     this.UploadService.getAllFiles().subscribe(
       response => {
-        console.log(response.data);
+        // console.log(response.data);
         this.files = response.data;
         if(this.files && this.files.length>0) {
           this.files.map((f: { createdAt: string | number | Date; }) => {
@@ -79,11 +79,14 @@ export class UploadComponent implements OnInit {
 
   onFileChange(event: any) 
   {
+    console.log("I am in onfilechange")
     if(event.target.value) 
     {
         this.fl = <File>event.target.files[0];
         this.chosen=true;
         this.saveFiles();
+        event.target.value='';
+        this.ngOnInit()
     }
   }
 
@@ -115,6 +118,7 @@ export class UploadComponent implements OnInit {
 
   saveFiles() 
   {
+    console.log("I am in upload !! ")
     let fd =new FormData();
 
       if(this.fl) 
