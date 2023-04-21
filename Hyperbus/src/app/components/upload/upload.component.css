@@ -1,36 +1,50 @@
-      
-.leftletter1{
+.container {
+    padding: 10px;
+}
+#card-letter1 {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 600;
     font-size: 28px;
     line-height: 38px;
     color: #2B2B2B;
-    
+    padding: 16px;
+    /* margin: 8px; */
 }
-    
-#card-letter1{
 
-    position: absolute;
-    width: 528px;
-    height: 38px;
-    left: 80px;
-    top: 168px;
-    
+#button{
+    box-sizing: border-box;
+    /* display: flex; */
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    padding: 12px 24px;
+    gap: 10px;
+    background: #FFFFFF;
+    /* Text/Text Blue */
+    border: 1px solid #344DA1;
+    border-radius: 8px;
+    margin: 10px;
+    float: right;
 }
-    
-.leftletter2{
-    
-    position: absolute;
-    width: 198px;
-    height: 28px;
-    left: 80px;
-    top: 254px;
-    
+
+#button-text {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 1000;
+    font-size: 14px;
+    /* line-height: 17px; */
+    color: #344DA1;
+    margin: 0;
 }
-    
+
+#row2, row3 {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
 #card-letter2{
-    
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
@@ -38,119 +52,28 @@
     line-height: 28px;
     color: #303030;    
 }
-    
-.leftletter3{
-    
-    position: absolute;
-    width: 221px;
-    height: 19px;
-    left: 80px;
-    top: 290px;    
-}
-    
+
 #card-letter3{
-    
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 19px;
-    color: #595959;
-    
-}
-    
-#edu-text{
-    position: absolute;
-width: 72px;
-height: 19px;
-left: 453px;
-top: 294px;
-
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 500;
-font-size: 16px;
-line-height: 19px;
-/* identical to box height */
-
-
-/* Text/Text Grey alpha */
-
-color: #303030;
-}    
-    
-    
-#ViewPreviousRequests{
-    
-    box-sizing: border-box;
-
-    /* Auto layout */
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 12px 24px;
-    gap: 10px;
-
-    position: absolute;
-    width: 205px;
-    height: 41px;
-    left: 1000px;
-    top: 165px;
-
-    background: #FFFFFF;
-    /* Text/Text Blue */
-
-    border: 1px solid #344DA1;
-    border-radius: 8px;
-        
+    color: #595959;   
 }
 
-#previous-button-text{
-    position: absolute;
-    width: 157px;
-    height: 17px;
-    left: 24px;
-    top: 12px;
-
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 1000;
-    font-size: 14px;
-    line-height: 17px;
-/* identical to box height */
-
-
-/* Text/Text Blue */
-
-color: #344DA1;
-}
-    
 #middle-lable1{
-    
-    position: absolute;
-    width: 73px;
-    height: 16px;
-    left: 400px;        
-    top: 254px;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
     line-height: 16px;
     color: #595959;
-    
 }
-    
+
 #middle-box{
-     
+    width: 100%; 
     box-sizing: border-box;
-    position: absolute;        
-    width: 807px;        
-    height: 48px;       
-    left: 400px;        
-    top: 279px;
     background: #F7F8FA;    
     border: 1px solid #CACACA;
     border-radius: 8px;
@@ -159,12 +82,6 @@ color: #344DA1;
 }
     
 .inside-box-text::placeholder{
-    
-    position: absolute;
-    width: 72px;
-    height: 19px;
-    left: 453px;
-    top: 294px;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
@@ -174,418 +91,88 @@ color: #344DA1;
 }
 
 hr{
-    position: absolute;
-    width: 1130px;
+    width: 100%;
     height: 0px;
-    left: 80px;
-    top: 367px;
-
     /* Neutral/Neutral Out alpha */
-
     border: 1px solid #bcb9b9;
-
-}
-
-.leftletter4{
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 28px;
-    
-    /* Text/Text Grey alpha */
-    
-    color: #303030;
-}
-
-#card-letter4{
-    position: absolute;
-    width: 307px;
-    height: 28px;
-    left: 80px;
-    top: 407px;
-}
-
-.leftletter5{
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 19px;
-    /* identical to box height */
-
-
-    /* Text/Text Grey beta */
-
-    color: #595959;
-}
-
-#card-letter5{
-    position: absolute;
-    width: 178px;
-    height: 19px;
-    left: 80px;
-    top: 443px;
-    color: #595959;
-}
-
-#DownloadSampleId{
-    box-sizing: border-box;
-
-/* Auto layout */
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 12px 24px;
-    gap: 10px;
-
-    position: absolute;
-    width: 247px;
-    height: 41px;
-    left: 960px;
-    top: 407px;
-
-    background: #FFFFFF;
-    /* Text/Text Blue */
-
-    border: 1px solid #344DA1;
-    border-radius: 8px;
-}
-
-
-
-#download-sample-button-text{
-    position: absolute;
-    width: 199px;
-    height: 17px;
-    left: 24px;
-    top: 12px;
-
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 1000;
-    font-size: 14px;
-    line-height: 17px;
-    /* identical to box height */
-
-
-    /* Text/Text Blue */
-
-    color: #344DA1;
-}
-
-
-  .error {
-      color: #f00;
-  }
-
-  #spanId1{
-    color: #344DA1;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
-  }
-
-  #spanId2{
-    color: #595959;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
-  }
-  
-  .dragarea {
-       /* font-size: 7rem; */
-     /* border: 3px solid #bbb;
-      padding: 1.5rem;
-      background-color: #fff;
-      color: #bbb;
-
-      box-sizing: border-box; */
-
-        position: absolute;
-        width: 87px;
-        height: 194px;
-        left: 437px;
-        top: 480px;
-
-        background: #FFFFFF;
-        /* Neutral/Neutral Out beta */
-
-        border: 1px dashed #CACACA;
-        border-radius: 8px;
-  }
-  
-  .droparea {
-    /* font-size: 1.5rem;
-    border: 3px dashed #bbb;
-    padding: 1.5rem;
-    background-color: #eff;
-    color: #aaa; */
-
-    box-sizing: border-box;
-
-    position: absolute;
-    width: 307px;
-    height: 194px;
-    left: 400px;
-    top: 480px;
-
-    background: #FFFFFF;
-    /* Neutral/Neutral Out beta */
-
-    border: 1px dashed #CACACA;
-    border-radius: 8px;
-  }
-
-  
-  /* .img-drop{
-    
-
-
-
-background: #EAEAEA;
-
-
-position: absolute;
-width: 48px;
-height: 48px;
-left: 867px;
-top: 545px;
-
-  } */
-.leftletter6 ,.tag-before{
-    position: absolute;
-    width: 249px;
-    height: 21px;
-    left: 200px;
-    top: 350px;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 21px;
-    /* identical to box height */
-
-
-    /* Text/Text Grey alpha */
-
-color: #303030;
-}
-.tag-after{
-    position: absolute;
-    width: 249px;
-    height: 21px;
-    left: 200px;
-    top: 450px;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 21px;
-    /* identical to box height */
-
-
-    /* Text/Text Grey alpha */
-
-color: #303030;
-
-}
-
-
-#temp-noneId{
-    position: absolute;
-    width: 43px;
-    height: 21px;
-    left: 437px;
-    top: 751px;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 21px;
-    /* identical to box height */
-
-
-    /* Text/Text Grey beta */
-
-    color: #595959;
-}
-  
-#drag-text{
-    position: absolute;
-    width: 124px;
-    height: 17px;
-    left: 825px;
-    top: 512px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 17px;
-    /* identical to box height */
-
-}
-/* Text/Text Grey beta */
-
-
-
-.previous-files-table {
-    position: absolute;
-    width: 803px;
-    top: 410px;
-    left: 200px;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500px;
-    font-size: 14px;
-    
-   
-}
-
-.previous-files-download{
-    border: none;
-    background-color:white;
-   
-}
-table.previous-files-table{
-    /* Set the height of table body */
-    height: 130px; 
-    
-              
-    /* Set vertical scroll */
-    overflow-y: auto;
-      
-    /* Hide the horizontal scroll */
-    overflow-x: hidden;
-}
-
-table.previous-files-table tbody, table.previous-files-table {
-    display: block;
-    
-}
-table, th, td {
-         /* border: 1.4px solid black; */
-         border-collapse: collapse;
-      }
-      th, td {
-         padding-top: 10px;
-         padding-bottom: 10px;
-         /* padding-left: 10px; */
-         /* padding-right: 40px; */
-      }
-      td {
-        border-bottom: 1px solid #c2bfbf;
-      }
-
-
-#spanId1{
-
-    color: #344DA1;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
-
-}
-
- #spanId2{
-
-    color: #595959;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
-
-}
-
-.drag-box-after{
-    box-sizing: border-box;
-
-position: absolute;
-width: 807px;
-height: 154px;
-left: 400px;
-/* top: 671px; */
-top: 560px;
-background: #FFFFFF;
-/* Neutral/Neutral Out beta */
-
-border: 1px dashed #CACACA;
-border-radius: 8px;
-}
-
-.drag-box-before{
-    box-sizing: border-box;
-
-position: absolute;
-width: 807px;
-height: 154px;
-left: 400px;
-top: 480px;
-
-background: #FFFFFF;
-/* Neutral/Neutral Out beta */
-
-border: 1px dashed #9c9a9a;
-border-radius: 8px;
-}
-
-#rowdrag {
-    padding: 25px;
 }
 
 #file-details{
-    position: absolute;
-    width: 79px;
-    height: 19px;
-    left: 397px;
-    top: 480px;
-    
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
-    line-height: 19px;
-    /* identical to box height */
-    
-    
-    /* Text/Text Grey alpha */
-    
+    line-height: 9px;
     color: #303030;
+    padding-left: 20px;
+}
+
+#spanId2{
+    color: #595959;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    padding: 10px;
+}
+
+.drag-box{
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 1px dashed #9c9a9a;
+    border-radius: 8px;
+    padding: 25px;
+    margin: 20px;
 }
 
 #message{
-    position: absolute;
-    left: 397px;
-    top: 523px;
-    height: 100px;
-    
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 300;
     font-size: 16px;
-    /* identical to box height */
-    
-    
-    /* Semantic/Semantic Green */
-    
     color: #007A78;
+    padding-left: 20px;
+    margin: 0;
 }
 
+#card-letter4 {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    color: #595959; 
+    margin: 20px;
+}
 
+table.previous-files-table {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400px;
+    font-size: 14px;
+    color: #595959;
+    height: 130px; 
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 15px;
+    display: block;
+}
 
+table, th, td {
+    border-collapse: collapse;
+}
 
+th, td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
 
+td {
+    border-bottom: 1px solid #c2bfbf;
+}
 
-
-
-
-
+.previous-files-download {
+    border: none;
+    background-color:white;
+}

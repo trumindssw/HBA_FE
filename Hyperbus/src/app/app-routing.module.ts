@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UploadComponent } from './components/upload/upload.component';
-import { BodyComponent } from './components/Sign-up-page/Sign-up-page.component';
+import { BodyComponent } from './components/login/login.component';
 import { PreviousrequestsComponent } from './components/previousrequests/previousrequests.component';
 import { AuthGuard } from './_guards';
 

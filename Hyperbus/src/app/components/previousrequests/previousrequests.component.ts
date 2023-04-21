@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PreviousRequestsService } from 'src/app/_services/previousrequests.service';
+import { PreviousRequestsService } from 'src/app/_services/previousrequests/previousrequests.service';
 
 @Component({
   selector: 'app-previousrequests',
-  templateUrl: './previousrequests1.component.html',
-  styleUrls: ['./previousrequests1.component.css']
+  templateUrl: './previousrequests.component.html',
+  styleUrls: ['./previousrequests.component.css']
 })
 
 export class PreviousrequestsComponent implements OnInit {

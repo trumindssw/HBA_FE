@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BodyComponent } from './Sign-up-page.component';
+import { BodyComponent } from './login.component';
 
 describe('BodyComponent', () => {
   let component: BodyComponent;

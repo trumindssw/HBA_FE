@@ -6,7 +6,7 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import { BodyComponent } from './components/Sign-up-page/Sign-up-page.component';
+import { BodyComponent } from './components/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './_guards';
 

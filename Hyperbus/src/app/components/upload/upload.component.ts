@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { HostListener } from '@angular/core';
-import { Uploadservice } from 'src/app/_services/upload.service';
+import { Uploadservice } from 'src/app/_services/upload/upload.service';
 import { saveAs } from 'file-saver';
 // import * as XLSX from 'xlsx';
 @Component({
 selector: 'app-upload',
-templateUrl: './upload1.component.html',
-styleUrls: ['./upload1.component.css']
+templateUrl: './upload.component.html',
+styleUrls: ['./upload.component.css']
 
 })
 
