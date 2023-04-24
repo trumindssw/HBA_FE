@@ -13,7 +13,7 @@ export class PreviousRequestsService {
         private http: HttpClient
     ) {}
 
-    getAllRequests() {
+    getAllRequests(pageNo: Number, limit: Number) {
         let token = localStorage.getItem('user') || "";
         console.log(token)
         let headers = new HttpHeaders({
@@ -22,7 +22,7 @@ export class PreviousRequestsService {
 
         let options = {headers: headers}
 
-        return this.http.get<any>(this.getAllRequestsUrl, options)
+        return this.http.get<any>(this.getAllRequestsUrl + '?page=' + pageNo + '&limit=' + limit, options)
     }
 
     getRequestCounts() {

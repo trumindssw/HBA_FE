@@ -12,7 +12,7 @@ const helper = new JwtHelperService();
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-    private userSubject: String;
+    private userSubject: String | null;
     
     private _loginUrl = environment.apiUrl + "/login";
 
@@ -30,16 +30,14 @@ export class AuthenticationService {
 
     login(username: string, password: string) {
         return this.http.post<any>(this._loginUrl, { username, password })
-            .pipe(map((res: { status: number; data: string; })  => {
-                console.log(res)
-                
-                if(res.status == 0)
-                return res;                
-                
-                // store user details and jwt token in local storage to keep user logged in between page refreshes
-                
-                localStorage.setItem('user', String(res.data));
-                return res;
+            .pipe(map((u: any)  => {
+                if(u && u.data && u.data.token) {
+                    localStorage.setItem('user', String(u.data.token));
+                    this.userSubject = u.data.token;
+                  } else {
+                    this.userSubject = null;
+                  }
+                return u;
             }));
     }
 
@@ -53,7 +51,11 @@ export class AuthenticationService {
             if(date === undefined || date == null) return false;
             return !(date.valueOf() > new Date().valueOf());
         }
-        
+    }
+
+    logout() {
+        localStorage.clear();
+        this.router.navigate(['./'])
     }
 
     

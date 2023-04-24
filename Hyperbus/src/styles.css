@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 body {
     position: relative;
@@ -8,4 +8,17 @@ body {
     overflow-x: hidden;
     overflow-y: auto;
     /* zoom: 89%; */
+}
+
+.error-snackbar {
+    --mdc-snackbar-container-color: #D10000 !important;
+    --mat-mdc-snack-bar-button-color: white;
+    /* --mat-mdc-snack-bar-font-size: 30px; */
+    font-size: 30px !important;
+}
+
+.success-snackbar {
+    --mdc-snackbar-container-color: green !important;
+    --mat-mdc-snack-bar-button-color: white;
+    font-size: xx-large;
 }

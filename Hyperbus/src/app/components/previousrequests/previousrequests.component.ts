@@ -16,18 +16,25 @@ export class PreviousrequestsComponent implements OnInit {
   public totalReq = 0;
   public totalReqWithSubjectFound = 0;
   public totalReqWithMismatch = 0;
+  public pageNo = 1;
+  public limit = 10;
+  public total = 0;
 
   constructor(
     private router: Router,
     private PreviousRequestsService: PreviousRequestsService) { }
+
   ngOnInit(){
-    forkJoin(
-      this.PreviousRequestsService.getAllRequests(),
-      this.PreviousRequestsService.getRequestCounts(),
-    ).subscribe(response => {
+    this.getRequests();
+    this.getRequestCounts();
+  }
+
+  getRequests() {
+    this.PreviousRequestsService.getAllRequests(this.pageNo, this.limit)
+    .subscribe(response => {
       console.log(response)
-      this.requests = response && response[0].data && response[0].data.data;
-      
+      this.requests = response && response.data && response.data.data;
+      this.total = response && response.data && response.data.total;
       if(this.requests && this.requests.length>0) {
         this.requests.map((req: {
           status: boolean; createdAt: string | number | Date; }) => {
@@ -39,8 +46,13 @@ export class PreviousrequestsComponent implements OnInit {
           req.createdAt = month + " " + date + ", " + yr + " " + time
         })
       }
+    })
+  }
 
-      let res = response && response[1] && response[1].data;
+  getRequestCounts() {
+    this.PreviousRequestsService.getRequestCounts()
+    .subscribe(response => {
+      let res = response && response && response.data;
       this.avgReqPerDay = res.avgReqPerDay;
       this.avgReqPerWeek = res.avgReqPerWeek;
       this.totalReq = res.totalReq;
@@ -48,6 +60,7 @@ export class PreviousrequestsComponent implements OnInit {
       this.totalReqWithMismatch = res.totalReqWithMismatch;
     })
   }
+
   onClick(){
     //upload
     this.router.navigate(['/upload']);

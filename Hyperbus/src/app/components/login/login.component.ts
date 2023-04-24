@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
@@ -7,6 +7,7 @@ import { AuthenticationService } from '../../_services/authentication/authentica
 
 import { HttpClient } from '@angular/common/http';
 import {NgForm} from '@angular/forms';
+import { SnackbarService } from 'src/app/_services/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-body',
@@ -17,18 +18,19 @@ export class BodyComponent implements OnInit {
   public loginForm!: FormGroup;
     loading = false;
     submitted = false;
-    error = '';
+
     constructor(
       private formBuilder: FormBuilder,
       private route: ActivatedRoute,
       private router: Router,
       private authenticationService: AuthenticationService,
-      private http: HttpClient
+      private http: HttpClient,
+      private snackBar: SnackbarService
       )
       { // redirect to home if already logged in
         if (this.authenticationService.userValue) {  
           console.log("YEs Pls redirect")
-          this.router.navigate(['/upload']);
+          this.router.navigate(['./upload']);
         }
       }
 
@@ -46,7 +48,6 @@ export class BodyComponent implements OnInit {
    
       this.submitted = true;
       console.log("hEYYYYYY");
-      this.error = '';
       // stop here if form is invalid
       if (this.loginForm.invalid) {
           
@@ -56,34 +57,29 @@ export class BodyComponent implements OnInit {
       
       this.loading = true;
       this.authenticationService.login(this.f['username'].value, this.f['password'].value)
-          .pipe(first())
+      .pipe(first())
           .subscribe({
-              next: (res: any) => {
-                console.log("$%#$", res)
-                  // get return url from route parameters or default to '/'
-                  if(res.status == 1)
-                  {
-                      const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/upload';
-                      console.log(returnUrl)
-                      this.router.navigate([returnUrl]);
-                  }
-                  else
-                  {
-                    // this.loginForm.reset();
-                    this.loading=false;
-                    this.error=res.message;
-                    this.router.navigate(['./']);
-                    this.submitted=false;
-                    // this.loginForm.reset();
-                    
-                  }
+              next: (u: any) => {
+                if(u.status == 1) {
+                  const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/upload';
+                  this.snackBar.openSnackBar('Logged In Successfully !!', 'success-snackbar')
+                  this.router.navigate([returnUrl]);
+
+                } else {
+                  this.loading = false;
+                  this.submitted=false;
+                  this.snackBar.openSnackBar('Unauthorized Access !', 'error-snackbar');
+                }
+                
                 },
             
               error: (error :any) => {
-                  this.error = error;
                   this.loading = false;
-                  console.log(error);
-                  
+                  this.submitted=false;
+                  this.loginForm.reset();
+                  console.log("***** ", error);
+
+                  this.snackBar.openSnackBar(error, 'error-snackbar')
               }
           });
   }
