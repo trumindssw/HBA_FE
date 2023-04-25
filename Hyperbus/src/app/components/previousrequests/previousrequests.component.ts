@@ -19,6 +19,8 @@ export class PreviousrequestsComponent implements OnInit {
   public pageNo = 1;
   public limit = 10;
   public total = 0;
+  // public ProductHeader = [{ Number: 25 }, { Number: 50}, { Number: 100 }]; 
+  public selectedNoList = '';
 
   constructor(
     private router: Router,
@@ -69,5 +71,12 @@ export class PreviousrequestsComponent implements OnInit {
   onClick(){
     //upload
     this.router.navigate(['/upload']);
+  }
+  selectChangeHandler (event: any) {
+    //update the ui
+    this.selectedNoList = event.target.value;
+    this.limit = event.target.value;
+    this.getRequests();
+
   }
 }

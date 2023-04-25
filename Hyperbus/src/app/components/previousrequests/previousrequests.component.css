@@ -170,6 +170,7 @@ table {
     font-style: normal;
     font-size: 16px;
     line-height: 19px;
+    border-bottom: 1px solid #CDCDCD;
     color: #2B2B2B;
 }
 
@@ -183,7 +184,7 @@ table th {
 table td {
     overflow-x:auto;     
     white-space:nowrap;
-    border: 1px solid #ddd;
+    border: 1px solid#ddd;
     border-top: 0;
     border-bottom: 0;  
     font-weight: 400;
@@ -203,3 +204,15 @@ table td {
 .red{
     color: #D3273E;
 }
+.paginationformate{
+    padding: 2px;
+    margin: 11px;
+    
+}
+.dropdown1{
+    padding: 2px;
+     margin: 28px;
+     border: 1px solid#ddd;
+    
+}
+

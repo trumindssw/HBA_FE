@@ -47,6 +47,7 @@
                         </div>
                         <p class="box-number">{{totalReq}}</p>
                         <div class="status"></div>
+
                         <p class="label">vs last week</p>  
                     </div>
                 </div>
@@ -98,7 +99,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let req of requests | paginate
+                    <tr *ngFor="let req of requests | paginate 
                     : {
                         itemsPerPage: limit,
                         currentPage: pageNo,
@@ -111,13 +112,29 @@
                     </tr>
                 </tbody>
                
-               </table>
-               <pagination-controls
-                    previousLabel="Prev"
-                    nextLabel="Next"
-                    (pageChange)="onTableDataChange($event)"
-                    >
-    </pagination-controls>
+            </table>
+            <div class="row" >
+                <div class="d-flex justify-content-center col-md-10 col-sm-12">
+                    <pagination-controls class="paginationformate"
+                        previousLabel=""
+                         nextLabel=""
+                        (pageChange)="onTableDataChange($event)">
+                    </pagination-controls>
+                </div>
+                    <div class="d-flex justify-content-right col-md-2 col-sm-12">
+                        <select (click)="selectChangeHandler($event)" class="dropdown1">
+                            <option value="5">5/page</option>
+                            <option value="10">10/page</option>
+                            <option value="25">25/page</option>
+                            <option value="50">50/page</option>
+                            <option value="100">100/page</option>
+
+                
+                        
+                        </select>
+                    </div>
+                        
+            </div> 
         </div>
     </div>
 </div>
