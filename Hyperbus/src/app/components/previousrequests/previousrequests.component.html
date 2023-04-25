@@ -98,7 +98,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let req of requests">
+                    <tr *ngFor="let req of requests | paginate
+                    : {
+                        itemsPerPage: limit,
+                        currentPage: pageNo,
+                        totalItems: total
+                      }">
                         <td>{{req['requestID']}}</td>
                         <td >{{req['subjectName']}}</td>
                         <td>{{req['createdAt']}}</td>
@@ -107,6 +112,12 @@
                 </tbody>
                
                </table>
+               <pagination-controls
+                    previousLabel="Prev"
+                    nextLabel="Next"
+                    (pageChange)="onTableDataChange($event)"
+                    >
+    </pagination-controls>
         </div>
     </div>
 </div>

@@ -61,6 +61,11 @@ export class PreviousrequestsComponent implements OnInit {
     })
   }
 
+  onTableDataChange(event: number) {
+    this.pageNo = event;
+    this.getRequests();
+  }
+
   onClick(){
     //upload
     this.router.navigate(['/upload']);

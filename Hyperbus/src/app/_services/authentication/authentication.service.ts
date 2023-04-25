@@ -32,9 +32,9 @@ export class AuthenticationService {
         return this.http.post<any>(this._loginUrl, { username, password })
             .pipe(map((u: any)  => {
                 console.log(u)
-                if(u && u.data) {
-                    localStorage.setItem('user', String(u.data));
-                    this.userSubject = u.data;
+                if(u && u.data && u.data.token) {
+                    localStorage.setItem('user', String(u.data.token));
+                    this.userSubject = u.data.token;
                   } else {
                     this.userSubject = null;
                   }

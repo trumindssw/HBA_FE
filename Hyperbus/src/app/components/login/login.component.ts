@@ -60,16 +60,9 @@ export class BodyComponent implements OnInit {
       .pipe(first())
           .subscribe({
               next: (u: any) => {
-                if(u.status == 1) {
                   const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/upload';
                   this.snackBar.openSnackBar('Logged In Successfully !!', 'success-snackbar')
                   this.router.navigate([returnUrl]);
-
-                } else {
-                  this.loading = false;
-                  this.submitted=false;
-                  this.snackBar.openSnackBar('Unauthorized Access !', 'error-snackbar');
-                }
                 
                 },
             
