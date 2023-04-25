@@ -16,6 +16,11 @@ export class PreviousrequestsComponent implements OnInit {
   public totalReq = 0;
   public totalReqWithSubjectFound = 0;
   public totalReqWithMismatch = 0;
+  public avgReqPerDayvsLastWeek = 0;
+  public avgReqPerWeekvsLastWeek =0;
+  public totalReqvsLastWeek =0;
+  public totalReqWithSubjectFoundvsLastWeek = 0;
+  public totalReqWithMismatchvsLastWeek = 0;
   public pageNo = 1;
   public limit = 10;
   public total = 0;
@@ -60,8 +65,14 @@ export class PreviousrequestsComponent implements OnInit {
       this.totalReq = res.totalReq;
       this.totalReqWithSubjectFound = res.totalReqWithSubjectFound;
       this.totalReqWithMismatch = res.totalReqWithMismatch;
+      this.avgReqPerDayvsLastWeek = res.avgReqPerDayvsLastWeek;
+      this.avgReqPerWeekvsLastWeek = res.avgReqPerWeekvsLastWeek;
+      this.totalReqvsLastWeek = res.totalReqvsLastWeek;
+      this.totalReqWithSubjectFoundvsLastWeek = res.totalReqWithSubjectFoundvsLastWeek;
+      this.totalReqWithMismatchvsLastWeek = res.totalReqWithMismatchvsLastWeek;
     })
   }
+
 
   onTableDataChange(event: number) {
     this.pageNo = event;
