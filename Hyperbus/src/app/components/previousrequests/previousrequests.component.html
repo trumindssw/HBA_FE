@@ -21,8 +21,11 @@
                             <p>Average Request Per Day</p>
                         </div>
                         <p class="box-number">{{avgReqPerDay}}</p>
-                        <div class="status"></div>     
-                        <p class="label">{{avgReqPerDayvsLastWeek}} vs last week</p>
+                        <div class="label">
+                            <img *ngIf="avgReqPerDayvsLastWeek < 0" class="red-arrow" src="/assets/vectors/arrow-down-red.svg">
+                            <img *ngIf="avgReqPerDayvsLastWeek > 0" class="green-arrow" src="/assets/vectors/upArrow.svg">
+                            <p > {{avgReqPerDayvsLastWeek}} vs last week</p>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-12" >
@@ -32,7 +35,12 @@
                         </div>
                         <p class="box-number">{{avgReqPerWeek}}</p>
                         <div class="status"></div>
-                        <p class="label">{{avgReqPerWeekvsLastWeek}} vs last week</p>
+                        <div class="label">
+                            <img *ngIf="avgReqPerWeekvsLastWeek < 0" class="red-arrow" src="/assets/vectors/arrow-down-red.svg">
+                            <img *ngIf="avgReqPerWeekvsLastWeek > 0" class="green-arrow" src="/assets/vectors/upArrow.svg">
+                            <p>{{avgReqPerWeekvsLastWeek}} vs last week</p>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -45,9 +53,14 @@
                         <div class="box-title">
                             <p>Total Request Received</p>
                         </div>
-                        <p class="box-number">{{totalReq}}</p>
+                        <p class="box-number">{{totalReqvsLastWeek}}</p>
                         <div class="status"></div>
-                        <p class="label">{{totalReqvsLastWeek}} vs last week</p>  
+                        <div class="label">
+                            <img *ngIf="totalReqvsLastWeek < 0" class="red-arrow" src="/assets/vectors/arrow-down-red.svg">
+                            <img *ngIf="totalReqvsLastWeek > 0" class="green-arrow" src="/assets/vectors/upArrow.svg">
+                            <p>{{totalReqvsLastWeek}} vs last week</p>  
+                        </div>
+
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-12">
@@ -57,7 +70,12 @@
                         </div>
                         <p class="box-number">{{totalReqWithSubjectFound}}</p>
                         <div class="status"></div>
-                        <p class="label">{{totalReqWithSubjectFoundvsLastWeek}} vs last week</p>  
+                        <div class="label">
+                            <img *ngIf="totalReqWithSubjectFoundvsLastWeek < 0" class="red-arrow" src="/assets/vectors/arrow-down-red.svg">
+                            <img *ngIf="totalReqWithSubjectFoundvsLastWeek > 0" class="green-arrow" src="/assets/vectors/upArrow.svg">
+                            <p>{{totalReqWithSubjectFoundvsLastWeek}} vs last week</p>  
+                        </div>
+
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-12">
@@ -66,8 +84,12 @@
                             <p>Total Request with Mismatch or Error</p>
                         </div>
                         <p class="box-number">{{totalReqWithMismatch}}</p>
-                        <div class="status"></div>
-                        <p class="label">{{totalReqWithMismatchvsLastWeek}} vs last week</p>  
+                        <div class="label">
+                            <img *ngIf="totalReqWithMismatchvsLastWeek < 0" class="red-arrow" src="/assets/vectors/arrow-down-red.svg">
+                            <img *ngIf="totalReqWithMismatchvsLastWeek > 0" class="green-arrow" src="/assets/vectors/upArrow.svg">
+                            <p>{{totalReqWithMismatchvsLastWeek}} vs last week</p>  
+                        </div>
+
                     </div>
                 </div>
             </div>

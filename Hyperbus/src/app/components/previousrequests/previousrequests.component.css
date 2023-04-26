@@ -62,7 +62,7 @@
     border: 0.845992px solid #EAECF0;
     box-shadow: 0px 0.845992px 1.69198px rgba(0, 0, 0, 0.05);
     border-radius: 6.76793px;
-    padding: 10px;
+    padding: 4px;
     margin: 5px;
 }
 
@@ -70,7 +70,7 @@
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
-    font-size: 13.5359px;
+    font-size: 12px;
     /* line-height: 18px; */
     /* identical to box height, or 131% */
     align-content: center;
@@ -105,10 +105,32 @@
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
-    font-size: 11.8439px;
+    font-size: 11px;
     line-height: 14px;
     color: #000000;  
     margin: 0;
+    padding:0px 50px 16px 17px;
+    display: flex;
+
+   
+    /* background-size: 12px; */
+     /* background-repeat: no-repeat; */ 
+    /* background-position: 0px 8px; */
+    /* margin: 18px 2px; */
+    /* background-image: url("/assets/vectors/upArrow.svg") */
+}
+
+.green-arrow{
+    height: 14px;
+    width: 14px;
+    border-radius: 0px;
+
+}
+
+.red-arrow{
+    height: 14px;
+    width: 14px;
+    border-radius: 0px;
 }
 
 .previous-requests{
@@ -200,6 +222,7 @@ table td {
 
 .green{
     color: #007A78;
+   
 }
 .red{
     color: #D3273E;
@@ -214,4 +237,5 @@ table td {
      border: 1px solid#ddd;
     
 }
+
 

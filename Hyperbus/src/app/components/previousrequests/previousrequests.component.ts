@@ -26,6 +26,9 @@ export class PreviousrequestsComponent implements OnInit {
   public total = 0;
   // public ProductHeader = [{ Number: 25 }, { Number: 50}, { Number: 100 }]; 
   public selectedNoList = '';
+  public classNames = 'main';
+
+  
 
   constructor(
     private router: Router,
@@ -70,6 +73,7 @@ export class PreviousrequestsComponent implements OnInit {
       this.totalReqvsLastWeek = res.totalReqvsLastWeek;
       this.totalReqWithSubjectFoundvsLastWeek = res.totalReqWithSubjectFoundvsLastWeek;
       this.totalReqWithMismatchvsLastWeek = res.totalReqWithMismatchvsLastWeek;
+     
     })
   }
 
@@ -90,4 +94,7 @@ export class PreviousrequestsComponent implements OnInit {
     this.getRequests();
 
   }
+ 
+
+  
 }
