@@ -24,7 +24,9 @@
                         <div class="label">
                             <img *ngIf="avgReqPerDayvsLastWeek < 0" class="red-arrow " src="/assets/vectors/arrow-down-red.svg">
                             <img *ngIf="avgReqPerDayvsLastWeek > 0" class="green-arrow" src="/assets/vectors/upArrow.svg">
-                            <p > {{avgReqPerDayvsLastWeek}}%  vs last week</p>
+                            <p *ngIf="avgReqPerDayvsLastWeek < 0" class="red-arrowePrcentage" >{{avgReqPerDayvsLastWeek}}%</p>
+                            <p *ngIf="avgReqPerDayvsLastWeek > 0" class="green-arrowePrcentage" >{{avgReqPerDayvsLastWeek}}%</p>
+                            <p>vs last week</p>
                         </div>
                     </div>
                 </div>
@@ -38,7 +40,9 @@
                         <div class="label">
                             <img *ngIf="avgReqPerWeekvsLastWeek < 0" class="red-arrow" src="/assets/vectors/arrow-down-red.svg">
                             <img *ngIf="avgReqPerWeekvsLastWeek > 0" class="green-arrow" src="/assets/vectors/upArrow.svg">
-                            <p>{{avgReqPerWeekvsLastWeek}}%  vs last week</p>
+                            <p *ngIf="avgReqPerWeekvsLastWeek < 0" class="red-arrowePrcentage" >{{avgReqPerWeekvsLastWeek}}%</p>
+                            <p *ngIf="avgReqPerWeekvsLastWeek > 0" class="green-arrowePrcentage" >{{avgReqPerWeekvsLastWeek}}%</p>
+                            <p>vs last week</p>
                         </div>
 
                     </div>
@@ -58,7 +62,9 @@
                         <div class="label">
                             <img *ngIf="totalReqvsLastWeek < 0" class="red-arrow" src="/assets/vectors/arrow-down-red.svg">
                             <img *ngIf="totalReqvsLastWeek > 0" class="green-arrow" src="/assets/vectors/upArrow.svg">
-                            <p>{{totalReqvsLastWeek}}%  vs last week</p>  
+                            <p *ngIf="totalReqvsLastWeek < 0" class="red-arrowePrcentage" >{{totalReqvsLastWeek}}%</p>
+                            <p *ngIf="totalReqvsLastWeek > 0" class="green-arrowePrcentage" >{{totalReqvsLastWeek}}%</p>
+                            <p>vs last week</p>  
                         </div>
 
                     </div>
@@ -73,7 +79,9 @@
                         <div class="label">
                             <img *ngIf="totalReqWithSubjectFoundvsLastWeek < 0" class="red-arrow" src="/assets/vectors/arrow-down-red.svg">
                             <img *ngIf="totalReqWithSubjectFoundvsLastWeek > 0" class="green-arrow" src="/assets/vectors/upArrow.svg">
-                            <p>{{totalReqWithSubjectFoundvsLastWeek}}%  vs last week</p>  
+                            <p *ngIf="totalReqWithSubjectFoundvsLastWeek < 0" class="red-arrowePrcentage" >{{totalReqWithSubjectFoundvsLastWeek}}%</p>
+                            <p *ngIf="totalReqWithSubjectFoundvsLastWeek > 0" class="green-arrowePrcentage" >{{totalReqWithSubjectFoundvsLastWeek}}%</p>
+                            <p>vs last week</p>  
                         </div>
 
                     </div>
@@ -87,7 +95,9 @@
                         <div class="label">
                             <img *ngIf="totalReqWithMismatchvsLastWeek < 0" class="red-arrow" src="/assets/vectors/arrow-down-red.svg">
                             <img *ngIf="totalReqWithMismatchvsLastWeek > 0" class="green-arrow" src="/assets/vectors/upArrow.svg">
-                            <p>{{totalReqWithMismatchvsLastWeek}}%  vs last week</p>  
+                            <p *ngIf="totalReqWithMismatchvsLastWeek < 0" class="red-arrowePrcentage" >{{totalReqWithMismatchvsLastWeek}}%</p>
+                            <p *ngIf="totalReqWithMismatchvsLastWeek > 0" class="green-arrowePrcentage" >{{totalReqWithMismatchvsLastWeek}}%</p>
+                            <p>vs last week</p>  
                         </div>
 
                     </div>
