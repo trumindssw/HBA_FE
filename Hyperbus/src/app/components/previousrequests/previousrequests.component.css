@@ -86,7 +86,7 @@
     line-height: 14px;
     color: #000000;  
     margin: 0;
-    padding:0px 50px 0px 17px;
+    padding:0px 50px 0px 5px;
     display: flex;
 }
 .green-arrow{
@@ -102,10 +102,12 @@
 .red-arrowePrcentage{
     color: #D3273E;
     margin-right: 7px;
+    font-size: 12px;
 }
 .green-arrowePrcentage{
     color: #007A78;
     margin-right: 7px;
+    font-size: 12px;
 }
 .previous-requests{
     margin: 10px;
@@ -187,14 +189,49 @@ table td {
     color: #D3273E;
 }
 .paginationformate{
-    padding: 2px;
-    margin: 11px;   
-}
-.dropdown1{
-    padding: 2px;
-     margin: 28px;
-     border: 1px solid#ddd;
+    /* padding: 2px; */
+    /* margin-top: 5px; */
+    /* margin-bottom: 5px; */
+    padding-left: 0;
+    padding-right: 0;
+    /* align-items: center; */
+    /* margin-left: 0; */
+    padding-bottom: 0;
+    
     
 }
+.dropdown1, .dropdown1 :after{
+    padding: 3px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border: 1px solid#ddd;
+    border-radius: 5px;
+    align-content: center;
+    float: right;
+}
 
+.select-items,.select-selected {
+    color: #ffffff;
+    padding: 80px 16px;
+    border: 1px solid transparent;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    cursor: pointer;
+    user-select: none;
+  }
 
+.pagination-row {
+    margin: 10px 0;
+    background-color: #e9e9ea;
+    border-radius: 5px;
+    padding: 5px 0;
+}
+
+.pagination-row pagination-controls /deep/ .ngx-pagination {
+    margin-left: 0 !important;
+    margin-bottom: 0 !important;
+    padding: 0 !important;
+}
+
+.pagination-row pagination-controls /deep/ .ngx-pagination li.current {
+    border-radius: 5px;
+}

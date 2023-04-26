@@ -25,6 +25,7 @@ export class UploadComponent implements OnInit {
   public array = true;
   files:any
   file:any
+  public uploading: boolean = false;
 
   
 
@@ -84,6 +85,7 @@ export class UploadComponent implements OnInit {
     {
         this.fl = <File>event.target.files[0];
         this.chosen=true;
+        this.uploading = true;
         this.saveFiles();
         event.target.value='';
         this.ngOnInit()
@@ -116,45 +118,33 @@ export class UploadComponent implements OnInit {
     }
   }
 
-  saveFiles() 
-  {
+  saveFiles() {
     console.log("I am in upload !! ")
     let fd =new FormData();
-
-      if(this.fl) 
-   {
-
+      if(this.fl) {
        fd.append("file", this.fl, this.fl.name);
-
        this.UploadService.UploadExcel(fd).subscribe((res) => {
 
-       console.log("#$EDCRFVTGHBJ: ", res)
-
         if(res.status == 1) {
+          this.error = false;
+          this.colour = true;
+          console.log("Res.message: ", res.message)
+          this.message = res.message;
 
-           this.error = false;
-           this.colour = true;
-           console.log("Res.message: ", res.message)
-           this.message = res.message;
-
-        } else 
-        {
-
-           this.error = true;
-           this.colour = false;
-           this.message = res.message;
-           if(res.message instanceof Array) {
+        } else {
+          this.error = true;
+          this.colour = false;
+          this.message = res.message;
+          if(res.message instanceof Array) {
             this.array = true;
-           } else {
+          } else {
             this.array = false;
-           }
-
+          }
         }
-
+        this.uploading = false;
       });
    }
   }
-  
 }
 
 
