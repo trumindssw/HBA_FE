@@ -170,7 +170,7 @@ table th {
     border-bottom: 1px solid #CDCDCD;
     padding: 14.5px 50px 14.5px 9px;
 }
-table td {
+table td{
     overflow-x:auto;     
     white-space:nowrap;
     border: 1px solid#ddd;
@@ -181,6 +181,11 @@ table td {
     line-height: 39px; 
     padding: 5px 14.5px;
     box-sizing: border-box;
+    
+    
+
+background: none;
+
 }
 .green{
     color: #007A78; 
@@ -189,16 +194,9 @@ table td {
     color: #D3273E;
 }
 .paginationformate{
-    /* padding: 2px; */
-    /* margin-top: 5px; */
-    /* margin-bottom: 5px; */
     padding-left: 0;
     padding-right: 0;
-    /* align-items: center; */
-    /* margin-left: 0; */
-    padding-bottom: 0;
-    
-    
+    padding-bottom: 0;    
 }
 .dropdown1, .dropdown1 :after{
     padding: 3px;
@@ -234,4 +232,10 @@ table td {
 
 .pagination-row pagination-controls /deep/ .ngx-pagination li.current {
     border-radius: 5px;
+}
+
+
+.mat-button {
+    border: none;
+    background-color: white;
 }

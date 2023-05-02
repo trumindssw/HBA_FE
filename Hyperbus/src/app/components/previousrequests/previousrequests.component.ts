@@ -1,14 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { PreviousRequestsService } from 'src/app/_services/previousrequests/previousrequests.service';
+import {NgxPaginationModule} from 'ngx-pagination';
+// import { RequestdetailsComponent } from '../requestdetails/requestdetails.component';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { RequestdetailsComponent } from '../requestdetails/requestdetails.component';
 
 @Component({
   selector: 'app-previousrequests',
   templateUrl: './previousrequests.component.html',
   styleUrls: ['./previousrequests.component.css']
 })
-
 export class PreviousrequestsComponent implements OnInit {
   public requests = [];
   public avgReqPerDay = 0;
@@ -24,15 +27,13 @@ export class PreviousrequestsComponent implements OnInit {
   public pageNo = 1;
   public limit = 10;
   public total = 0;
-  // public ProductHeader = [{ Number: 25 }, { Number: 50}, { Number: 100 }]; 
   public selectedNoList = '';
   public classNames = 'main';
-
-  
-
   constructor(
     private router: Router,
-    private PreviousRequestsService: PreviousRequestsService) { }
+    private PreviousRequestsService: PreviousRequestsService,
+    // private RequestDetailsComponents: RequestdetailsComponent,
+    private dialog: MatDialog) { }
 
   ngOnInit(){
     this.getRequests();
@@ -76,13 +77,10 @@ export class PreviousrequestsComponent implements OnInit {
      
     })
   }
-
-
-  onTableDataChange(event: number) {
+  onTableDataChange(event: any) {
     this.pageNo = event;
     this.getRequests();
   }
-
   onClick(){
     //upload
     this.router.navigate(['/upload']);
@@ -94,7 +92,44 @@ export class PreviousrequestsComponent implements OnInit {
     this.getRequests();
 
   }
+  openDialog(reqId: string) {
+    const dialog = this.dialog.open(RequestdetailsComponent,{
+
+     data: { name: reqId },
+    });
+    dialog.afterClosed().subscribe(result =>{
+      console.log('result')
+    });
+  }
+}
+
+@Component({
+
+   selector: 'dialog-data-example-dialog',
+  
+   templateUrl: 'hello.html',
+  
+  })
+  
+  export class DialogDataExampleDialog {
+  
+   constructor(@Inject(MAT_DIALOG_DATA) 
+   public data: {name: string,
+     veriflowID : string,
+     subjectName : string ,
+     issuingAuthority : string,
+     document :string,
+     department : string,
+     startDate: string,
+     endDate : string,
+     status : string,
+     statusMessage :string,
+     createdAt : string,
+     updatedAt : string,
+   }
+  ){}
+ }
  
 
+
   
-}

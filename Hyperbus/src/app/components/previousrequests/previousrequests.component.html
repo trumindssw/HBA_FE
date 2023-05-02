@@ -134,8 +134,8 @@
                         itemsPerPage: limit,
                         currentPage: pageNo,
                         totalItems: total
-                      }">
-                        <td>{{req['requestID']}}</td>
+                      }" >
+                        <td ><button class="mat-button" (click)="openDialog(req['requestID'])" >{{req['requestID']}}</button></td>
                         <td >{{req['subjectName']}}</td>
                         <td>{{req['createdAt']}}</td>
                         <td [ngClass]="req['status']==1 ? 'green' : 'red'">{{req['statusMessage']}}</td>
