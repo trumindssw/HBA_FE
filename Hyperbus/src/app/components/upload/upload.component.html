@@ -48,12 +48,13 @@
                     <ng-container *ngFor="let msg of message">
                       <p  [style.color]="'#D3273E'">{{msg}}</p>
                     </ng-container>
+                    <p *ngIf="message.length>=5">. . . 5 or more errors</p>
                   </div>
                   <div *ngIf="!array">
                     <p  [style.color]="'#D3273E'">{{message}}</p>
                   </div>
                 </div>
-              
+                
             </div>
 
             <div draggable="true" class="drag-box">

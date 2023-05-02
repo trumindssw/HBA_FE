@@ -2,15 +2,15 @@ import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
-import { forkJoin, tap } from 'rxjs';
 import { PreviousRequestsService } from 'src/app/_services/previousrequests/previousrequests.service';
+import { RequestdetailsComponent } from '../requestdetails/requestdetails.component';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-previousrequests',
   templateUrl: './previousrequests.component.html',
   styleUrls: ['./previousrequests.component.css']
 })
-
 export class PreviousrequestsComponent implements OnInit {
   public requests!: Requests[];
   public avgReqPerDay = 0;
@@ -26,8 +26,7 @@ export class PreviousrequestsComponent implements OnInit {
   public pageNo = 1;
   public limit = 10;
   public total = 0;
-  public requestDetailData = [];
-  
+  // public ProductHeader = [{ Number: 25 }, { Number: 50}, { Number: 100 }]; 
   public selectedNoList = '';
   public classNames = 'main';
   columns = ['requestID', 'subjectName', 'createdAt', 'statusMessage'];
@@ -37,7 +36,9 @@ export class PreviousrequestsComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private PreviousRequestsService: PreviousRequestsService) { }
+    private PreviousRequestsService: PreviousRequestsService,
+    // private RequestDetailsComponents: RequestdetailsComponent,
+    private dialog: MatDialog) { }
 
   ngOnInit(){
     this.getRequests(this.pageNo, this.limit);
@@ -106,12 +107,19 @@ export class PreviousrequestsComponent implements OnInit {
       return false;
     }
   }
-
   onClick(){
     //upload
     this.router.navigate(['/upload']);
   }
-  
+
+  openDialog(reqId: string) {
+    const dialog = this.dialog.open(RequestdetailsComponent,{
+     data: { name: reqId },
+    });
+    dialog.afterClosed().subscribe(result =>{
+      console.log('result')
+    });
+  }
 }
 
 export interface Requests {
