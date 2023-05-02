@@ -61,11 +61,21 @@ export class PreviousrequestsComponent implements OnInit {
       if(this.requests && this.requests.length>0) {
         this.requests.map((req: Requests) => {
           let dt = new Date(req.createdAt);
-          let month = dt.toLocaleString('default', { month: 'long' });
-          let yr = dt.getFullYear();
-          let date = dt.getDate();
-          let time = dt.getHours() + "." + dt.getMinutes();
-          req.createdAt = month + " " + date + ", " + yr + " " + time
+          let timeZone = '';
+          // Get system's timezone
+          if (typeof Intl === 'object' && typeof Intl.DateTimeFormat === 'function') {
+            timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+          }
+          let dte = dt.toLocaleString(
+            'en-US', { 
+              month: 'long', 
+              year: 'numeric', 
+              day: 'numeric', 
+              hour: '2-digit', 
+              minute: '2-digit', 
+              timeZone: timeZone 
+            });
+          req.createdAt = dte.toString();
         })
       }
     })
