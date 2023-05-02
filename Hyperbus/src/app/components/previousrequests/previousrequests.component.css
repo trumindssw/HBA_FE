@@ -156,12 +156,10 @@
     margin: 0;
 }
 
-.green{
-    color: #007A78; 
+.mat-column-statusMessage{
+    font-weight: 600;
 }
-.red{
-    color: #D3273E;
-}
+
 .paginationformate{
     /* padding: 2px; */
     /* margin-top: 5px; */
