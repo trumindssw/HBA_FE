@@ -18,6 +18,7 @@ export class BodyComponent implements OnInit {
   public loginForm!: FormGroup;
     loading = false;
     submitted = false;
+    hide = true;
 
     constructor(
       private formBuilder: FormBuilder,

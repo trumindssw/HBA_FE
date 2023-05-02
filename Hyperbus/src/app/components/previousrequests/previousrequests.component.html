@@ -111,59 +111,49 @@
             <input class="search-bar" type="text" placeholder="Search">
         </div>
         <div class="col-md-6 col-sm-12">
-            <div class="filter-box" id="filter-box1">
+            <div class="filter-box">
                 <p id="filter-text">Filter by</p>
             </div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-12 col-sm-12">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Request ID</th>
-                        <th>Subject Name</th>
-                        <th>Date/Time of Request</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let req of requests | paginate 
-                    : {
-                        itemsPerPage: limit,
-                        currentPage: pageNo,
-                        totalItems: total
-                      }">
-                        <td>{{req['requestID']}}</td>
-                        <td >{{req['subjectName']}}</td>
-                        <td>{{req['createdAt']}}</td>
-                        <td [ngClass]="req['status']==1 ? 'green' : 'red'">{{req['statusMessage']}}</td>
-                    </tr>
-                </tbody>
-               
-            </table>
-            <div class="row pagination-row" >
-                <div class="col-md-2 col-sm-2">
-
-                </div>
-                <div class="d-flex justify-content-center col-md-8 col-sm-8">
-                    <pagination-controls class="paginationformate"
-                        previousLabel=""
-                         nextLabel=""
-                        (pageChange)="onTableDataChange($event)">
-                    </pagination-controls>
-                </div>
-                <div class="col-md-2 col-sm-2">
-                    <select (click)="selectChangeHandler($event)" class="dropdown1">
-                        <option value="5">5 / page</option>
-                        <option value="10" selected="selected">10 / page</option>
-                        <option value="25">25 / page</option>
-                        <option value="50">50 / page</option>
-                        <option value="100">100 / page</option>
-                    </select>
-                </div>
-            </div> 
+    <div class="row table mat-elevation-z8">
+        <div class="col-md-12 ">
+            <ng-scrollbar>
+                <table mat-table [dataSource]="requests" multiTemplateDataRows>
+                    <ng-container matColumnDef="requestID">
+                        <th mat-header-cell *matHeaderCellDef> Request ID </th>
+                        <td mat-cell *matCellDef="let element"> {{element.requestID}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="subjectName">
+                        <th mat-header-cell *matHeaderCellDef> Subject Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.subjectName}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="createdAt">
+                        <th mat-header-cell *matHeaderCellDef> Created At </th>
+                        <td mat-cell *matCellDef="let element" > {{element.createdAt}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="statusMessage">
+                        <th mat-header-cell *matHeaderCellDef> Status Message </th>
+                        <td mat-cell *matCellDef="let element" [style.color]="element.statusMessage=='Verified' ? 'green': (element.statusMessage=='Not Verified' ? 'red':'') "> {{element.statusMessage}} </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="columns; sticky: true" class="example-element-header"></tr>
+                    <tr mat-row *matRowDef="let row; columns: columns;" class="example-element-row"></tr>
+                </table>
+            </ng-scrollbar>
         </div>
+        <div class="col-md-12">
+            <mat-divider></mat-divider>
+            <mat-paginator class="pagination"
+              #paginator 
+              [length]=total
+              [pageSize]=limit
+              [pageSizeOptions]="[10, 25, 100]"
+              aria-label="Select page">
+            </mat-paginator>
+        </div>
+        
     </div>
+    
+
 </div>

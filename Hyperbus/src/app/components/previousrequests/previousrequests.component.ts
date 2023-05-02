@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
-import { forkJoin } from 'rxjs';
+import { forkJoin, tap } from 'rxjs';
 import { PreviousRequestsService } from 'src/app/_services/previousrequests/previousrequests.service';
 
 @Component({
@@ -10,7 +12,7 @@ import { PreviousRequestsService } from 'src/app/_services/previousrequests/prev
 })
 
 export class PreviousrequestsComponent implements OnInit {
-  public requests = [];
+  public requests!: Requests[];
   public avgReqPerDay = 0;
   public avgReqPerWeek = 0;
   public totalReq = 0;
@@ -24,10 +26,13 @@ export class PreviousrequestsComponent implements OnInit {
   public pageNo = 1;
   public limit = 10;
   public total = 0;
-  // public ProductHeader = [{ Number: 25 }, { Number: 50}, { Number: 100 }]; 
+  public requestDetailData = [];
+  
   public selectedNoList = '';
   public classNames = 'main';
-
+  columns = ['requestID', 'subjectName', 'createdAt', 'statusMessage'];
+  columnsToDisplay = ['Request ID', 'Subject Name', 'Created At', 'Status Message']
+  @ViewChild('paginator') paginator!: MatPaginator;
   
 
   constructor(
@@ -35,19 +40,26 @@ export class PreviousrequestsComponent implements OnInit {
     private PreviousRequestsService: PreviousRequestsService) { }
 
   ngOnInit(){
-    this.getRequests();
+    this.getRequests(this.pageNo, this.limit);
     this.getRequestCounts();
   }
 
-  getRequests() {
-    this.PreviousRequestsService.getAllRequests(this.pageNo, this.limit)
+  ngAfterViewInit() {
+    this.paginator.page
+        .pipe(
+            tap(() => this.getRequests(this.paginator.pageIndex+1, this.paginator.pageSize))
+        )
+        .subscribe();
+}
+
+  getRequests(pageNo: number, pageSize: number) {
+    this.PreviousRequestsService.getAllRequests(pageNo,pageSize)
     .subscribe(response => {
       console.log(response)
       this.requests = response && response.data && response.data.data;
       this.total = response && response.data && response.data.total;
       if(this.requests && this.requests.length>0) {
-        this.requests.map((req: {
-          status: boolean; createdAt: string | number | Date; }) => {
+        this.requests.map((req: Requests) => {
           let dt = new Date(req.createdAt);
           let month = dt.toLocaleString('default', { month: 'long' });
           let yr = dt.getFullYear();
@@ -77,24 +89,24 @@ export class PreviousrequestsComponent implements OnInit {
     })
   }
 
-
-  onTableDataChange(event: number) {
-    this.pageNo = event;
-    this.getRequests();
+  isVerified(statusMessage: String) {
+    if(statusMessage == 'Verified') {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   onClick(){
     //upload
     this.router.navigate(['/upload']);
   }
-  selectChangeHandler (event: any) {
-    //update the ui
-    this.selectedNoList = event.target.value;
-    this.limit = event.target.value;
-    this.getRequests();
-
-  }
- 
-
   
+}
+
+export interface Requests {
+  requestID: string;
+  subjectName: string;
+  createdAt: string;
+  statusMessage: string;
 }

@@ -1,45 +1,40 @@
 <div class="row">
-    <div class="col-md-4" id="side-body"></div>
+    <div class="col-md-4" id="side-body">
+        <mat-sidenav mode="side" opened></mat-sidenav>
+    </div>
+        
+    
     <div class="col-md-8 col-sm-12">
         <div class="row sign-in-form">
             <div class="col-md-12 col-sm-12">
-                <h2 class="sign-in-text"><b>Sign In</b></h2>
+                <p class="sign-in-text">Sign In</p>
             </div>
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()"> 
                 <div class="row input-row">
                     <div class="col-md-12 col-sm-12">
-                        <label class="label-username">Username</label>
-                    </div>
-                    <div class="col-md-12 col-sm-12">
-                        <input type="text" formControlName="username" id="input"  [ngClass]="{ 'is-invalid': submitted && f['username'].errors }" required>
-                        <div *ngIf="submitted && f['username'].errors" class="invalid-feedback">
-                            <div *ngIf="f['username'].errors['required']" id="error-msg1">Username is required</div>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Username</mat-label>
+                            <input matInput placeholder="Username" type="text" formControlName="username" id="input1"  [ngClass]="{ 'is-invalid': submitted && f['username'].errors }">
+                            <mat-icon matPrefix>account_circle</mat-icon>
+                          </mat-form-field>
                         </div>
-                    </div>
                 </div>
         
                 <div class="row input-row">
-                    <div class="col-ms-12 col-sm-12">
-                        <label class="label-password">Password</label>
-                    </div>
                     <div class="col-md-12 col-sm-12">
-                        <input type="password" formControlName="password" id="input" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" required>
-                        <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
-                            <div *ngIf="f['password'].errors['required']"  id="error-msg2">Password is required</div>
-                        </div>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Password</mat-label>
+                            <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password" id="input2" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
+                            <mat-icon matPrefix>lock</mat-icon>
+                            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                          </mat-form-field>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12 col-sm-12" >
-                        <button [disabled]="loading" text="Sign In" type="submit" id="button" >
-                            <span *ngIf="loading" ></span>
-                                Sign In
-                        </button>
+                        <button [disabled]="loading" mat-raised-button color="primary">Sign In</button>
                     </div>
                 </div>
-                <!-- <div *ngIf="error" [style.color]="'#dc3545'" id="error-msg1">
-                    {{error}}
-                </div> -->
             </form>   
         </div>
     </div>
