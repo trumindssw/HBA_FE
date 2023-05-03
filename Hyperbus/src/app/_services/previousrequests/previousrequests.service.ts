@@ -21,8 +21,9 @@ export class PreviousRequestsService {
         });
 
         let options = {headers: headers}
+        let body = {page: pageNo, limit: limit}
 
-        return this.http.get<any>(this.getAllRequestsUrl + '?page=' + pageNo + '&limit=' + limit, options)
+        return this.http.post<any>(this.getAllRequestsUrl, body, options)
     }
 
     getRequestCounts() {
