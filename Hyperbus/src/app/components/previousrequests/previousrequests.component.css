@@ -357,5 +357,12 @@ mat-divider {
     background-color: white;
 }
 
+.blue {
+    background-color: lightblue;
+    
+}
+::ng-deep .mdc-line-ripple::after {
+    border-bottom-width: 0 !important;
+  }
 
 
