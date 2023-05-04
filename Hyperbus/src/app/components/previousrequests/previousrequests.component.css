@@ -363,6 +363,10 @@ mat-divider {
 }
 ::ng-deep .mdc-line-ripple::after {
     border-bottom-width: 0 !important;
+    
   }
-
+  ::ng-deep .mdc-line-ripple::before {
+    border-bottom-width: 0 !important;
+    
+  }
 
