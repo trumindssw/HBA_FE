@@ -9,11 +9,12 @@ export class PreviousRequestsService {
 
     private getAllRequestsUrl=environment.apiUrl + "/request/getAllRequests"
     private getRequestCountsUrl=environment.apiUrl + "/request/getRequestCounts"
+   
     constructor(
         private http: HttpClient
     ) {}
 
-    getAllRequests(pageNo: Number, limit: Number) {
+    getAllRequests(pageNo: Number, limit: Number, lastWeek: boolean, lastMonth:boolean, startDate:any, endDate:any) {
         let token = localStorage.getItem('user') || "";
         console.log(token)
         let headers = new HttpHeaders({
@@ -21,10 +22,14 @@ export class PreviousRequestsService {
         });
 
         let options = {headers: headers}
-        let body = {page: pageNo, limit: limit}
+        let body = {page: pageNo, limit: limit,lastWeek: lastWeek, lastMonth: lastMonth,startDate:startDate, endDate:endDate }
 
+        console.log(this.getAllRequestsUrl,body,options);
+        
         return this.http.post<any>(this.getAllRequestsUrl, body, options)
     }
+
+    
 
     getRequestCounts() {
         let token = localStorage.getItem('user') || "";

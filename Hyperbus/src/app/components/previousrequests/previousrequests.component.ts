@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { PreviousRequestsService } from 'src/app/_services/previousrequests/previousrequests.service';
 import { RequestdetailsComponent } from '../requestdetails/requestdetails.component';
 import { tap } from 'rxjs';
+import {FormGroup, FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-previousrequests',
@@ -26,6 +27,11 @@ export class PreviousrequestsComponent implements OnInit {
   public pageNo = 1;
   public limit = 10;
   public total = 0;
+  public lastWeek = false;
+  public lastMonth = false;
+  public  endDate : any ;
+  public startDate : any;
+  
   // public ProductHeader = [{ Number: 25 }, { Number: 50}, { Number: 100 }]; 
   public selectedNoList = '';
   public classNames = 'main';
@@ -51,12 +57,20 @@ export class PreviousrequestsComponent implements OnInit {
             tap(() => this.getRequests(this.paginator.pageIndex+1, this.paginator.pageSize))
         )
         .subscribe();
-}
+  }
 
   getRequests(pageNo: number, pageSize: number) {
-    this.PreviousRequestsService.getAllRequests(pageNo,pageSize)
+    console.log(pageNo);
+    console.log(pageSize);
+    this.PreviousRequestsService.getAllRequests(pageNo,pageSize,this.lastWeek,this.lastMonth,this.startDate,this.endDate)
     .subscribe(response => {
       console.log(response)
+      console.log(this.startDate);
+      console.log(this.endDate);
+      console.log(this.lastWeek);
+      console.log(this.lastMonth);
+      
+      
       this.requests = response && response.data && response.data.data;
       this.total = response && response.data && response.data.total;
       if(this.requests && this.requests.length>0) {
@@ -81,6 +95,7 @@ export class PreviousrequestsComponent implements OnInit {
       }
     })
   }
+
 
   getRequestCounts() {
     this.PreviousRequestsService.getRequestCounts()
@@ -120,6 +135,43 @@ export class PreviousrequestsComponent implements OnInit {
       console.log('result')
     });
   }
+
+  filterLastWeek() {
+    this.lastWeek=true;
+    this.lastMonth = false;
+    this.startDate = null;
+    this.endDate = null;
+    this.paginator.pageIndex = 0
+    // this.pageNo=1;
+    this.getRequests(this.pageNo, this.limit);
+  }
+
+  filterLastMonth() {
+    this.lastMonth = true;
+    this.lastWeek = false;
+    this.startDate = null;
+    this.endDate = null;
+    this.paginator.pageIndex = 0
+    // this.pageNo=1;
+    this.getRequests(this.pageNo, this.limit);    
+
+  }
+
+  closed(): void {
+   
+    this.lastMonth = false;
+    this.lastWeek = false;
+    this.paginator.pageIndex = 0
+    //this.pageNo=1;
+    this.getRequests(this.pageNo, this.limit);    
+  }
+
+  
+  range = new FormGroup({
+    start: new FormControl<Date | null>(null),
+    end: new FormControl<Date | null>(null),
+
+  });
 }
 
 export interface Requests {
