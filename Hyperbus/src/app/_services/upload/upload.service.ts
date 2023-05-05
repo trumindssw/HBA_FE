@@ -46,7 +46,7 @@ export class Uploadservice {
             'Authorization': 'Bearer ' + token
         });	
         let options = {headers: headers, observe: 'response' as 'body', responseType: 'blob' as 'json'}
-		return this.http.get<any>(this.downloadfileUrl+fileNames,options)
+		return this.http.get<any>(this.downloadfileUrl + `?fileName=${fileNames}`, options)
    }
 
 }
