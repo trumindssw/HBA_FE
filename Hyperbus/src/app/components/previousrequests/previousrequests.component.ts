@@ -31,6 +31,7 @@ export class PreviousrequestsComponent implements OnInit {
   public lastMonth = false;
   public  endDate : any ;
   public startDate : any;
+  public searchValue = "";
   
   // public ProductHeader = [{ Number: 25 }, { Number: 50}, { Number: 100 }]; 
   public selectedNoList = '';

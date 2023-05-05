@@ -125,27 +125,22 @@
                 <mat-icon>filter_list</mat-icon>
             </button>
             <mat-menu #menu="matMenu" >
-
-                <!-- mat-radio-button class="example-margin" (click)="filterLastWeek()" >Last 7 days</mat-button-toggle>
+                <!-- <mat-checkbox class="example-margin" (click)="filterLastWeek()" [checked]="lastWeek" [color]="'primary'">Last 7 days</mat-checkbox>
                 <br>
-                mat-radio-button class="example-margin" (click)="filterLastMonth()" >Last 30 days</mat-button-toggle>
-                <br> -->
-                <button mat-menu-item (click)="filterLastWeek()" [ngClass]="{'blue' : lastWeek}"  >Last 7 days</button>
-                <button mat-menu-item (click)="filterLastMonth()" [ngClass]="{'blue' : lastMonth}">Last 30 days</button>
+                <mat-checkbox class="example-margin" (click)="filterLastMonth()" [checked]="lastMonth" [color]="'primary'">Last 30 days</mat-checkbox> -->
+                <button mat-menu-item (click)="filterLastWeek()">Last 7 days</button>
+                <button mat-menu-item (click)="filterLastMonth()">Last 30 days</button>
                 <mat-form-field appearance="fill" >
                     <mat-label >Enter a date range</mat-label>
                     <mat-date-range-input [formGroup]="range" [rangePicker]="picker" >
                     <input matStartDate formControlName="start" placeholder="Start date" [(ngModel)]="startDate" >
                     <input matEndDate formControlName="end" placeholder="End date" [(ngModel)]="endDate">
                     </mat-date-range-input>
-                    <!-- <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint> -->
                     <mat-datepicker-toggle matIconSuffix [for]="picker" ></mat-datepicker-toggle>
-                    <mat-date-range-picker #picker (closed)="closed()"></mat-date-range-picker>
-                
+                    <mat-date-range-picker #picker (closed)="closed()"></mat-date-range-picker>               
                     <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid Start date</mat-error>
                     <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid End date</mat-error>
                 </mat-form-field>
-                
             </mat-menu>
         </div>
     </div>
