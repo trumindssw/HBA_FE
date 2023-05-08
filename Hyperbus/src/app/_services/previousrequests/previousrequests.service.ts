@@ -14,7 +14,7 @@ export class PreviousRequestsService {
         private http: HttpClient
     ) {}
 
-    getAllRequests(pageNo: Number, limit: Number, lastWeek: boolean, lastMonth:boolean, startDate:any, endDate:any) {
+    getAllRequests(pageNo: Number, limit: Number, lastWeek: boolean, lastMonth:boolean, startDate:any, endDate:any,status:any) {
         let token = localStorage.getItem('user') || "";
         console.log(token)
         let headers = new HttpHeaders({
@@ -22,7 +22,7 @@ export class PreviousRequestsService {
         });
 
         let options = {headers: headers}
-        let body = {page: pageNo, limit: limit,lastWeek: lastWeek, lastMonth: lastMonth,startDate:startDate, endDate:endDate }
+        let body = {page: pageNo, limit: limit,status:status,lastWeek: lastWeek, lastMonth: lastMonth,startDate:startDate, endDate:endDate }
 
         console.log(this.getAllRequestsUrl,body,options);
         
