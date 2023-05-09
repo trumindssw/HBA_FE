@@ -7,6 +7,9 @@ import { RequestdetailsComponent } from '../requestdetails/requestdetails.compon
 import { tap } from 'rxjs';
 import {FormGroup, FormControl} from '@angular/forms';
 import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter'
 
 @Component({
   selector: 'app-previousrequests',
@@ -34,6 +37,9 @@ export class PreviousrequestsComponent implements OnInit {
   public startDate : any;
   public searchValue = "";
   public status:any;
+  public internalError=false;
+  public matchFound=false;
+  public matchNotFound=false;
   
   // public ProductHeader = [{ Number: 25 }, { Number: 50}, { Number: 100 }]; 
   public selectedNoList = '';
@@ -73,7 +79,6 @@ export class PreviousrequestsComponent implements OnInit {
       console.log(this.lastWeek);
       console.log(this.lastMonth);
       console.log(this.status);
-      
       
       this.requests = response && response.data && response.data.data;
       this.total = response && response.data && response.data.total;
@@ -140,48 +145,6 @@ export class PreviousrequestsComponent implements OnInit {
     });
   }
 
-  filterLastWeek() {
-    this.lastWeek=true;
-    this.lastMonth = false;
-    this.startDate = null;
-    this.endDate = null;
-    this.paginator.pageIndex = 0
-    // this.pageNo=1;
-    this.getRequests(this.pageNo, this.limit);
-  }
-
-  filterLastMonth() {
-    this.lastMonth = true;
-    this.lastWeek = false;
-    this.startDate = null;
-    this.endDate = null;
-    this.paginator.pageIndex = 0
-    // this.pageNo=1;
-    this.getRequests(this.pageNo, this.limit);    
-
-  }
-
-  filterStatus1() {
-    this.status=1;
-    this.paginator.pageIndex = 0
-    // this.pageNo=1;
-    this.getRequests(this.pageNo, this.limit);    
-  }
-
-  filterStatus2() {
-    this.status=-1;
-    this.paginator.pageIndex = 0
-    // this.pageNo=1;
-    this.getRequests(this.pageNo, this.limit);    
-  }
-
-  filterStatus0() {
-    this.status=0;
-    this.paginator.pageIndex = 0
-    // this.pageNo=1;
-    this.getRequests(this.pageNo, this.limit);    
-  }
-
   closed(): void {
    
     this.lastMonth = false;
@@ -190,7 +153,32 @@ export class PreviousrequestsComponent implements OnInit {
     //this.pageNo=1;
     this.getRequests(this.pageNo, this.limit);    
   }
-  
+
+  filterDates(lastWeek:boolean,lastMonth:boolean,$event:any){
+    this.lastWeek=lastWeek;
+    this.lastMonth=lastMonth;
+    this.startDate = null;
+    this.endDate = null;
+
+    $event.stopPropagation();
+    $event.preventDefault();
+
+    this.paginator.pageIndex = 0;
+    this.getRequests(this.pageNo, this.limit);    
+  }
+
+  filterStatus(status:any,matchFound:boolean,matchNotFound:boolean,internalError:boolean,$event:any){
+    this.status=status;
+    this.matchFound=matchFound;
+    this.matchNotFound=matchNotFound;
+    this.internalError=internalError;
+
+    $event.stopPropagation();
+    $event.preventDefault();
+
+    this.paginator.pageIndex = 0;
+    this.getRequests(this.pageNo, this.limit);    
+  }
   
   range = new FormGroup({
     start: new FormControl<Date | null>(null),
@@ -198,7 +186,11 @@ export class PreviousrequestsComponent implements OnInit {
 
   });
 
-  
+  selectPrevent($event:any) {
+    // prevent menu from closing
+    $event.stopPropagation();
+    $event.preventDefault();
+  }
 }
 
 export interface Requests {

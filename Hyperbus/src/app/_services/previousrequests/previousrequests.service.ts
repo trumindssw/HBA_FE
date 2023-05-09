@@ -25,7 +25,7 @@ export class PreviousRequestsService {
         let body = {page: pageNo, limit: limit,status:status,lastWeek: lastWeek, lastMonth: lastMonth,startDate:startDate, endDate:endDate }
 
         console.log(this.getAllRequestsUrl,body,options);
-        
+        console.log(startDate);
         return this.http.post<any>(this.getAllRequestsUrl, body, options)
     }
 

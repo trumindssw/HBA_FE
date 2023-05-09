@@ -14,6 +14,8 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
 import { BodyComponent } from './components/login/login.component';
 import { MaterialExampleModule } from 'material.module';
 import { RequestdetailsComponent } from './components/requestdetails/requestdetails.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { RequestdetailsComponent } from './components/requestdetails/requestdeta
     HttpClientModule,
     MatSnackBarModule,
     NgScrollbarModule,
-    MaterialExampleModule
+    MaterialExampleModule,
+    MatDatepickerModule, 
+    MatMomentDateModule
   ],
   providers: [HttpClientModule, AuthGuard, {provide: HTTP_INTERCEPTORS, useClass: HttpResponseInterceptor, multi: true}],
   bootstrap: [AppComponent]
