@@ -1,15 +1,12 @@
 import { Component, OnInit, Inject, ViewChild } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { PreviousRequestsService } from 'src/app/_services/previousrequests/previousrequests.service';
 import { RequestdetailsComponent } from '../requestdetails/requestdetails.component';
 import { tap } from 'rxjs';
 import {FormGroup, FormControl} from '@angular/forms';
-import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
-import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter'
+
 
 @Component({
   selector: 'app-previousrequests',
