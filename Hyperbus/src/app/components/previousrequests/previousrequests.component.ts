@@ -6,11 +6,12 @@ import { PreviousRequestsService } from 'src/app/_services/previousrequests/prev
 import { RequestdetailsComponent } from '../requestdetails/requestdetails.component';
 import { tap } from 'rxjs';
 import {FormGroup, FormControl} from '@angular/forms';
+import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
 
 @Component({
   selector: 'app-previousrequests',
   templateUrl: './previousrequests.component.html',
-  styleUrls: ['./previousrequests.component.css']
+  styleUrls: ['./previousrequests.component.css'],
 })
 export class PreviousrequestsComponent implements OnInit {
   public requests!: Requests[];
@@ -32,6 +33,7 @@ export class PreviousrequestsComponent implements OnInit {
   public  endDate : any ;
   public startDate : any;
   public searchValue = "";
+  public status:any;
   
   // public ProductHeader = [{ Number: 25 }, { Number: 50}, { Number: 100 }]; 
   public selectedNoList = '';
@@ -45,7 +47,7 @@ export class PreviousrequestsComponent implements OnInit {
     private router: Router,
     private PreviousRequestsService: PreviousRequestsService,
     // private RequestDetailsComponents: RequestdetailsComponent,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog) {  }
 
   ngOnInit(){
     this.getRequests(this.pageNo, this.limit);
@@ -63,13 +65,14 @@ export class PreviousrequestsComponent implements OnInit {
   getRequests(pageNo: number, pageSize: number) {
     console.log(pageNo);
     console.log(pageSize);
-    this.PreviousRequestsService.getAllRequests(pageNo,pageSize,this.lastWeek,this.lastMonth,this.startDate,this.endDate)
+    this.PreviousRequestsService.getAllRequests(pageNo,pageSize,this.lastWeek,this.lastMonth,this.startDate,this.endDate,this.status)
     .subscribe(response => {
       console.log(response)
       console.log(this.startDate);
       console.log(this.endDate);
       console.log(this.lastWeek);
       console.log(this.lastMonth);
+      console.log(this.status);
       
       
       this.requests = response && response.data && response.data.data;
@@ -158,6 +161,27 @@ export class PreviousrequestsComponent implements OnInit {
 
   }
 
+  filterStatus1() {
+    this.status=1;
+    this.paginator.pageIndex = 0
+    // this.pageNo=1;
+    this.getRequests(this.pageNo, this.limit);    
+  }
+
+  filterStatus2() {
+    this.status=-1;
+    this.paginator.pageIndex = 0
+    // this.pageNo=1;
+    this.getRequests(this.pageNo, this.limit);    
+  }
+
+  filterStatus0() {
+    this.status=0;
+    this.paginator.pageIndex = 0
+    // this.pageNo=1;
+    this.getRequests(this.pageNo, this.limit);    
+  }
+
   closed(): void {
    
     this.lastMonth = false;
@@ -166,13 +190,15 @@ export class PreviousrequestsComponent implements OnInit {
     //this.pageNo=1;
     this.getRequests(this.pageNo, this.limit);    
   }
-
+  
   
   range = new FormGroup({
     start: new FormControl<Date | null>(null),
     end: new FormControl<Date | null>(null),
 
   });
+
+  
 }
 
 export interface Requests {
