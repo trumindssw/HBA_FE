@@ -150,7 +150,9 @@ export class PreviousrequestsComponent implements OnInit {
     this.lastMonth = false;
     this.lastWeek = false;
     this.paginator.pageIndex = 0
-    //this.pageNo=1;
+    
+    this.startDate.setMinutes(this.startDate.getMinutes() - this.startDate.getTimezoneOffset());
+    this.endDate.setMinutes(this.endDate.getMinutes() - this.endDate.getTimezoneOffset());
     this.getRequests(this.pageNo, this.limit);    
   }
 
@@ -185,6 +187,7 @@ export class PreviousrequestsComponent implements OnInit {
     end: new FormControl<Date | null>(null),
 
   });
+
 
   selectPrevent($event:any) {
     // prevent menu from closing

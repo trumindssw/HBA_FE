@@ -126,26 +126,26 @@
                
             <mat-menu #status="matMenu" appearance="fill">
                 <button mat-menu-item (click)="filterStatus(1,true,false,false,$event)">
-                    <mat-icon color="{{matchFound?'primary':''}}">{{matchFound?'done':''}}</mat-icon>
+                    <mat-icon color="{{matchFound?'primary':''}}">{{matchFound?'check_circle':''}}</mat-icon>
                     OK
                 </button>
                 <button mat-menu-item (click)="filterStatus(0,false,true,false,$event)">
-                    <mat-icon color="{{matchNotFound?'primary':''}}">{{matchNotFound?'done':''}}</mat-icon>
+                    <mat-icon color="{{matchNotFound?'primary':''}}">{{matchNotFound?'check_circle':''}}</mat-icon>
                     Match Not found
                 </button>
                 <button mat-menu-item (click)="filterStatus(-1,false,false,true,$event)">
-                    <mat-icon color="{{internalError?'primary':''}}">{{internalError?'done':''}}</mat-icon>
+                    <mat-icon color="{{internalError?'primary':''}}">{{internalError?'check_circle':''}}</mat-icon>
                     Interal Server Error
                 </button>
             </mat-menu>
             
             <mat-menu #dates="matMenu" appearance="fill">
                 <button mat-menu-item (click)="filterDates(true,false,$event)">
-                    <mat-icon color="{{lastWeek?'primary':''}}">{{lastWeek?'done':''}}</mat-icon>
+                    <mat-icon color="{{lastWeek?'primary':''}}">{{lastWeek?'check_circle':''}}</mat-icon>
                     Last 7 days
                 </button>
                 <button mat-menu-item (click)="filterDates(false,true,$event)">
-                    <mat-icon color="{{lastMonth?'primary':''}}">{{lastMonth?'done':''}}</mat-icon>
+                    <mat-icon color="{{lastMonth?'primary':''}}">{{lastMonth?'check_circle':''}}</mat-icon>
                     Last 30 days
                 </button>
                 <button mat-menu-item (click)="selectPrevent($event)">
@@ -153,7 +153,7 @@
                       <mat-label >Enter a date range</mat-label>
                       <mat-date-range-input [formGroup]="range" [rangePicker]="picker" >
                       <input matStartDate formControlName="start" placeholder="Start date" [(ngModel)]="startDate" >
-                      <input matEndDate formControlName="end" placeholder="End date" [(ngModel)]="endDate">
+                      <input matEndDate formControlName="end" placeholder="End date" [(ngModel)]="endDate" >
                       </mat-date-range-input>
                       <mat-datepicker-toggle matIconSuffix [for]="picker" ></mat-datepicker-toggle>
                       <mat-date-range-picker #picker (closed)="closed()"></mat-date-range-picker>               
