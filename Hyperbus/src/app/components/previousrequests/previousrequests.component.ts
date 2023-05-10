@@ -147,7 +147,8 @@ export class PreviousrequestsComponent implements OnInit {
     this.lastMonth = false;
     this.lastWeek = false;
     this.paginator.pageIndex = 0
-    
+    this.startDate=new Date(this.startDate);
+    this.endDate=new Date(this.endDate);
     this.startDate.setMinutes(this.startDate.getMinutes() - this.startDate.getTimezoneOffset());
     this.endDate.setMinutes(this.endDate.getMinutes() - this.endDate.getTimezoneOffset());
     this.getRequests(this.pageNo, this.limit);    
