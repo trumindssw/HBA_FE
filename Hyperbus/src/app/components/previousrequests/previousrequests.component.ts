@@ -8,6 +8,7 @@ import { tap } from 'rxjs';
 import {FormGroup, FormControl} from '@angular/forms';
 
 
+
 @Component({
   selector: 'app-previousrequests',
   templateUrl: './previousrequests.component.html',
@@ -37,6 +38,11 @@ export class PreviousrequestsComponent implements OnInit {
   public internalError=false;
   public matchFound=false;
   public matchNotFound=false;
+  public lastFilter:any;
+  selectedValue: any;
+  
+  //lastFilter = 1 for lastWeek true
+  //lastFilter = 2 for lastMonth true
   
   // public ProductHeader = [{ Number: 25 }, { Number: 50}, { Number: 100 }]; 
   public selectedNoList = '';
@@ -143,7 +149,7 @@ export class PreviousrequestsComponent implements OnInit {
   }
 
   closed(): void {
-   
+    this.selectedValue = null;
     this.lastMonth = false;
     this.lastWeek = false;
     this.paginator.pageIndex = 0
@@ -154,15 +160,14 @@ export class PreviousrequestsComponent implements OnInit {
     this.getRequests(this.pageNo, this.limit);    
   }
 
-  filterDates(lastWeek:boolean,lastMonth:boolean,$event:any){
-    this.lastWeek=lastWeek;
-    this.lastMonth=lastMonth;
+  filterDates(lastWeek:boolean,lastMonth:boolean,$event:any,lastFilter:any){
+    this.lastFilter=lastFilter;
     this.startDate = null;
     this.endDate = null;
-
+    this.lastWeek=lastWeek;
+    this.lastMonth=lastMonth;
     $event.stopPropagation();
     $event.preventDefault();
-
     this.paginator.pageIndex = 0;
     this.getRequests(this.pageNo, this.limit);    
   }
@@ -172,10 +177,8 @@ export class PreviousrequestsComponent implements OnInit {
     this.matchFound=matchFound;
     this.matchNotFound=matchNotFound;
     this.internalError=internalError;
-
     $event.stopPropagation();
     $event.preventDefault();
-
     this.paginator.pageIndex = 0;
     this.getRequests(this.pageNo, this.limit);    
   }
@@ -191,6 +194,8 @@ export class PreviousrequestsComponent implements OnInit {
     // prevent menu from closing
     $event.stopPropagation();
     $event.preventDefault();
+    
+    
   }
 }
 
