@@ -122,7 +122,7 @@
             <mat-menu #menu="matMenu">
                 <mat-form-field appearance="fill" (click)="selectPrevent($event)" subscriptSizing="dynamic">
                     <mat-label>Status</mat-label>
-                    <mat-icon matSuffix>add</mat-icon>
+                    <mat-icon matSuffix>expand_more</mat-icon>
                     <mat-select>
                       <mat-option value="option1?'matchFound':''" (click)="filterStatus(1,true,false,false,$event)">
                         OK
@@ -140,7 +140,7 @@
                 <mat-form-field appearance="fill" (click)="selectPrevent($event)" subscriptSizing="dynamic">
                     <mat-label *ngIf="!startDate && !endDate">Dates</mat-label>
                     <mat-label *ngIf="startDate && endDate" id="custom-label">Date Range is Selected</mat-label>
-                    <mat-icon matSuffix>add</mat-icon>
+                    <mat-icon matSuffix>expand_more</mat-icon>
                     <mat-select [(ngModel)]="selectedValue" >
                         <mat-option  [value]="lastWeek"  (click)="filterDates(true,false,$event,1)">
                         Last 7 days
