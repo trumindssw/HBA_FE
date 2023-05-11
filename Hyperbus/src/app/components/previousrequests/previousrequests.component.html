@@ -148,7 +148,7 @@
                         <mat-option  [value]="lastMonth" (click)="filterDates(false,true,$event,2)">
                         Last 30 days
                         </mat-option>
-                        <button (click)="selectPrevent($event)" >
+                        <button id="date-picker-btn" (click)="selectPrevent($event)" >
                             <mat-form-field appearance="fill" subscriptSizing="dynamic">
                                 <mat-label >Enter a date range</mat-label>
                                 <mat-date-range-input [formGroup]="range" [rangePicker]="picker" >
