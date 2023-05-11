@@ -120,49 +120,51 @@
             </button>
                 
             <mat-menu #menu="matMenu">
-                <button mat-menu-item [matMenuTriggerFor]="status">Status</button>
-                <button mat-menu-item [matMenuTriggerFor]="dates">Dates</button>
-            </mat-menu>
-               
-            <mat-menu #status="matMenu" appearance="fill">
-                <button mat-menu-item (click)="filterStatus(1,true,false,false,$event)">
-                    <mat-icon color="{{matchFound?'primary':''}}">{{matchFound?'check_circle':''}}</mat-icon>
-                    OK
-                </button>
-                <button mat-menu-item (click)="filterStatus(0,false,true,false,$event)">
-                    <mat-icon color="{{matchNotFound?'primary':''}}">{{matchNotFound?'check_circle':''}}</mat-icon>
-                    Match Not found
-                </button>
-                <button mat-menu-item (click)="filterStatus(-1,false,false,true,$event)">
-                    <mat-icon color="{{internalError?'primary':''}}">{{internalError?'check_circle':''}}</mat-icon>
-                    Interal Server Error
-                </button>
-            </mat-menu>
-            
-            <mat-menu #dates="matMenu" appearance="fill">
-                <button mat-menu-item (click)="filterDates(true,false,$event)">
-                    <mat-icon color="{{lastWeek?'primary':''}}">{{lastWeek?'check_circle':''}}</mat-icon>
-                    Last 7 days
-                </button>
-                <button mat-menu-item (click)="filterDates(false,true,$event)">
-                    <mat-icon color="{{lastMonth?'primary':''}}">{{lastMonth?'check_circle':''}}</mat-icon>
-                    Last 30 days
-                </button>
-                <button mat-menu-item (click)="selectPrevent($event)">
-                      <mat-form-field appearance="fill" >
-                      <mat-label >Enter a date range</mat-label>
-                      <mat-date-range-input [formGroup]="range" [rangePicker]="picker" >
-                      <input matStartDate formControlName="start" placeholder="Start date" [(ngModel)]="startDate" >
-                      <input matEndDate formControlName="end" placeholder="End date" [(ngModel)]="endDate" >
-                      </mat-date-range-input>
-                      <mat-datepicker-toggle matIconSuffix [for]="picker" ></mat-datepicker-toggle>
-                      <mat-date-range-picker #picker (closed)="closed()"></mat-date-range-picker>               
-                      <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid Start date</mat-error>
-                      <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid End date</mat-error>
-                      </mat-form-field>
-                </button>
-            </mat-menu>
+                <mat-form-field appearance="fill" (click)="selectPrevent($event)" subscriptSizing="dynamic">
+                    <mat-label>Status</mat-label>
+                    <mat-icon matSuffix>add</mat-icon>
+                    <mat-select>
+                      <mat-option value="option1?'matchFound':''" (click)="filterStatus(1,true,false,false,$event)">
+                        OK
+                      </mat-option>
+                      <mat-option value="option2" (click)="filterStatus(0,false,true,false,$event)">
+                        Match Not found
+                      </mat-option>
+                      <mat-option value="option3" (click)="filterStatus(-1,false,false,true,$event)">
+                        Internal Server Error
+                      </mat-option>
+                      <mat-option (click)="filterStatus(null,false,false,false,$event)"><b>Clear</b></mat-option>
+                    </mat-select>
+                </mat-form-field>
 
+                <mat-form-field appearance="fill" (click)="selectPrevent($event)" subscriptSizing="dynamic">
+                    <mat-label *ngIf="!startDate && !endDate">Dates</mat-label>
+                    <mat-label *ngIf="startDate && endDate" id="custom-label">Date Range is Selected</mat-label>
+                    <mat-icon matSuffix>add</mat-icon>
+                    <mat-select [(ngModel)]="selectedValue" >
+                        <mat-option  [value]="lastWeek"  (click)="filterDates(true,false,$event,1)">
+                        Last 7 days
+                        </mat-option>
+                        <mat-option  [value]="lastMonth" (click)="filterDates(false,true,$event,2)">
+                        Last 30 days
+                        </mat-option>
+                        <button (click)="selectPrevent($event)" >
+                            <mat-form-field appearance="fill" subscriptSizing="dynamic">
+                                <mat-label >Enter a date range</mat-label>
+                                <mat-date-range-input [formGroup]="range" [rangePicker]="picker" >
+                                    <input matStartDate formControlName="start" placeholder="Start date" [(ngModel)]="startDate" >
+                                    <input matEndDate formControlName="end" placeholder="End date" [(ngModel)]="endDate" >
+                                </mat-date-range-input>
+                                <mat-datepicker-toggle matIconSuffix [for]="picker" ></mat-datepicker-toggle>
+                                <mat-date-range-picker #picker (closed)="closed()"></mat-date-range-picker>               
+                                <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid Start date</mat-error>
+                                <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid End date</mat-error>
+                            </mat-form-field>
+                        </button>
+                        <mat-option (click)="filterDates(false,false,$event,null)"><b>Clear</b></mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-menu>
         </div>
     </div>
 
