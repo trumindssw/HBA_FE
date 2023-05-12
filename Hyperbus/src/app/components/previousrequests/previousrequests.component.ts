@@ -6,7 +6,8 @@ import { PreviousRequestsService } from 'src/app/_services/previousrequests/prev
 import { RequestdetailsComponent } from '../requestdetails/requestdetails.component';
 import { tap } from 'rxjs';
 import {FormGroup, FormControl} from '@angular/forms';
-
+import * as moment from 'moment';
+import 'moment-timezone';
 
 
 @Component({
@@ -91,6 +92,7 @@ export class PreviousrequestsComponent implements OnInit {
           let timeZone = '';
           // Get system's timezone
           if (typeof Intl === 'object' && typeof Intl.DateTimeFormat === 'function') {
+            console.log(Intl.DateTimeFormat().resolvedOptions())
             timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
           }
           let dte = dt.toLocaleString(
@@ -102,7 +104,8 @@ export class PreviousrequestsComponent implements OnInit {
               minute: '2-digit', 
               timeZone: timeZone 
             });
-          req.createdAt = dte.toString();
+          let abbr = moment().tz(timeZone).zoneAbbr();
+          req.createdAt = dte.toString() + " " + abbr;
         })
       }
     })

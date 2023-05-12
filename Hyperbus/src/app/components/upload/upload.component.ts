@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { HostListener } from '@angular/core';
 import { Uploadservice } from 'src/app/_services/upload/upload.service';
 import { saveAs } from 'file-saver';
+import * as moment from 'moment';
 // import * as XLSX from 'xlsx';
 @Component({
 selector: 'app-upload',
@@ -38,6 +39,16 @@ export class UploadComponent implements OnInit {
       response => {
         // console.log(response.data);
         this.files = response.data;
+
+        let timeZone = '';
+        // Get system's timezone
+        if (typeof Intl === 'object' && typeof Intl.DateTimeFormat === 'function') {
+          console.log(Intl.DateTimeFormat().resolvedOptions())
+          timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        }
+
+        let abbr = moment().tz(timeZone).zoneAbbr();
+        
         if(this.files && this.files.length>0) {
           this.files.map((f: { createdAt: string | number | Date; }) => {
             let dt = new Date(f.createdAt);
@@ -45,7 +56,7 @@ export class UploadComponent implements OnInit {
             let yr = dt.getFullYear();
             let date = dt.getDate();
             let time = dt.getHours() + "." + dt.getMinutes();
-            f.createdAt = month + " " + date + ", " + yr + " " + time;
+            f.createdAt = month + " " + date + ", " + yr + " " + time + " " + abbr ;
           })
         }
       }
