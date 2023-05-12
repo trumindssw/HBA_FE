@@ -405,3 +405,24 @@ mat-divider {
     padding: 0px;
     border: #ddd;
 }
+
+#filter-btn{
+    height: 56px;
+    box-sizing: border-box;
+    border: 1px solid #EAEAEA;
+    border-radius: 8px;
+}
+
+#button-title{
+    padding: 5px 15px 5px 15px; 
+}
+
+#cross-icon {
+    color: #D3273E;
+    padding: 18px;
+    box-sizing: content-box;
+}
+
+#filter-icon-display{
+    transform: scale(1.2);
+}
