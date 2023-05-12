@@ -39,9 +39,12 @@ export class PreviousrequestsComponent implements OnInit {
   public internalError=false;
   public matchFound=false;
   public matchNotFound=false;
-  public lastFilter:any;
   selectedValue: any;
-  
+  selectedValueStatus: any;
+  badgeContent : any;
+  public lastFilter:any;
+  public prevStatus:any;
+  public prevLastFilter:any;
   //lastFilter = 1 for lastWeek true
   //lastFilter = 2 for lastMonth true
   
@@ -57,7 +60,7 @@ export class PreviousrequestsComponent implements OnInit {
     private router: Router,
     private PreviousRequestsService: PreviousRequestsService,
     // private RequestDetailsComponents: RequestdetailsComponent,
-    private dialog: MatDialog) {  }
+    private dialog: MatDialog) { }
 
   ngOnInit(){
     this.getRequests(this.pageNo, this.limit);
@@ -160,30 +163,59 @@ export class PreviousrequestsComponent implements OnInit {
     this.endDate=new Date(this.endDate);
     this.startDate.setMinutes(this.startDate.getMinutes() - this.startDate.getTimezoneOffset());
     this.endDate.setMinutes(this.endDate.getMinutes() - this.endDate.getTimezoneOffset());
+    this.incrementCount()
     this.getRequests(this.pageNo, this.limit);    
   }
 
   filterDates(lastWeek:boolean,lastMonth:boolean,$event:any,lastFilter:any){
+    this.prevLastFilter=this.lastFilter;
     this.lastFilter=lastFilter;
     this.startDate = null;
     this.endDate = null;
-    this.lastWeek=lastWeek;
-    this.lastMonth=lastMonth;
     $event.stopPropagation();
     $event.preventDefault();
+
+    if(this.prevLastFilter==this.lastFilter){
+      this.prevLastFilter=null;
+      this.lastFilter=null;
+      this.lastWeek=false;
+      this.lastMonth=false;
+      this.selectedValue = null;
+    }
+    else{
+      this.lastWeek=lastWeek;
+      this.lastMonth=lastMonth;
+    }
+
     this.paginator.pageIndex = 0;
+    this.incrementCount()
     this.getRequests(this.pageNo, this.limit);    
   }
 
   filterStatus(status:any,matchFound:boolean,matchNotFound:boolean,internalError:boolean,$event:any){
+    this.prevStatus=this.status;
     this.status=status;
-    this.matchFound=matchFound;
-    this.matchNotFound=matchNotFound;
-    this.internalError=internalError;
     $event.stopPropagation();
     $event.preventDefault();
+
+    if(this.prevStatus==status){
+      this.status=null;
+      this.prevStatus=null;
+      this.matchFound=false;
+      this.matchNotFound=false;
+      this.internalError=false;
+      this.selectedValueStatus = null;
+    }
+    else{
+      this.matchFound=matchFound;
+      this.matchNotFound=matchNotFound;
+      this.internalError=internalError;
+    }
+
     this.paginator.pageIndex = 0;
-    this.getRequests(this.pageNo, this.limit);    
+    this.incrementCount()
+    this.getRequests(this.pageNo, this.limit); 
+       
   }
   
   range = new FormGroup({
@@ -196,10 +228,20 @@ export class PreviousrequestsComponent implements OnInit {
   selectPrevent($event:any) {
     // prevent menu from closing
     $event.stopPropagation();
-    $event.preventDefault();
-    
-    
+    $event.preventDefault(); 
   }
+
+  incrementCount() {
+      if((this.matchFound==true || this.matchNotFound==true || this.internalError==true) && (this.lastWeek==false && this.lastMonth==false && this.startDate==null && this.endDate==null))
+      this.badgeContent=1;
+      else if((this.matchFound==false && this.matchNotFound==false && this.internalError==false)&& (this.lastWeek==true || this.lastMonth==true || (this.startDate!=null && this.endDate!=null)))
+      this.badgeContent=1;
+      else if((this.matchFound==true || this.matchNotFound==true || this.internalError==true) && (this.lastWeek==true || this.lastMonth==true || (this.startDate!=null && this.endDate!=null)))
+      this.badgeContent=2; 
+      else
+      this.badgeContent=null;
+  }
+
 }
 
 export interface Requests {
