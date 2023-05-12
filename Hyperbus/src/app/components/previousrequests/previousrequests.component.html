@@ -116,7 +116,10 @@
         </div>
         <div class="col-md-6 col-sm-12">
             <button mat-mini-fab color="primary" class="filter" [style.float]="'right'"  [matMenuTriggerFor]="menu" aria-label="Example icon button with a filter list icon" >
-                <mat-icon>filter_list</mat-icon>
+                <mat-icon *ngIf="!matchFound && !matchNotFound && !internalError && !lastWeek && !lastMonth && !startDate && !endDate">filter_list</mat-icon>
+                <mat-icon *ngIf="(matchFound || matchNotFound || internalError) && (!lastWeek && !lastMonth && !startDate && !endDate)" mat-raised-button matBadge="1">filter_list</mat-icon>
+                <mat-icon *ngIf="(!matchFound && !matchNotFound && !internalError) && (lastWeek || lastMonth || (startDate && endDate))" mat-raised-button matBadge="1">filter_list</mat-icon>
+                <mat-icon *ngIf="(matchFound || matchNotFound || internalError) && (lastWeek || lastMonth || (startDate && endDate))" mat-raised-button matBadge="2">filter_list</mat-icon>
             </button>
                 
             <mat-menu #menu="matMenu">
@@ -124,7 +127,7 @@
                     <mat-label>Status</mat-label>
                     <mat-icon matSuffix>expand_more</mat-icon>
                     <mat-select>
-                      <mat-option value="option1?'matchFound':''" (click)="filterStatus(1,true,false,false,$event)">
+                      <mat-option value="option1" (click)="filterStatus(1,true,false,false,$event)">
                         OK
                       </mat-option>
                       <mat-option value="option2" (click)="filterStatus(0,false,true,false,$event)">
