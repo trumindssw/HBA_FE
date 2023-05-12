@@ -159,12 +159,16 @@ export class PreviousrequestsComponent implements OnInit {
     this.lastMonth = false;
     this.lastWeek = false;
     this.paginator.pageIndex = 0
-    this.startDate=new Date(this.startDate);
-    this.endDate=new Date(this.endDate);
-    this.startDate.setMinutes(this.startDate.getMinutes() - this.startDate.getTimezoneOffset());
-    this.endDate.setMinutes(this.endDate.getMinutes() - this.endDate.getTimezoneOffset());
-    this.incrementCount()
-    this.getRequests(this.pageNo, this.limit);    
+    if(this.startDate==null && this.endDate==null)
+    this.getRequests(this.pageNo, this.limit);
+    else {
+      this.startDate=new Date(this.startDate);
+      this.endDate=new Date(this.endDate);
+      this.startDate.setMinutes(this.startDate.getMinutes() - this.startDate.getTimezoneOffset());
+      this.endDate.setMinutes(this.endDate.getMinutes() - this.endDate.getTimezoneOffset());
+      this.incrementCount()
+      this.getRequests(this.pageNo, this.limit);  
+    }   
   }
 
   filterDates(lastWeek:boolean,lastMonth:boolean,$event:any,lastFilter:any){
