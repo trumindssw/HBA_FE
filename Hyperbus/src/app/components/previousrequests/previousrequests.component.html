@@ -158,7 +158,7 @@
                                     <input matEndDate formControlName="end" placeholder="End date" [(ngModel)]="endDate" >
                                 </mat-date-range-input>
                                 <mat-datepicker-toggle *ngIf="!startDate && !endDate" matIconSuffix [for]="picker" ></mat-datepicker-toggle>
-                                <mat-icon *ngIf="startDate && endDate" matIconSuffix id="cross-icon" (click)="filterDates(false,false,$event,null)">close</mat-icon>
+                                <mat-icon *ngIf="startDate && endDate" matIconSuffix id="cross-icon" (click)="filterDates(false,false,$event,null)">cancel</mat-icon>
                                 <mat-date-range-picker #picker (closed)="closed()"></mat-date-range-picker>               
                                 <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid Start date</mat-error>
                                 <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid End date</mat-error>

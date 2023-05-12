@@ -409,8 +409,8 @@ mat-divider {
 #filter-btn{
     height: 56px;
     box-sizing: border-box;
-    border: 1px solid #EAEAEA;
-    border-radius: 8px;
+    border: 1px solid  rgba(0, 0, 0, 0.3) !important;
+    border-radius: 6px;
 }
 
 #button-title{
@@ -418,7 +418,8 @@ mat-divider {
 }
 
 #cross-icon {
-    color: #D3273E;
+    color: rgba(0, 0, 0, 0.74);
+    transform: scale(0.8);
     padding: 18px;
     box-sizing: content-box;
 }
