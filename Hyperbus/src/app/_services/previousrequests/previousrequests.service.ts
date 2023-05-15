@@ -41,5 +41,17 @@ export class PreviousRequestsService {
 
         return this.http.get<any>(this.getRequestCountsUrl, options)
     }
+    getSearchResult(searchString:string) {
+        let token = localStorage.getItem('user') || "";
+        console.log(token)
+        let headers = new HttpHeaders({
+            'Authorization': 'Bearer ' + token
+        });
+
+        let options = {headers: headers}
+        let body = {searchValue: searchString}
+
+        return this.http.post<any>(this.getAllRequestsUrl, body, options)
+    }
 
 }

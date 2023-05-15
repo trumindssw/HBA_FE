@@ -1,28 +1,32 @@
 <div class="responseBox">
-  <div class="responseTable">
-    <h3>Request </h3>
-        <table class="requestDetail">
-          <tbody>
-          <tr *ngFor ="let res of result" >
-            <td >{{res['key']}} :</td>
-            <td> {{res['value']}}</td>
-          </tr>
-        </tbody>
-    </table>
-        <hr>
-        <h3>Response </h3>
-    <table class="requestDetail"> 
-      <tbody>
-        <tr *ngFor ="let res of result" >
-          <td>{{res['key']}} :</td>
-          <td>{{res['value']}}</td>
-          <td>
-            <img *ngIf="res['checked'] === 0" src="/assets/vectors/redSignal.svg" alt="Image 1" class="checkedIcon">
-            <img *ngIf="res['checked'] === 1" src="/assets/vectors/greenSignal.svg" alt="Image 2" class="checkedIcon">
-          </td>
-        </tr> 
-      </tbody>
-    </table>  
-    </div>
-</div>
+  
+  <button mat-icon-button class="close-button" [mat-dialog-close]="true">
+    <mat-icon class="close-icon" color="warn">close</mat-icon>
+  </button>
 
+<div class="responseTable">
+  <h3>Request </h3>
+      <table class="requestDetail1">
+        <tbody>
+        <tr *ngFor ="let res of result" >
+          <td >{{res['key']}} :</td>
+          <td> {{res['value']}}</td>
+        </tr>
+      </tbody>
+  </table>
+      <hr>
+      <h3>Response </h3>
+  <table class="requestDetail2"> 
+    <tbody>
+      <tr *ngFor ="let res of result" >
+        <td>{{res['key']}} :</td>
+        <td>{{res['value']}}</td>
+        <td>
+          <img *ngIf="res['checked'] === 0" src="/assets/vectors/redSignal.svg" alt="Image 1" class="checkedIcon">
+          <img *ngIf="res['checked'] === 1" src="/assets/vectors/greenSignal.svg" alt="Image 2" class="checkedIcon">
+        </td>
+      </tr> 
+    </tbody>
+  </table>  
+  </div>
+</div>
