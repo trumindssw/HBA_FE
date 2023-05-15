@@ -82,7 +82,7 @@ export class PreviousrequestsComponent implements OnInit {
   getRequests(pageNo: number, pageSize: number) {
     console.log(pageNo);
     console.log(pageSize);
-    this.PreviousRequestsService.getAllRequests(pageNo,pageSize,this.lastWeek,this.lastMonth,this.startDate,this.endDate,this.status)
+    this.PreviousRequestsService.getAllRequests(pageNo,pageSize,this.lastWeek,this.lastMonth,this.startDate,this.endDate,this.status,this.searchString)
     .subscribe(response => {
       console.log(response)
       console.log(this.startDate);
@@ -250,12 +250,8 @@ export class PreviousrequestsComponent implements OnInit {
       this.badgeContent=null;
   }
   searchResult() {
-
-    this.PreviousRequestsService.getSearchResult(this.searchString)
-    .subscribe(response => {
-      this.requests = response.data.data;
-      this.total =  response.data.total;
-    })
+      this.getRequests(this.pageNo, this.limit);
+    
   }
 
 }
