@@ -107,14 +107,14 @@
     </div>
     <div class="row">
         <p class="previous-requests" [style.margin-bottom]="'30px'">Previous Requests</p>
-        <div class="col-md-6 col-sm-12">
+        <div class="col-md-3 col-sm-12">
             <!-- <input class="search-bar" type="text" placeholder="Search"> -->
             <mat-form-field appearance="outline">
                
                 <input matInput [(ngModel)]= "searchString" type="text" (input)="searchResult()" placeholder="Search" >
               </mat-form-field>
         </div>
-        <div class="col-md-6 col-sm-12">
+        <div class="col-md-9 col-sm-12">
 
             <button mat-stroked-button id="filter-btn"  [style.float]="'right'"  [matMenuTriggerFor]="menu" [matBadge]="badgeContent" (click)="incrementCount()">
                 <mat-icon id="filter-icon-display">filter_list</mat-icon>
