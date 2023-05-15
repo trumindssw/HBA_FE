@@ -394,8 +394,8 @@ mat-divider {
 #custom-label{
     color: rgba(0,0,0,.87);
     font-family: var(--mdc-typography-body1-font-family, var(--mdc-typography-font-family, Roboto, sans-serif));
-    font-size: var(--mdc-typography-body1-font-size, 16px);
-    line-height: var(--mdc-typography-body1-line-height, 24px);
+    font-size: var(--mdc-typography-body1-font-size, 14px);
+    line-height: var(--mdc-typography-body1-line-height, 22px);
     font-weight: var(--mdc-typography-body1-font-weight, 400);
     letter-spacing: var(--mdc-typography-body1-letter-spacing, 0.03125em);
     -webkit-text-decoration: var(--mdc-typography-body1-text-decoration, inherit);
@@ -413,6 +413,7 @@ mat-divider {
     box-sizing: border-box;
     border: 1px solid  rgba(0, 0, 0, 0.3) !important;
     border-radius: 6px;
+    letter-spacing: var(--mdc-typography-body1-letter-spacing, 0.03125em);
 }
 
 #button-title{
@@ -428,4 +429,31 @@ mat-divider {
 
 #filter-icon-display{
     transform: scale(1.2);
+}
+
+#no-records-text{
+    padding-top: 5px;
+    color: rgba(0, 0, 0, 0.60);
+    font-family: var(--mdc-typography-body1-font-family, var(--mdc-typography-font-family, Roboto, sans-serif));
+    font-size: var(--mdc-typography-body1-font-size, 16px);
+    line-height: var(--mdc-typography-body1-line-height, 24px);
+    font-weight: var(--mdc-typography-body1-font-weight, 400);
+    letter-spacing: var(--mdc-typography-body1-letter-spacing, 0.03125em);
+    
+}
+
+#no-result-found-img{
+  display: block;
+  max-width: 100%;
+  height: 45px;
+  margin-top: 35px !important;
+}
+
+::ng-deep .mat-mdc-select-value {
+    -webkit-font-smoothing: antialiased;
+    font-family: var(--mdc-typography-body1-font-family, var(--mdc-typography-font-family, Roboto, sans-serif));
+    font-size: var(--mdc-typography-body1-font-size, 14px);
+    line-height: var(--mdc-typography-body1-line-height, 22px);
+    font-weight: var(--mdc-typography-body1-font-weight, 400);
+    letter-spacing: var(--mdc-typography-body1-letter-spacing, 0.03125em);
 }
