@@ -43,6 +43,9 @@ export class RequestdetailsComponent {
         console.log('Results',this.result)
       });
     }
+    onNoClick(): void {
+      this.RequestDetailsServices;
+    }
 }
 
 

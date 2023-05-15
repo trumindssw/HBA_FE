@@ -45,6 +45,10 @@ export class PreviousrequestsComponent implements OnInit {
   public lastFilter:any;
   public prevStatus:any;
   public prevLastFilter:any;
+  public searchString:string= '';
+  public filterBy :string ='';
+  public users: any;
+  public filteredUsers: any;
   //lastFilter = 1 for lastWeek true
   //lastFilter = 2 for lastMonth true
   
@@ -244,6 +248,14 @@ export class PreviousrequestsComponent implements OnInit {
       this.badgeContent=2; 
       else
       this.badgeContent=null;
+  }
+  searchResult() {
+
+    this.PreviousRequestsService.getSearchResult(this.searchString)
+    .subscribe(response => {
+      this.requests = response.data.data;
+      this.total =  response.data.total;
+    })
   }
 
 }
