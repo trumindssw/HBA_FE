@@ -162,7 +162,7 @@ export class PreviousrequestsComponent implements OnInit {
     this.selectedValue = null;
     this.lastMonth = false;
     this.lastWeek = false;
-    if(this.total!=0) {
+    if(this.requests.length>0) {
       this.paginator.pageIndex = 0
     }
 
@@ -198,7 +198,7 @@ export class PreviousrequestsComponent implements OnInit {
       this.lastMonth=lastMonth;
     }
 
-    if(this.total!=0) {
+    if(this.requests.length>0) {
       this.paginator.pageIndex = 0
     }
     this.incrementCount()
@@ -225,7 +225,7 @@ export class PreviousrequestsComponent implements OnInit {
       this.internalError=internalError;
     }
 
-    if(this.total!=0) {
+    if(this.requests.length>0) {
       this.paginator.pageIndex = 0
     }
     this.incrementCount()
@@ -257,8 +257,12 @@ export class PreviousrequestsComponent implements OnInit {
       this.badgeContent=null;
   }
   searchResult() {
-      this.getRequests(this.pageNo, this.limit);
+    if(this.requests.length>0) {
+      this.paginator.pageIndex = 0
+    }
     
+    this.getRequests(this.pageNo, this.limit);
+      
   }
 
 }
