@@ -171,12 +171,12 @@
         </div>
     </div>
 
-    <div *ngIf="!total" class="col-md-12 ">
+    <div *ngIf="this.requests.length<=0" class="col-md-12 ">
         <img id="no-result-found-img" class="rounded mx-auto d-block" src="/assets/images/expired-3.png">
         <p  id="no-records-text" class="text-center" >No Records</p>
     </div>
 
-    <div *ngIf="total" class="row table mat-elevation-z8">
+    <div *ngIf="this.requests.length>0" class="row table mat-elevation-z8">
         <div class="col-md-12 ">
             <ng-scrollbar>
                 <table mat-table [dataSource]="requests" multiTemplateDataRows>
