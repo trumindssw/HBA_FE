@@ -257,7 +257,11 @@ export class PreviousrequestsComponent implements OnInit {
       this.badgeContent=null;
   }
   searchResult() {
-      this.getRequests(this.pageNo, this.limit);
+    if(this.requests.length>0) {
+      this.paginator.pageIndex = 0
+    }
+    
+    this.getRequests(this.pageNo, this.limit);
       
   }
 
