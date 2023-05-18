@@ -29,7 +29,10 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 col-sm-12" >
-                        <button [disabled]="loading" mat-raised-button color="primary">Sign In</button>
+                        <button [disabled]="loading" mat-raised-button color="primary"  [disabled]="isLockedOut">Sign In</button>
+                    </div>
+                    <div *ngIf="isLockedOut">
+                        <p id="countDownText">Too many incorrect attempts. Please wait for {{ formatCountdownTime(countdownTimer) }} before trying again.</p>
                     </div>
                 </div>
             </form>   

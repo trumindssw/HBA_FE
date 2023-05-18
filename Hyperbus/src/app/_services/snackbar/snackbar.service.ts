@@ -20,6 +20,16 @@ export class SnackbarService {
     this.ngZone.run(() => {
       this.matSnackBar.open(message, 'DISMISS', config);
     });
-    
   }
+  
+  // openSnackBarTimer(message:string, panel?:string){
+  //   let config = new MatSnackBarConfig();
+  //   config.verticalPosition = 'top';
+  //   config.horizontalPosition = 'center';
+  //   config.panelClass = [panel || 'primary-snackbar' ]
+  //   this.ngZone.run(() => {
+  //     this.matSnackBar.open(message, 'DISMISS', config);
+  //   });
+  // }
+  
 }
