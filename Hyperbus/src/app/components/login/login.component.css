@@ -97,3 +97,12 @@ button {
     font-size: 18px;
     line-height: 21px;
 }
+
+#countDownText{
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 15px;
+    /* line-height: 47px; */
+    color: var(--mdc-theme-error, #f44336);
+    margin-top: 5%;;
+} 

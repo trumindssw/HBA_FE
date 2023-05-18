@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-
 import { environment } from 'src/environments/environment.development';
 import { map } from 'rxjs';
 
@@ -15,7 +14,7 @@ export class AuthenticationService {
     private userSubject: String | null;
     
     private _loginUrl = environment.apiUrl + "/login";
-
+    lockoutTime: any;
     constructor(
         private router: Router,
         private http: HttpClient
@@ -59,5 +58,19 @@ export class AuthenticationService {
         this.router.navigate(['./'])
     }
 
-    
+    isLockedOut(): boolean {
+        if (this.lockoutTime) {
+            const remainingTime = this.lockoutTime.getTime() - Date.now();
+            return remainingTime > 0;
+          }
+          return false;
+        // return this.lockoutTime && this.lockoutTime > new Date();
+    }
+      
+    getRemainingLockoutTime(): number {
+        console.log("Reached getRemaining function");
+        const remainingTime = this.lockoutTime.getTime() - new Date().getTime();
+        console.log(remainingTime);
+        return Math.ceil(remainingTime / 1000); // Convert remaining time to seconds
+    }
 }
