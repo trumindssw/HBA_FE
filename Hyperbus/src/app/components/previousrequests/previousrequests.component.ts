@@ -149,7 +149,8 @@ export class PreviousrequestsComponent implements OnInit {
     this.router.navigate(['/upload']);
   }
 
-  openDialog(reqId: string) {
+  openDialog(reqId: string,event: any) {
+    event.target.style.color = 'violet';
     const dialog = this.dialog.open(RequestdetailsComponent,{
      data: { name: reqId },
     });
@@ -157,7 +158,7 @@ export class PreviousrequestsComponent implements OnInit {
       console.log('result')
     });
   }
-
+  
   closed(): void {
     this.selectedValue = null;
     this.lastMonth = false;
