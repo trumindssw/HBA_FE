@@ -10,11 +10,9 @@ import * as moment from 'moment';
 selector: 'app-upload',
 templateUrl: './upload.component.html',
 styleUrls: ['./upload.component.css']
-
 })
 
 export class UploadComponent implements OnInit {
-
   public error: any ;
   public dragAreaClass: any;
   public draggedFiles: any;
@@ -28,27 +26,22 @@ export class UploadComponent implements OnInit {
   file:any
   public uploading: boolean = false;
 
-  
-
   constructor(
       private router: Router,
       private httpClient: HttpClient,
       private UploadService: Uploadservice) { }
+
   ngOnInit(){
     this.UploadService.getAllFiles().subscribe(
       response => {
-        // console.log(response.data);
         this.files = response.data;
-
         let timeZone = '';
         // Get system's timezone
         if (typeof Intl === 'object' && typeof Intl.DateTimeFormat === 'function') {
           console.log(Intl.DateTimeFormat().resolvedOptions())
           timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
         }
-
-        let abbr = moment().tz(timeZone).zoneAbbr();
-        
+        let abbr = moment().tz(timeZone).zoneAbbr();        
         if(this.files && this.files.length>0) {
           this.files.map((f: { createdAt: string | number | Date; }) => {
             let dt = new Date(f.createdAt);
@@ -63,43 +56,32 @@ export class UploadComponent implements OnInit {
     )
     this.dragAreaClass = "dragarea";
   }
-  onBtn(){
 
-  this.router.navigate(['/previousrequests']);
+  onBtn() {
+    this.router.navigate(['/previousrequests']);
   }
 
-  downloadFile(fileNames: string){
-
+  downloadFile(fileNames: string) {
     console.log("download button clicked!");
-   
-
     this.UploadService.downloadFile(fileNames).subscribe(
       response => {
         console.log(response);
         let blob = new Blob([response.body], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"});
         const file = new File([blob],fileNames, { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
-
-       saveAs(file);
-        
-
+        saveAs(file);
       }
     );
-
-
   }
 
-
-  onFileChange(event: any) 
-  {
+  onFileChange(event: any) {
     console.log("I am in onfilechange")
-    if(event.target.value) 
-    {
+    if(event.target.value) {
         this.fl = <File>event.target.files[0];
         this.chosen=true;
         this.uploading = true;
         this.saveFiles();
         event.target.value='';
-        this.ngOnInit()
+        // this.ngOnInit()
     }
   }
 
@@ -135,13 +117,14 @@ export class UploadComponent implements OnInit {
       if(this.fl) {
        fd.append("file", this.fl, this.fl.name);
        this.UploadService.UploadExcel(fd).subscribe((res) => {
-
         if(res.status == 1) {
           this.error = false;
           this.colour = true;
           console.log("Res.message: ", res.message)
           this.message = res.message;
-
+          this.UploadService.getAllFiles().subscribe(response => {
+            this.files = response.data;
+          });
         } else {
           this.error = true;
           this.colour = false;

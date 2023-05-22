@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator,PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { PreviousRequestsService } from 'src/app/_services/previousrequests/previousrequests.service';
 import { RequestdetailsComponent } from '../requestdetails/requestdetails.component';
@@ -118,6 +118,11 @@ export class PreviousrequestsComponent implements OnInit {
     })
   }
 
+  onPageChange(event: PageEvent) {
+    this.pageNo = event.pageIndex;
+    this.limit = event.pageSize;
+    this.getRequests(this.pageNo, this.limit);
+  }
 
   getRequestCounts() {
     this.PreviousRequestsService.getRequestCounts()
@@ -163,7 +168,7 @@ export class PreviousrequestsComponent implements OnInit {
     this.selectedValue = null;
     this.lastMonth = false;
     this.lastWeek = false;
-    if(this.requests.length>0) {
+    if(this.requests && this.requests.length>0) {
       this.paginator.pageIndex = 0
     }
 
@@ -194,12 +199,12 @@ export class PreviousrequestsComponent implements OnInit {
       this.lastMonth=false;
       this.selectedValue = null;
     }
-    else{
+    else {
       this.lastWeek=lastWeek;
       this.lastMonth=lastMonth;
     }
 
-    if(this.requests.length>0) {
+    if(this.requests && this.requests.length>0) {
       this.paginator.pageIndex = 0
     }
     this.incrementCount()
@@ -226,18 +231,16 @@ export class PreviousrequestsComponent implements OnInit {
       this.internalError=internalError;
     }
 
-    if(this.requests.length>0) {
+    if(this.requests && this.requests.length>0) {
       this.paginator.pageIndex = 0
     }
     this.incrementCount()
-    this.getRequests(this.pageNo, this.limit); 
-       
+    this.getRequests(this.pageNo, this.limit);      
   }
   
   range = new FormGroup({
     start: new FormControl<Date | null>(null),
     end: new FormControl<Date | null>(null),
-
   });
 
 
@@ -257,13 +260,12 @@ export class PreviousrequestsComponent implements OnInit {
       else
       this.badgeContent=null;
   }
+
   searchResult() {
-    if(this.requests.length>0) {
+    if(this.requests && this.requests.length>0) {
       this.paginator.pageIndex = 0
-    }
-    
-    this.getRequests(this.pageNo, this.limit);
-      
+    }   
+    this.getRequests(this.pageNo, this.limit); 
   }
 
 }
