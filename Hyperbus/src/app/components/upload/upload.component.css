@@ -179,3 +179,7 @@ td {
     border: none;
     background-color:white;
 }
+
+#img-drop{
+    transform: scale(0.8);
+}
