@@ -172,7 +172,7 @@
         </div>
     </div>
 
-    <div  *ngIf="!requests.length" class="col-md-12 ">
+    <div  *ngIf="requests && !requests.length" class="col-md-12 ">
         <img id="no-result-found-img" class="rounded mx-auto d-block" src="/assets/images/expired-3.png">
         <p  id="no-records-text" class="text-center" >No Records</p>
     </div>

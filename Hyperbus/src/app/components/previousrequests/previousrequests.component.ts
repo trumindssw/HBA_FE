@@ -64,7 +64,7 @@ export class PreviousrequestsComponent implements OnInit {
     private router: Router,
     private PreviousRequestsService: PreviousRequestsService,
     // private RequestDetailsComponents: RequestdetailsComponent,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog) {}
 
   ngOnInit(){
     this.getRequests(this.pageNo, this.limit);
@@ -76,7 +76,7 @@ export class PreviousrequestsComponent implements OnInit {
         .pipe(
             tap(() => this.getRequests(this.paginator.pageIndex+1, this.paginator.pageSize))
         )
-        .subscribe();
+        .subscribe(); 
   }
 
   getRequests(pageNo: number, pageSize: number) {
