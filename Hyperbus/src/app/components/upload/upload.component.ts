@@ -5,7 +5,7 @@ import { HostListener } from '@angular/core';
 import { Uploadservice } from 'src/app/_services/upload/upload.service';
 import { saveAs } from 'file-saver';
 import * as moment from 'moment';
-// import * as XLSX from 'xlsx';
+
 @Component({
 selector: 'app-upload',
 templateUrl: './upload.component.html',
@@ -25,13 +25,17 @@ export class UploadComponent implements OnInit {
   files:any
   file:any
   public uploading: boolean = false;
+  badgeContentNotification : any;
 
   constructor(
       private router: Router,
       private httpClient: HttpClient,
-      private UploadService: Uploadservice) { }
+      private UploadService: Uploadservice,
+      ) { }
 
   ngOnInit(){
+    this.retrieveBadgeValueFromAPI();
+
     this.UploadService.getAllFiles().subscribe(
       response => {
         this.files = response.data;
@@ -56,9 +60,22 @@ export class UploadComponent implements OnInit {
     )
     this.dragAreaClass = "dragarea";
   }
-
+  
   onBtn() {
     this.router.navigate(['/previousrequests']);
+  }
+
+  retrieveBadgeValueFromAPI() {
+    this.UploadService.getBadgeNotification().subscribe(
+      response => {
+        console.log("Badge Content",response);
+        this.badgeContentNotification=response.data;
+        
+        if(response.data == 0)
+        this.badgeContentNotification=null;
+        console.log("Badge count",this.badgeContentNotification);
+      }
+    );
   }
 
   downloadFile(fileNames: string) {

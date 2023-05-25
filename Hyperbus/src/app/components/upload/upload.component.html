@@ -2,11 +2,11 @@
     <div class="row">
         <div class="col-md-6 col-sm-12" id="card-letter1">Hyperbus Adaptor - IA Data Manager</div>
         <div class="col-md-6 col-sm-12">
-            <button id="button"  (click)="onBtn()">
+            <button id="button" [matBadge]="badgeContentNotification" matBadgeColor="warn"  (click)="onBtn()" >
                 <p id="button-text">
                   View previous requests
                 </p>
-              </button>
+            </button>
         </div>
     </div>
     <div class="row" id="row2">
