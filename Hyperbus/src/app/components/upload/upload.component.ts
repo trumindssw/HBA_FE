@@ -52,7 +52,7 @@ export class UploadComponent implements OnInit {
             let month = dt.toLocaleString('default', { month: 'long' });
             let yr = dt.getFullYear();
             let date = dt.getDate();
-            let time = dt.getHours() + "." + dt.getMinutes();
+            let time = dt.getHours() + ":" + dt.getMinutes();
             f.createdAt = month + " " + date + ", " + yr + " " + time + " " + abbr ;
           })
         }
