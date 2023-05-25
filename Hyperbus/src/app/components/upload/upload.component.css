@@ -183,3 +183,7 @@ td {
 #img-drop{
     transform: scale(0.8);
 }
+
+#upload-logo{
+    transform: scale(0.8);
+}
