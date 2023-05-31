@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { PreviousrequestsComponent } from '../previousrequests/previousrequests.component';
-import { RequestdetailsService } from 'src/app/_services/requestdetails/requestdetails.service';
+import { RequestdetailsService } from '../../_services/requestdetails/requestdetails.service';
 import { MatDialog , MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({

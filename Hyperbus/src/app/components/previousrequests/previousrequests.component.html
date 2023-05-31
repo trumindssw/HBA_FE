@@ -7,8 +7,42 @@
                 </svg>
              </button>
         </div>
-        <div class="col-md-11 col-sm-11">
+        <div class="col-md-5 col-sm-5">
             <p id="card-letter1">Hyperbus Adaptor - IA Data Manager</p>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <button mat-stroked-button id="trend-btn"  [style.float]="'right'" [matMenuTriggerFor]="menuTrend">
+                <mat-icon id="trend-icon-display">launch</mat-icon>
+                <span id="button-title-trend">Trend</span>
+            </button>
+
+            <mat-menu #menuTrend="matMenu">
+                <mat-form-field appearance="fill" (click)="selectPrevent($event)" subscriptSizing="dynamic">
+                    <mat-label>View</mat-label>
+                    <mat-icon matSuffix id="expand-more-icon-trends">expand_more</mat-icon>
+                    <mat-select  [(ngModel)]="selectedTrendViewOption">
+                      <mat-option value="option1" (click)="trendsView(true,false)">
+                        Daily
+                      </mat-option>
+                      <mat-option value="option2" (click)="trendsView(false,true)">
+                        Weekly
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" subscriptSizing="dynamic" (click)="selectPrevent($event)">
+                    <mat-label >Select a date range</mat-label>
+                    <mat-date-range-input [formGroup]="rangeTrend" [rangePicker]="pickerTrend">
+                        <input  matStartDate   formControlName="startTrend" placeholder="Start date" [(ngModel)]="startDateTrend">
+                        <input  matEndDate   formControlName="endTrend" placeholder="End date" [(ngModel)]="endDateTrend">
+                    </mat-date-range-input>
+                    <mat-datepicker-toggle *ngIf="!startDateTrend && !endDateTrend" matIconSuffix [for]="pickerTrend" ></mat-datepicker-toggle>
+                    <mat-icon *ngIf="startDateTrend && endDateTrend" matIconSuffix id="cross-icon" (click)="eraseDateTrends($event)">cancel</mat-icon>
+                    <mat-date-range-picker #pickerTrend (closed)="closedTrends()"></mat-date-range-picker>               
+                    <mat-error *ngIf="rangeTrend.controls.startTrend.hasError('invalidDate')">Invalid Start date</mat-error>
+                    <mat-error *ngIf="rangeTrend.controls.endTrend.hasError('invalidDate')">Invalid End date</mat-error>
+                </mat-form-field>
+            </mat-menu>
         </div>
     </div>
     <div class="row row2" > 
@@ -153,7 +187,7 @@
                         </mat-option>
                         <button id="date-picker-btn" (click)="selectPrevent($event)" >
                             <mat-form-field appearance="fill" subscriptSizing="dynamic">
-                                <mat-label >Enter a date range</mat-label>
+                                <mat-label >Select a date range</mat-label>
                                 <mat-date-range-input [formGroup]="range" [rangePicker]="picker" >
                                     <input matStartDate formControlName="start" placeholder="Start date" [(ngModel)]="startDate" >
                                     <input matEndDate formControlName="end" placeholder="End date" [(ngModel)]="endDate" >

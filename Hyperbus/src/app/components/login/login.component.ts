@@ -5,7 +5,7 @@ import { first } from 'rxjs/operators';
 import { AuthenticationService } from '../../_services/authentication/authentication.service';
 import { HttpClient } from '@angular/common/http';
 import {NgForm} from '@angular/forms';
-import { SnackbarService } from 'src/app/_services/snackbar/snackbar.service';
+import { SnackbarService } from '../../_services/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-body',
