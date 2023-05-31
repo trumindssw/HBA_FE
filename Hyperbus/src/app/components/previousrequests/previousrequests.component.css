@@ -459,3 +459,37 @@ mat-divider {
     font-weight: var(--mdc-typography-body1-font-weight, 400);
     letter-spacing: var(--mdc-typography-body1-letter-spacing, 0.03125em);
 }
+
+#trend-btn{
+    height: 56px;
+    box-sizing: border-box;
+    border: 1px solid  rgba(0, 0, 0, 0.3) !important;
+    border-radius: 6px;
+    letter-spacing: var(--mdc-typography-body1-letter-spacing, 0.03125em);
+}
+
+#trend-icon-display{
+    transform: scale(1.2);
+}
+
+#button-title-trend{
+    padding: 5px 10px 5px 10px; 
+}
+
+#expand-more-icon-trends{
+    padding-right: 19px;
+}
+
+.disable-day {
+    pointer-events: none;
+    background-color: #ccc;
+}
+
+::ng-deep  .mat-date-range-input-container{
+    -webkit-font-smoothing: antialiased;
+    font-family: var(--mdc-typography-body1-font-family, var(--mdc-typography-font-family, Roboto, sans-serif));
+    font-size: var(--mdc-typography-body1-font-size, 14px);
+    line-height: var(--mdc-typography-body1-line-height, 22px);
+    font-weight: var(--mdc-typography-body1-font-weight, 400);
+    letter-spacing: var(--mdc-typography-body1-letter-spacing, 0.03125em);
+} 

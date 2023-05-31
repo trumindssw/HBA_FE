@@ -14,13 +14,21 @@ import { MaterialExampleModule } from 'material.module';
 import { RequestdetailsComponent } from './components/requestdetails/requestdetails.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
+import { TrendsComponent } from './components/trends/trends.component';
+import Chart from 'chart.js/auto';
+import { NgChartsModule } from 'ng2-charts';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatNativeDateModule} from '@angular/material/core';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     routingComponents,
-    RequestdetailsComponent
+    RequestdetailsComponent,
+    TrendsComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,9 +41,13 @@ import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/m
     MaterialExampleModule,
     MatDatepickerModule, 
     MatMomentDateModule,
-    FormsModule
+    FormsModule,
+    NgChartsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatNativeDateModule
   ],
-  providers: [HttpClientModule, AuthGuard, {provide: HTTP_INTERCEPTORS, useClass: HttpResponseInterceptor, multi: true},
+  providers: [HttpClientModule, AuthGuard,DatePipe, {provide: HTTP_INTERCEPTORS, useClass: HttpResponseInterceptor, multi: true},
               { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } }],
   bootstrap: [AppComponent]
   

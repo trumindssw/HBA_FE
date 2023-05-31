@@ -2,20 +2,30 @@ import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator,PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
-import { PreviousRequestsService } from 'src/app/_services/previousrequests/previousrequests.service';
+import { PreviousRequestsService } from '../../_services/previousrequests/previousrequests.service';
 import { RequestdetailsComponent } from '../requestdetails/requestdetails.component';
 import { tap } from 'rxjs';
 import {FormGroup, FormControl} from '@angular/forms';
 import * as moment from 'moment';
 import 'moment-timezone';
-
+import { TrendsComponent } from '../trends/trends.component';
+import { DateRange, MatDateRangeInput, MatDatepickerInputEvent } from '@angular/material/datepicker';
+import { AbstractControl, ValidationErrors } from '@angular/forms';
+import { OnChanges, SimpleChanges, Input } from '@angular/core';
+import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
+import { ValidatorFn } from '@angular/forms';
+import { ElementSchemaRegistry } from '@angular/compiler';
+import { DatasharingService } from '../../_services/datasharing/datasharing.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-previousrequests',
   templateUrl: './previousrequests.component.html',
   styleUrls: ['./previousrequests.component.css'],
 })
+
 export class PreviousrequestsComponent implements OnInit {
+  
   public requests!: Requests[];
   public avgReqPerDay = 0;
   public avgReqPerWeek = 0;
@@ -49,10 +59,15 @@ export class PreviousrequestsComponent implements OnInit {
   public filterBy :string ='';
   public users: any;
   public filteredUsers: any;
+  public isWeekly = false;
+  public isDaily = true;
+  selectedTrendViewOption = 'option1';
+  public  endDateTrend : any ;
+  public startDateTrend : any;
+  public view = true;
   //lastFilter = 1 for lastWeek true
   //lastFilter = 2 for lastMonth true
-  
-  // public ProductHeader = [{ Number: 25 }, { Number: 50}, { Number: 100 }]; 
+   
   public selectedNoList = '';
   public classNames = 'main';
   columns = ['requestID', 'subjectName', 'createdAt', 'statusMessage'];
@@ -63,8 +78,10 @@ export class PreviousrequestsComponent implements OnInit {
   constructor(
     private router: Router,
     private PreviousRequestsService: PreviousRequestsService,
-    // private RequestDetailsComponents: RequestdetailsComponent,
-    private dialog: MatDialog) {}
+    private dialog: MatDialog,
+    private DatasharingService:DatasharingService,
+    private datePipe: DatePipe
+    ) {}
 
   ngOnInit(){
     this.getRequests(this.pageNo, this.limit);
@@ -99,7 +116,7 @@ export class PreviousrequestsComponent implements OnInit {
           let timeZone = '';
           // Get system's timezone
           if (typeof Intl === 'object' && typeof Intl.DateTimeFormat === 'function') {
-            console.log(Intl.DateTimeFormat().resolvedOptions())
+            // console.log(Intl.DateTimeFormat().resolvedOptions())
             timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
           }
           let dte = dt.toLocaleString(
@@ -268,6 +285,50 @@ export class PreviousrequestsComponent implements OnInit {
     this.getRequests(this.pageNo, this.limit); 
   }
 
+  openTrend() {
+    const formattedStartDate = this.datePipe.transform(this.startDateTrend, 'yyyy-MM-dd');
+    const formattedEndDate = this.datePipe.transform(this.endDateTrend, 'yyyy-MM-dd');
+    this.DatasharingService.setVariable1(formattedStartDate);
+    this.DatasharingService.setVariable2(formattedEndDate);
+    this.view = this.isDaily;
+    this.DatasharingService.setVariableView(this.view);
+    const dialog = this.dialog.open(TrendsComponent);
+    dialog.afterClosed().subscribe(result =>{
+      console.log('Trends graph closed')
+    });
+  }
+
+  closedTrends(): void {
+    // this.selectedValue = null;
+    if(this.startDateTrend!=null && this.endDateTrend!=null) {
+      this.startDateTrend=new Date(this.startDateTrend);
+      this.endDateTrend=new Date(this.endDateTrend);
+      this.startDateTrend.setMinutes(this.startDateTrend.getMinutes() - this.startDateTrend.getTimezoneOffset());
+      this.endDateTrend.setMinutes(this.endDateTrend.getMinutes() - this.endDateTrend.getTimezoneOffset());
+      console.log("isWeekly",this.isWeekly);
+      console.log("isDaily",this.isDaily);
+      console.log("trendsDates",this.startDateTrend,this.endDateTrend);
+      this.openTrend();  
+    }   
+  }
+
+  trendsView(isDaily:boolean,isWeekly:boolean) {
+    this.isDaily=isDaily;
+    this.isWeekly=isWeekly;
+    this.startDateTrend=null;
+    this.endDateTrend=null;
+  }
+
+  eraseDateTrends($event:any) {
+    this.startDateTrend=null;
+    this.endDateTrend=null;
+    this.selectPrevent($event)
+  }
+
+  rangeTrend = new FormGroup({
+    startTrend: new FormControl<Date | null>(null),
+    endTrend: new FormControl<Date | null>(null),
+  });
 }
 
 export interface Requests {

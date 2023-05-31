@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from 'src/environments/environment.development';
+import { environment } from '../../../environments/environment.development';
 
 @Injectable({ providedIn: 'root' })
 
@@ -23,7 +23,7 @@ export class PreviousRequestsService {
         let options = {headers: headers}
         let body = {page: pageNo, limit: limit,status:status,lastWeek: lastWeek, lastMonth: lastMonth,startDate:startDate, endDate:endDate,searchValue: searchString}
 
-        console.log(this.getAllRequestsUrl,body,options);
+        console.log("getAllRequestApi",this.getAllRequestsUrl,body,options);
         console.log(startDate);
         return this.http.post<any>(this.getAllRequestsUrl, body, options)
     }
