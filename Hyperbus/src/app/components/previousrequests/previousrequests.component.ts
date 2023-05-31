@@ -2,7 +2,7 @@ import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator,PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
-import { PreviousRequestsService } from 'src/app/_services/previousrequests/previousrequests.service';
+import { PreviousRequestsService } from '../../_services/previousrequests/previousrequests.service';
 import { RequestdetailsComponent } from '../requestdetails/requestdetails.component';
 import { tap } from 'rxjs';
 import {FormGroup, FormControl} from '@angular/forms';
@@ -16,6 +16,15 @@ import 'moment-timezone';
   styleUrls: ['./previousrequests.component.css'],
 })
 export class PreviousrequestsComponent implements OnInit {
+  RequestDetailsServices(RequestDetailsServices: any, arg1: string) {
+    throw new Error('Method not implemented.');
+  }
+  getRequestDetails(reqId: string) {
+    throw new Error('Method not implemented.');
+  }
+  result(result: any) {
+    throw new Error('Method not implemented.');
+  }
   public requests!: Requests[];
   public avgReqPerDay = 0;
   public avgReqPerWeek = 0;
@@ -72,12 +81,14 @@ export class PreviousrequestsComponent implements OnInit {
   }
 
   ngAfterViewInit() {
+    if (this.paginator) {
     this.paginator.page
         .pipe(
             tap(() => this.getRequests(this.paginator.pageIndex+1, this.paginator.pageSize))
         )
         .subscribe(); 
   }
+}
 
   getRequests(pageNo: number, pageSize: number) {
     console.log(pageNo);
@@ -173,7 +184,7 @@ export class PreviousrequestsComponent implements OnInit {
     }
 
     if(this.startDate==null && this.endDate==null)
-    this.getRequests(this.pageNo, this.limit);
+      this.getRequests(this.pageNo, this.limit);
     else {
       this.startDate=new Date(this.startDate);
       this.endDate=new Date(this.endDate);
