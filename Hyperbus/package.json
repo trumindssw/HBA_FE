@@ -34,7 +34,6 @@
     "@angular/cli": "~15.2.4",
     "@angular/compiler-cli": "^15.2.0",
     "@angular/material": "^15.2.8",
-    "@angular/material-moment-adapter": "^16.0.0",
     "@auth0/angular-jwt": "^5.1.2",
     "@canvasjs/angular-charts": "^1.0.1",
     "@types/file-saver": "^2.0.5",
