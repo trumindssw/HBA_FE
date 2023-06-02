@@ -10,11 +10,7 @@ import * as moment from 'moment';
 import 'moment-timezone';
 import { TrendsComponent } from '../trends/trends.component';
 import { DateRange, MatDateRangeInput, MatDatepickerInputEvent } from '@angular/material/datepicker';
-import { AbstractControl, ValidationErrors } from '@angular/forms';
-import { OnChanges, SimpleChanges, Input } from '@angular/core';
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
-import { ValidatorFn } from '@angular/forms';
-import { ElementSchemaRegistry } from '@angular/compiler';
 import { DatasharingService } from '../../_services/datasharing/datasharing.service';
 import { DatePipe } from '@angular/common';
 
@@ -329,6 +325,16 @@ export class PreviousrequestsComponent implements OnInit {
     startTrend: new FormControl<Date | null>(null),
     endTrend: new FormControl<Date | null>(null),
   });
+
+  dateClass= (date: Date) => {
+    if(this.isDaily==false) {
+      const day = date.getDay();
+      return day === 1; // Only allow Mondays
+    }
+    else {
+      return true;
+    }
+  };
 }
 
 export interface Requests {

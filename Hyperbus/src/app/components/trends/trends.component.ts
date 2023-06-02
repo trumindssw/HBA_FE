@@ -6,7 +6,6 @@ import { Chart } from 'chart.js';
 import { ChartDataset, ChartOptions, ChartType } from 'chart.js';
 import { TrendsService } from '../../_services/trends/trends.service';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { HostListener } from '@angular/core';
 import { DatasharingService } from '../../_services/datasharing/datasharing.service';
 
@@ -79,27 +78,42 @@ export class TrendsComponent {
           console.log(this.view);
 
           const graphData = response.data;
-        const dates = Object.keys(graphData);
-        this.graphLabels = dates;
-        this.graphData = [
-          {
-            data: dates.map((date) => graphData[date].countMatchNotFound),
-            label: 'Count Match Not Found',
-            type: 'bar',
-          },
-          {
-            data: dates.map((date) => graphData[date].countWithOK),
-            label: 'Count With OK',
-            type: 'bar',
-          },
-          {
-            data: dates.map((date) => graphData[date].totalRequestCount),
-            label: 'Total Request Count',
-            type: 'line',
-          },
-        ];
-      }
-        );
+          const dates = Object.keys(graphData);
+          this.graphLabels = dates;
+          this.graphData = [
+            {
+              data: dates.map((date) => graphData[date].countMatchNotFound),
+              label: 'Count Match Not Found',
+              type: 'bar',
+              backgroundColor: '#F6BE00', 
+              borderColor: '#F6BE00', 
+              borderWidth: 0.5, 
+              stack: 'stacked'
+            },
+            {
+              data: dates.map((date) => graphData[date].countWithOK),
+              label: 'Count With OK',
+              type: 'bar',
+              backgroundColor: '#83BD31', 
+              borderColor: '#83BD31', 
+              borderWidth: 0.5,
+              stack: 'stacked'
+            },
+            {
+              data: dates.map((date) => graphData[date].totalRequestCount),
+              label: 'Total Request Count',
+              type: 'line',
+              borderColor: '#313DBD',
+              backgroundColor: '#313DBD',
+              borderWidth: 3, 
+              fill: false, 
+              pointStyle: 'triangle', 
+              pointBackgroundColor: '#313DBD',
+              pointBorderColor: '#D22B2B',
+            },
+          ];
+        }
+      );
     }
 
     chartClicked(event: any) {

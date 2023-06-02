@@ -1,8 +1,8 @@
 <div class="container">
     <div class="row">
       <div class= "col-md-4 col-sm-12">
-        <div class="responseBox">
-            <div style="display: block">
+        <div [ngClass]="{'responseBox': graphLabels.length <= 15, 'responseBox-large': graphLabels.length > 15}">
+            <div class="chart-container">
                 <canvas baseChart
                   [datasets]="graphData"
                   [labels]="graphLabels"

@@ -32,13 +32,14 @@
 
                 <mat-form-field appearance="fill" subscriptSizing="dynamic" (click)="selectPrevent($event)">
                     <mat-label >Select a date range</mat-label>
-                    <mat-date-range-input [formGroup]="rangeTrend" [rangePicker]="pickerTrend">
+                    <mat-date-range-input [dateFilter]="dateClass" [formGroup]="rangeTrend" [rangePicker]="pickerTrend">
                         <input  matStartDate   formControlName="startTrend" placeholder="Start date" [(ngModel)]="startDateTrend">
                         <input  matEndDate   formControlName="endTrend" placeholder="End date" [(ngModel)]="endDateTrend">
                     </mat-date-range-input>
                     <mat-datepicker-toggle *ngIf="!startDateTrend && !endDateTrend" matIconSuffix [for]="pickerTrend" ></mat-datepicker-toggle>
                     <mat-icon *ngIf="startDateTrend && endDateTrend" matIconSuffix id="cross-icon" (click)="eraseDateTrends($event)">cancel</mat-icon>
-                    <mat-date-range-picker #pickerTrend (closed)="closedTrends()"></mat-date-range-picker>               
+                    <mat-date-range-picker #pickerTrend (closed)="closedTrends()">
+                    </mat-date-range-picker>               
                     <mat-error *ngIf="rangeTrend.controls.startTrend.hasError('invalidDate')">Invalid Start date</mat-error>
                     <mat-error *ngIf="rangeTrend.controls.endTrend.hasError('invalidDate')">Invalid End date</mat-error>
                 </mat-form-field>
