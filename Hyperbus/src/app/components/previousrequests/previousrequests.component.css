@@ -47,6 +47,7 @@
     color: #595959;
 }
 .box {
+    display: block;
     box-sizing: border-box;
     background: #FFFFFF;
     border: 0.845992px solid #EAECF0;
@@ -54,6 +55,7 @@
     border-radius: 6.76793px;
     padding: 4px;
     margin: 0;
+    cursor: pointer;
 }
 .box-title {
     font-family: 'Roboto';
@@ -77,6 +79,11 @@
     order: 1;
     flex-grow: 0;
     margin: 4px;
+    display: flex;
+    align-items: center;
+}
+.blue-border {
+    border: 2px solid #3D85C6;
 }
 .label{
     font-family: 'Roboto';

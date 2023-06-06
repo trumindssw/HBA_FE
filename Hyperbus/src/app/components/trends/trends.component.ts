@@ -83,7 +83,7 @@ export class TrendsComponent {
           this.graphData = [
             {
               data: dates.map((date) => graphData[date].countMatchNotFound),
-              label: 'Count Match Not Found',
+              label: 'Match Not Found',
               type: 'bar',
               backgroundColor: '#F6BE00', 
               borderColor: '#F6BE00', 
@@ -92,7 +92,7 @@ export class TrendsComponent {
             },
             {
               data: dates.map((date) => graphData[date].countWithOK),
-              label: 'Count With OK',
+              label: 'OK',
               type: 'bar',
               backgroundColor: '#83BD31', 
               borderColor: '#83BD31', 
@@ -101,7 +101,7 @@ export class TrendsComponent {
             },
             {
               data: dates.map((date) => graphData[date].totalRequestCount),
-              label: 'Total Request Count',
+              label: 'Total Requests',
               type: 'line',
               borderColor: '#313DBD',
               backgroundColor: '#313DBD',
