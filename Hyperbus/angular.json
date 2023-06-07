@@ -27,7 +27,17 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "bezier-easing",
+              "moment",
+              "moment-timezone",
+              "file-saver",
+              "jest",
+              "jest-preset-angular"
+            ],
+            "optimization": false
+
           },
           "configurations": {
             "production": {

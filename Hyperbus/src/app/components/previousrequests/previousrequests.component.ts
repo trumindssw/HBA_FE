@@ -13,6 +13,7 @@ import { DateRange, MatDateRangeInput, MatDatepickerInputEvent } from '@angular/
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import { DatasharingService } from '../../_services/datasharing/datasharing.service';
 import { DatePipe } from '@angular/common';
+import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
   selector: 'app-previousrequests',
@@ -61,9 +62,10 @@ export class PreviousrequestsComponent implements OnInit {
   public  endDateTrend : any ;
   public startDateTrend : any;
   public view = true;
+  public today = false;
   //lastFilter = 1 for lastWeek true
   //lastFilter = 2 for lastMonth true
-   
+  //lastFilter = 3 for today true 
   public selectedNoList = '';
   public classNames = 'main';
   columns = ['requestID', 'subjectName', 'createdAt', 'statusMessage'];
@@ -85,17 +87,19 @@ export class PreviousrequestsComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.paginator.page
+    if (this.paginator) {
+      this.paginator.page
         .pipe(
-            tap(() => this.getRequests(this.paginator.pageIndex+1, this.paginator.pageSize))
+          tap(() => this.getRequests(this.paginator.pageIndex + 1, this.paginator.pageSize))
         )
-        .subscribe(); 
+        .subscribe();
+    } 
   }
 
   getRequests(pageNo: number, pageSize: number) {
     console.log(pageNo);
     console.log(pageSize);
-    this.PreviousRequestsService.getAllRequests(pageNo,pageSize,this.lastWeek,this.lastMonth,this.startDate,this.endDate,this.status,this.searchString)
+    this.PreviousRequestsService.getAllRequests(pageNo,pageSize,this.lastWeek,this.lastMonth,this.startDate,this.endDate,this.status,this.searchString,this.today)
     .subscribe(response => {
       console.log(response)
       console.log(this.startDate);
@@ -181,6 +185,7 @@ export class PreviousrequestsComponent implements OnInit {
     this.selectedValue = null;
     this.lastMonth = false;
     this.lastWeek = false;
+    this.today = false;
     if(this.requests && this.requests.length>0) {
       this.paginator.pageIndex = 0
     }
@@ -202,6 +207,7 @@ export class PreviousrequestsComponent implements OnInit {
     this.lastFilter=lastFilter;
     this.startDate = null;
     this.endDate = null;
+    this.today = false;
     $event.stopPropagation();
     $event.preventDefault();
 
@@ -215,6 +221,10 @@ export class PreviousrequestsComponent implements OnInit {
     else {
       this.lastWeek=lastWeek;
       this.lastMonth=lastMonth;
+      if(this.lastWeek==true)
+      this.selectedValue = 'lastWeek';
+      else if(this.lastMonth==true)
+      this.selectedValue = 'lastMonth';
     }
 
     if(this.requests && this.requests.length>0) {
@@ -242,6 +252,14 @@ export class PreviousrequestsComponent implements OnInit {
       this.matchFound=matchFound;
       this.matchNotFound=matchNotFound;
       this.internalError=internalError;
+      if(this.matchFound==true && !this.matchNotFound && !this.internalError)
+      this.selectedValueStatus = 'option1';
+      else if(this.matchNotFound==true && !this.matchFound && !this.internalError)
+      this.selectedValueStatus = 'option2';
+      else if(this.internalError==true && !this.matchFound && !this.matchNotFound)
+      this.selectedValueStatus = 'option3';
+      else if(this.status==2)
+      this.selectedValueStatus=null;
     }
 
     if(this.requests && this.requests.length>0) {
@@ -251,10 +269,57 @@ export class PreviousrequestsComponent implements OnInit {
     this.getRequests(this.pageNo, this.limit);      
   }
   
+  headingFilter(status:any,matchFound:boolean,matchNotFound:boolean,internalError:boolean,lastWeek:boolean,lastMonth:boolean,today:boolean) {
+    this.status=status;    
+    this.matchFound=matchFound;
+    this.matchNotFound=matchNotFound;
+    this.internalError=internalError;
+ 
+    this.startDate = null;
+    this.endDate = null;
+    this.lastWeek=lastWeek;
+    this.lastMonth=lastMonth;
+    this.today = today;
+    if(this.requests && this.requests.length>0) {
+      this.paginator.pageIndex = 0
+    }
+    this.incrementCount()
+    this.selectedValueStatus=null;
+    this.selectedValue=null;
+    this.getRequests(this.pageNo, this.limit);
+  }
+
   range = new FormGroup({
     start: new FormControl<Date | null>(null),
     end: new FormControl<Date | null>(null),
   });
+
+  headingFilterPerDay(lastWeek:boolean,lastMonth:boolean,lastFilter:any,today:any){
+    this.prevLastFilter=this.lastFilter;
+    this.lastFilter=lastFilter;
+    this.startDate = null;
+    this.endDate = null;
+    this.selectedValue = null;
+    if(this.prevLastFilter==this.lastFilter){
+      this.prevLastFilter=null;
+      this.lastFilter=null;
+      this.lastWeek=false;
+      this.lastMonth=false;
+      this.today=false;
+      this.selectedValue = null;
+    }
+    else {
+      this.lastWeek=lastWeek;
+      this.lastMonth=lastMonth;
+      this.today=today;
+    }
+
+    if(this.requests && this.requests.length>0) {
+      this.paginator.pageIndex = 0
+    }
+    this.incrementCount()
+    this.getRequests(this.pageNo, this.limit);    
+  }
 
 
   selectPrevent($event:any) {
@@ -264,7 +329,11 @@ export class PreviousrequestsComponent implements OnInit {
   }
 
   incrementCount() {
-      if((this.matchFound==true || this.matchNotFound==true || this.internalError==true) && (this.lastWeek==false && this.lastMonth==false && this.startDate==null && this.endDate==null))
+      if(this.internalError==true && this.matchNotFound==true && (this.lastWeek==false && this.lastMonth==false && this.startDate==null && this.endDate==null))
+      this.badgeContent=null;
+      else if(this.internalError==true && this.matchNotFound==true && (this.lastWeek==true || this.lastMonth==true || (this.startDate!=null && this.endDate!=null)))
+      this.badgeContent=1;
+      else if((this.matchFound==true || this.matchNotFound==true || this.internalError==true) && (this.lastWeek==false && this.lastMonth==false && this.startDate==null && this.endDate==null))
       this.badgeContent=1;
       else if((this.matchFound==false && this.matchNotFound==false && this.internalError==false)&& (this.lastWeek==true || this.lastMonth==true || (this.startDate!=null && this.endDate!=null)))
       this.badgeContent=1;
@@ -335,6 +404,7 @@ export class PreviousrequestsComponent implements OnInit {
       return true;
     }
   };
+
 }
 
 export interface Requests {

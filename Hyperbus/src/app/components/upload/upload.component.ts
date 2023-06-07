@@ -39,23 +39,7 @@ export class UploadComponent implements OnInit {
     this.UploadService.getAllFiles().subscribe(
       response => {
         this.files = response.data;
-        let timeZone = '';
-        // Get system's timezone
-        if (typeof Intl === 'object' && typeof Intl.DateTimeFormat === 'function') {
-          console.log(Intl.DateTimeFormat().resolvedOptions())
-          timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-        }
-        let abbr = moment().tz(timeZone).zoneAbbr();        
-        if(this.files && this.files.length>0) {
-          this.files.map((f: { createdAt: string | number | Date; }) => {
-            let dt = new Date(f.createdAt);
-            let month = dt.toLocaleString('default', { month: 'long' });
-            let yr = dt.getFullYear();
-            let date = dt.getDate();
-            let time = dt.getHours() + ":" + dt.getMinutes();
-            f.createdAt = month + " " + date + ", " + yr + " " + time + " " + abbr ;
-          })
-        }
+        this.timeFormatChange();
       }
     )
     this.dragAreaClass = "dragarea";
@@ -141,6 +125,7 @@ export class UploadComponent implements OnInit {
           this.message = res.message;
           this.UploadService.getAllFiles().subscribe(response => {
             this.files = response.data;
+            this.timeFormatChange();
           });
         } else {
           this.error = true;
@@ -155,6 +140,24 @@ export class UploadComponent implements OnInit {
         this.uploading = false;
       });
    }
+  }
+
+  timeFormatChange() {
+    let timeZone = '';
+    if (typeof Intl === 'object' && typeof Intl.DateTimeFormat === 'function') {
+      timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      if (this.files && this.files.length > 0) {
+        this.files.map((f: { createdAt: string | number | Date; }) => {
+          let dt = new Date(f.createdAt);
+          let month = dt.toLocaleString('default', { month: 'long' });
+          let yr = dt.getFullYear();
+          let date = dt.getDate();
+          let time = dt.getHours() + ":" + dt.getMinutes();
+          let abbr = moment().tz(timeZone).zoneAbbr(); // Get the timezone abbreviation for each file
+          f.createdAt = month + " " + date + ", " + yr + " " + time + " " + abbr;
+        });
+      }
+    }
   }
 }
 
