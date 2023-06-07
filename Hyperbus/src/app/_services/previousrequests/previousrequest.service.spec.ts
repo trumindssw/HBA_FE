@@ -1,17 +1,16 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AuthenticationService } from '../authentication/authentication.service';
+import { PreviousRequestsService } from '../previousrequests/previousrequests.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-describe('AuthenticationService', () => {
-  let service: AuthenticationService;
+describe('RequestdetailsService', () => {
+  let service: PreviousRequestsService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [AuthenticationService]
-    });
-    service = TestBed.inject(AuthenticationService);
+      providers: [PreviousRequestsService]});
+    service = TestBed.inject(PreviousRequestsService);
   });
 
   it('should be created', () => {

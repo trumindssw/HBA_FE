@@ -10,4 +10,7 @@ describe('AppComponent', () =>{
 //  it('should have a title angularJest ',() =>{
 //   expect(fixture.title).toEqual('angularJest');
 //  })
+  it('should create', () => {
+    expect(2+2).toBe(4);
+  });
 })

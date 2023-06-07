@@ -48,7 +48,7 @@
                     <ng-container *ngFor="let msg of message">
                       <p style="font-family: Roboto, normal; font-size: 16px; font-weight: 700;" [style.color]="'#D3273E'">{{msg}}</p>
                     </ng-container>
-                    <p *ngIf="message.length>=5">. . . 5 or more errors</p>
+                    <p *ngIf="message.length>=5" style="font-family: Roboto, normal; font-size: 16px; font-weight: 700;">. . . 5 or more errors</p>
                   </div>
                   <div *ngIf="!array">
                     <p style="font-family: Roboto, normal; font-size: 16px; font-weight: 700;" [style.color]="'#D3273E'">{{message}}</p>

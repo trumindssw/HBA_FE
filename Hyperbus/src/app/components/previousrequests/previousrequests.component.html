@@ -7,8 +7,43 @@
                 </svg>
              </button>
         </div>
-        <div class="col-md-11 col-sm-11">
+        <div class="col-md-5 col-sm-5">
             <p id="card-letter1">Hyperbus Adaptor - IA Data Manager</p>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <button mat-stroked-button id="trend-btn"  [style.float]="'right'" [matMenuTriggerFor]="menuTrend">
+                <mat-icon id="trend-icon-display">launch</mat-icon>
+                <span id="button-title-trend">Trend</span>
+            </button>
+
+            <mat-menu #menuTrend="matMenu">
+                <mat-form-field appearance="fill" (click)="selectPrevent($event)" subscriptSizing="dynamic">
+                    <mat-label>View</mat-label>
+                    <mat-icon matSuffix id="expand-more-icon-trends">expand_more</mat-icon>
+                    <mat-select  [(ngModel)]="selectedTrendViewOption">
+                      <mat-option value="option1" (click)="trendsView(true,false)">
+                        Daily
+                      </mat-option>
+                      <mat-option value="option2" (click)="trendsView(false,true)">
+                        Weekly
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" subscriptSizing="dynamic" (click)="selectPrevent($event)" >
+                    <mat-label >Select a date range</mat-label>
+                    <mat-date-range-input [dateFilter]="dateClass" [formGroup]="rangeTrend" [rangePicker]="pickerTrend">
+                        <input  matStartDate   formControlName="startTrend" placeholder="Start date" [(ngModel)]="startDateTrend">
+                        <input  matEndDate   formControlName="endTrend" placeholder="End date" [(ngModel)]="endDateTrend">
+                    </mat-date-range-input>
+                    <mat-datepicker-toggle *ngIf="!startDateTrend && !endDateTrend" matIconSuffix [for]="pickerTrend" ></mat-datepicker-toggle>
+                    <mat-icon *ngIf="startDateTrend && endDateTrend" matIconSuffix id="cross-icon" (click)="eraseDateTrends($event)">cancel</mat-icon>
+                    <mat-date-range-picker #pickerTrend (closed)="closedTrends()">
+                    </mat-date-range-picker>               
+                    <mat-error *ngIf="rangeTrend.controls.startTrend.hasError('invalidDate')">Invalid Start date</mat-error>
+                    <mat-error *ngIf="rangeTrend.controls.endTrend.hasError('invalidDate')">Invalid End date</mat-error>
+                </mat-form-field>
+            </mat-menu>
         </div>
     </div>
     <div class="row row2" > 
@@ -16,7 +51,7 @@
             <p class="heading-1">Heading 1 </p>
             <div class="row">
                 <div class="col-md-6 col-sm-12">
-                    <div class= "box">
+                    <div class= "box" (click)="headingFilterPerDay(false,false,3,true)" [ngClass]="{ 'blue-border': today }">
                         <div class="box-title">
                             <p>Average Request Per Day</p>
                         </div>
@@ -31,7 +66,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-12" >
-                    <div class= "box">
+                    <div class= "box" (click)="filterDates(true,false,$event,1)" [ngClass]="{ 'blue-border': lastWeek }">
                         <div class="box-title">
                             <p>Average Request Per Week</p>
                         </div>
@@ -53,7 +88,7 @@
             <p class="heading-2">Heading 2 </p>
             <div class="row row3">
                 <div class="col-md-4 col-sm-12">
-                    <div class= "box">
+                    <div class= "box"  (click)="headingFilter(null,false,false,false,false,false,false)" [ngClass]="{ 'blue-border': !lastMonth && !lastWeek  && !matchFound && !matchNotFound && !internalError && !today }">
                         <div class="box-title">
                             <p>Total Request Received</p>
                         </div>
@@ -70,7 +105,7 @@
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-12">
-                    <div class= "box">
+                    <div class= "box" (click)="filterStatus(1,true,false,false,$event)" [ngClass]="{ 'blue-border': matchFound }">
                         <div class="box-title">
                             <p>Total Request with Subject Found</p>
                         </div>
@@ -83,11 +118,10 @@
                             <p *ngIf="totalReqWithSubjectFoundvsLastWeek >= 0" class="green-arrowePrcentage" >{{totalReqWithSubjectFoundvsLastWeek}}%</p>
                             <p>vs last week</p>  
                         </div>
-
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-12">
-                    <div class= "box">
+                    <div class= "box" (click)="filterStatus(2,false,true,true,$event)" [ngClass]="{ 'blue-border': matchNotFound && internalError  }">
                         <div class="box-title">
                             <p>Total Request with Mismatch or Error</p>
                         </div>
@@ -99,7 +133,6 @@
                             <p *ngIf="totalReqWithMismatchvsLastWeek >= 0" class="green-arrowePrcentage" >{{totalReqWithMismatchvsLastWeek}}%</p>
                             <p>vs last week</p>  
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -108,20 +141,16 @@
     <div class="row">
         <p class="previous-requests" [style.margin-bottom]="'30px'">Previous Requests</p>
         <div class="col-md-3 col-sm-12">
-            <!-- <input class="search-bar" type="text" placeholder="Search"> -->
-            <mat-form-field appearance="outline">
-               
+            <mat-form-field appearance="outline">   
                 <input matInput [(ngModel)]= "searchString" type="text" (input)="searchResult()" placeholder="Search" >
                 <mat-icon matPrefix>search</mat-icon>
-              </mat-form-field>
+            </mat-form-field>
         </div>
         <div class="col-md-9 col-sm-12">
-
             <button mat-stroked-button id="filter-btn"  [style.float]="'right'"  [matMenuTriggerFor]="menu" [matBadge]="badgeContent" (click)="incrementCount()">
                 <mat-icon id="filter-icon-display">filter_list</mat-icon>
                 <span id="button-title">Filter by</span>
             </button>
-
             <mat-menu #menu="matMenu">
             <!-- <mat-menu> -->
                 <mat-form-field appearance="fill" (click)="selectPrevent($event)" subscriptSizing="dynamic">
@@ -132,7 +161,7 @@
                         OK
                       </mat-option>
                       <mat-option value="option2" (click)="filterStatus(0,false,true,false,$event)">
-                        Match Not found
+                        Match Not Found
                       </mat-option>
                       <mat-option value="option3" (click)="filterStatus(-1,false,false,true,$event)">
                         Internal Server Error
@@ -140,21 +169,20 @@
                       <!-- <mat-option (click)="filterStatus(null,false,false,false,$event)"><b>Clear</b></mat-option> -->
                     </mat-select>
                 </mat-form-field>
-
                 <mat-form-field appearance="fill" (click)="selectPrevent($event)" subscriptSizing="dynamic">
                     <mat-label *ngIf="!startDate && !endDate">Dates</mat-label>
                     <mat-label *ngIf="startDate && endDate" id="custom-label">Date Range is Selected</mat-label>
                     <mat-icon matSuffix>expand_more</mat-icon>
                     <mat-select [(ngModel)]="selectedValue" >
-                        <mat-option  [value]="lastWeek"  (click)="filterDates(true,false,$event,1)">
+                        <mat-option  value="lastWeek"  (click)="filterDates(true,false,$event,1)">
                         Last 7 days
                         </mat-option>
-                        <mat-option  [value]="lastMonth" (click)="filterDates(false,true,$event,2)">
+                        <mat-option  value="lastMonth" (click)="filterDates(false,true,$event,2)">
                         Last 30 days
                         </mat-option>
                         <button id="date-picker-btn" (click)="selectPrevent($event)" >
                             <mat-form-field appearance="fill" subscriptSizing="dynamic">
-                                <mat-label >Enter a date range</mat-label>
+                                <mat-label >Select a date range</mat-label>
                                 <mat-date-range-input [formGroup]="range" [rangePicker]="picker" >
                                     <input matStartDate formControlName="start" placeholder="Start date" [(ngModel)]="startDate" >
                                     <input matEndDate formControlName="end" placeholder="End date" [(ngModel)]="endDate" >
@@ -203,6 +231,7 @@
                 </table>
             </ng-scrollbar>
         </div>
+        
         <div class="col-md-12">
             <mat-divider></mat-divider>
             <mat-paginator class="pagination"
@@ -213,6 +242,12 @@
               (page)="onPageChange($event)"
               showFirstLastButtons
               aria-label="Select page">
+
+              <div class="mat-paginator-page-size">
+                <mat-icon>expand_more</mat-icon>
+                <span>{{ paginator.pageSize }} items per page</span>
+              </div>
+
             </mat-paginator>
         </div>
         

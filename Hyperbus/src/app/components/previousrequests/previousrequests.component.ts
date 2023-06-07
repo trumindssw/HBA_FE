@@ -8,13 +8,19 @@ import { tap } from 'rxjs';
 import {FormGroup, FormControl} from '@angular/forms';
 import * as moment from 'moment';
 import 'moment-timezone';
-
+import { TrendsComponent } from '../trends/trends.component';
+import { DateRange, MatDateRangeInput, MatDatepickerInputEvent } from '@angular/material/datepicker';
+import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
+import { DatasharingService } from '../../_services/datasharing/datasharing.service';
+import { DatePipe } from '@angular/common';
+import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
   selector: 'app-previousrequests',
   templateUrl: './previousrequests.component.html',
   styleUrls: ['./previousrequests.component.css'],
 })
+
 export class PreviousrequestsComponent implements OnInit {
   static getRequestCounts() {
     throw new Error('Method not implemented.');
@@ -61,10 +67,16 @@ export class PreviousrequestsComponent implements OnInit {
   public filterBy :string ='';
   public users: any;
   public filteredUsers: any;
+  public isWeekly = false;
+  public isDaily = true;
+  selectedTrendViewOption = 'option1';
+  public  endDateTrend : any ;
+  public startDateTrend : any;
+  public view = true;
+  public today = false;
   //lastFilter = 1 for lastWeek true
   //lastFilter = 2 for lastMonth true
-  
-  // public ProductHeader = [{ Number: 25 }, { Number: 50}, { Number: 100 }]; 
+  //lastFilter = 3 for today true 
   public selectedNoList = '';
   public classNames = 'main';
   columns = ['requestID', 'subjectName', 'createdAt', 'statusMessage'];
@@ -75,8 +87,10 @@ export class PreviousrequestsComponent implements OnInit {
   constructor(
     private router: Router,
     private PreviousRequestsService: PreviousRequestsService,
-    // private RequestDetailsComponents: RequestdetailsComponent,
-    private dialog: MatDialog) {}
+    private dialog: MatDialog,
+    private DatasharingService:DatasharingService,
+    private datePipe: DatePipe
+    ) {}
 
   ngOnInit(){
     this.getRequests(this.pageNo, this.limit);
@@ -87,16 +101,17 @@ export class PreviousrequestsComponent implements OnInit {
     if (this.paginator) {
     this.paginator.page
         .pipe(
-            tap(() => this.getRequests(this.paginator.pageIndex+1, this.paginator.pageSize))
+          tap(() => this.getRequests(this.paginator.pageIndex + 1, this.paginator.pageSize))
         )
-        .subscribe(); 
+        .subscribe();
+    } 
   }
-}
+
 
   getRequests(pageNo: number, pageSize: number) {
     console.log(pageNo);
     console.log(pageSize);
-    this.PreviousRequestsService.getAllRequests(pageNo,pageSize,this.lastWeek,this.lastMonth,this.startDate,this.endDate,this.status,this.searchString)
+    this.PreviousRequestsService.getAllRequests(pageNo,pageSize,this.lastWeek,this.lastMonth,this.startDate,this.endDate,this.status,this.searchString,this.today)
     .subscribe(response => {
       console.log(response)
       console.log(this.startDate);
@@ -113,7 +128,7 @@ export class PreviousrequestsComponent implements OnInit {
           let timeZone = '';
           // Get system's timezone
           if (typeof Intl === 'object' && typeof Intl.DateTimeFormat === 'function') {
-            console.log(Intl.DateTimeFormat().resolvedOptions())
+            // console.log(Intl.DateTimeFormat().resolvedOptions())
             timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
           }
           let dte = dt.toLocaleString(
@@ -183,6 +198,7 @@ export class PreviousrequestsComponent implements OnInit {
     this.selectedValue = null;
     this.lastMonth = false;
     this.lastWeek = false;
+    this.today = false;
     if(this.requests && this.requests.length>0) {
       this.paginator.pageIndex = 0
     }
@@ -204,6 +220,7 @@ export class PreviousrequestsComponent implements OnInit {
     this.lastFilter=lastFilter;
     this.startDate = null;
     this.endDate = null;
+    this.today = false;
     $event.stopPropagation();
     $event.preventDefault();
 
@@ -217,6 +234,10 @@ export class PreviousrequestsComponent implements OnInit {
     else {
       this.lastWeek=lastWeek;
       this.lastMonth=lastMonth;
+      if(this.lastWeek==true)
+      this.selectedValue = 'lastWeek';
+      else if(this.lastMonth==true)
+      this.selectedValue = 'lastMonth';
     }
 
     if(this.requests && this.requests.length>0) {
@@ -244,6 +265,14 @@ export class PreviousrequestsComponent implements OnInit {
       this.matchFound=matchFound;
       this.matchNotFound=matchNotFound;
       this.internalError=internalError;
+      if(this.matchFound==true && !this.matchNotFound && !this.internalError)
+      this.selectedValueStatus = 'option1';
+      else if(this.matchNotFound==true && !this.matchFound && !this.internalError)
+      this.selectedValueStatus = 'option2';
+      else if(this.internalError==true && !this.matchFound && !this.matchNotFound)
+      this.selectedValueStatus = 'option3';
+      else if(this.status==2)
+      this.selectedValueStatus=null;
     }
     console.log("this.request", this.requests)
     if(this.requests && this.requests.length>=0) {
@@ -254,10 +283,57 @@ export class PreviousrequestsComponent implements OnInit {
     this.getRequests(this.pageNo, this.limit);      
   }
   
+  headingFilter(status:any,matchFound:boolean,matchNotFound:boolean,internalError:boolean,lastWeek:boolean,lastMonth:boolean,today:boolean) {
+    this.status=status;    
+    this.matchFound=matchFound;
+    this.matchNotFound=matchNotFound;
+    this.internalError=internalError;
+ 
+    this.startDate = null;
+    this.endDate = null;
+    this.lastWeek=lastWeek;
+    this.lastMonth=lastMonth;
+    this.today = today;
+    if(this.requests && this.requests.length>0) {
+      this.paginator.pageIndex = 0
+    }
+    this.incrementCount()
+    this.selectedValueStatus=null;
+    this.selectedValue=null;
+    this.getRequests(this.pageNo, this.limit);
+  }
+
   range = new FormGroup({
     start: new FormControl<Date | null>(null),
     end: new FormControl<Date | null>(null),
   });
+
+  headingFilterPerDay(lastWeek:boolean,lastMonth:boolean,lastFilter:any,today:any){
+    this.prevLastFilter=this.lastFilter;
+    this.lastFilter=lastFilter;
+    this.startDate = null;
+    this.endDate = null;
+    this.selectedValue = null;
+    if(this.prevLastFilter==this.lastFilter){
+      this.prevLastFilter=null;
+      this.lastFilter=null;
+      this.lastWeek=false;
+      this.lastMonth=false;
+      this.today=false;
+      this.selectedValue = null;
+    }
+    else {
+      this.lastWeek=lastWeek;
+      this.lastMonth=lastMonth;
+      this.today=today;
+    }
+
+    if(this.requests && this.requests.length>0) {
+      this.paginator.pageIndex = 0
+    }
+    this.incrementCount()
+    this.getRequests(this.pageNo, this.limit);    
+  }
 
 
   selectPrevent($event:any) {
@@ -266,7 +342,11 @@ export class PreviousrequestsComponent implements OnInit {
     $event.preventDefault(); 
   }
   incrementCount() {
-      if((this.matchFound==true || this.matchNotFound==true || this.internalError==true) && (this.lastWeek==false && this.lastMonth==false && this.startDate==null && this.endDate==null))
+      if(this.internalError==true && this.matchNotFound==true && (this.lastWeek==false && this.lastMonth==false && this.startDate==null && this.endDate==null))
+      this.badgeContent=null;
+      else if(this.internalError==true && this.matchNotFound==true && (this.lastWeek==true || this.lastMonth==true || (this.startDate!=null && this.endDate!=null)))
+      this.badgeContent=1;
+      else if((this.matchFound==true || this.matchNotFound==true || this.internalError==true) && (this.lastWeek==false && this.lastMonth==false && this.startDate==null && this.endDate==null))
       this.badgeContent=1;
       else if((this.matchFound==false && this.matchNotFound==false && this.internalError==false)&& (this.lastWeek==true || this.lastMonth==true || (this.startDate!=null && this.endDate!=null)))
       this.badgeContent=1;
@@ -281,6 +361,62 @@ export class PreviousrequestsComponent implements OnInit {
     }   
     this.getRequests(this.pageNo, this.limit); 
   }
+
+  openTrend() {
+    const formattedStartDate = this.datePipe.transform(this.startDateTrend, 'yyyy-MM-dd');
+    const formattedEndDate = this.datePipe.transform(this.endDateTrend, 'yyyy-MM-dd');
+    this.DatasharingService.setVariable1(formattedStartDate);
+    this.DatasharingService.setVariable2(formattedEndDate);
+    this.view = this.isDaily;
+    this.DatasharingService.setVariableView(this.view);
+    const dialog = this.dialog.open(TrendsComponent);
+    dialog.afterClosed().subscribe(result =>{
+      console.log('Trends graph closed')
+    });
+  }
+
+  closedTrends(): void {
+    // this.selectedValue = null;
+    if(this.startDateTrend!=null && this.endDateTrend!=null) {
+      this.startDateTrend=new Date(this.startDateTrend);
+      this.endDateTrend=new Date(this.endDateTrend);
+      this.startDateTrend.setMinutes(this.startDateTrend.getMinutes() - this.startDateTrend.getTimezoneOffset());
+      this.endDateTrend.setMinutes(this.endDateTrend.getMinutes() - this.endDateTrend.getTimezoneOffset());
+      console.log("isWeekly",this.isWeekly);
+      console.log("isDaily",this.isDaily);
+      console.log("trendsDates",this.startDateTrend,this.endDateTrend);
+      this.openTrend();  
+    }   
+  }
+
+  trendsView(isDaily:boolean,isWeekly:boolean) {
+    this.isDaily=isDaily;
+    this.isWeekly=isWeekly;
+    this.startDateTrend=null;
+    this.endDateTrend=null;
+  }
+
+  eraseDateTrends($event:any) {
+    this.startDateTrend=null;
+    this.endDateTrend=null;
+    this.selectPrevent($event)
+  }
+
+  rangeTrend = new FormGroup({
+    startTrend: new FormControl<Date | null>(null),
+    endTrend: new FormControl<Date | null>(null),
+  });
+
+  dateClass= (date: Date) => {
+    if(this.isDaily==false) {
+      const day = date.getDay();
+      return day === 1; // Only allow Mondays
+    }
+    else {
+      return true;
+    }
+  };
+
 }
 
 export interface Requests {
