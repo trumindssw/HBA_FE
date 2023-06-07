@@ -16,6 +16,9 @@ import 'moment-timezone';
   styleUrls: ['./previousrequests.component.css'],
 })
 export class PreviousrequestsComponent implements OnInit {
+  static getRequestCounts() {
+    throw new Error('Method not implemented.');
+  }
   RequestDetailsServices(RequestDetailsServices: any, arg1: string) {
     throw new Error('Method not implemented.');
   }
@@ -151,6 +154,7 @@ export class PreviousrequestsComponent implements OnInit {
       this.totalReqWithMismatchvsLastWeek = res.totalReqWithMismatchvsLastWeek;
      
     })
+    
   }
 
   isVerified(statusMessage: String) {
@@ -241,8 +245,9 @@ export class PreviousrequestsComponent implements OnInit {
       this.matchNotFound=matchNotFound;
       this.internalError=internalError;
     }
-
-    if(this.requests && this.requests.length>0) {
+    console.log("this.request", this.requests)
+    if(this.requests && this.requests.length>=0) {
+      console.log("this.request after", this.requests)
       this.paginator.pageIndex = 0
     }
     this.incrementCount()
@@ -260,7 +265,6 @@ export class PreviousrequestsComponent implements OnInit {
     $event.stopPropagation();
     $event.preventDefault(); 
   }
-
   incrementCount() {
       if((this.matchFound==true || this.matchNotFound==true || this.internalError==true) && (this.lastWeek==false && this.lastMonth==false && this.startDate==null && this.endDate==null))
       this.badgeContent=1;
@@ -271,14 +275,12 @@ export class PreviousrequestsComponent implements OnInit {
       else
       this.badgeContent=null;
   }
-
   searchResult() {
     if(this.requests && this.requests.length>0) {
       this.paginator.pageIndex = 0
     }   
     this.getRequests(this.pageNo, this.limit); 
   }
-
 }
 
 export interface Requests {

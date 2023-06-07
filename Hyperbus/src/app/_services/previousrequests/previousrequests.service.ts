@@ -5,6 +5,21 @@ import { environment } from '../../../environments/environment';
 @Injectable({ providedIn: 'root' })
 
 export class PreviousRequestsService {
+    static getRequestCounts(getRequestCounts: any) {
+      throw new Error('Method not implemented.');
+    }
+    static avgReqPerDay(avgReqPerDay: any) {
+      throw new Error('Method not implemented.');
+    }
+    static avgReqPerWeek(avgReqPerWeek: any) {
+      throw new Error('Method not implemented.');
+    }
+    static totalReq(totalReq: any) {
+      throw new Error('Method not implemented.');
+    }
+    static totalReqWithSubjectFound(totalReqWithSubjectFound: any) {
+      throw new Error('Method not implemented.');
+    }
 
     private getAllRequestsUrl=environment.apiUrl + "/request/getAllRequests"
     private getRequestCountsUrl=environment.apiUrl + "/request/getRequestCounts"
