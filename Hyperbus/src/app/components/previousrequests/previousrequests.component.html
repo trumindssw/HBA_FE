@@ -12,11 +12,11 @@
         </div>
         <div class="col-md-6 col-sm-6">
             <button mat-stroked-button id="trend-btn"  [style.float]="'right'" [matMenuTriggerFor]="menuTrend">
-                <mat-icon id="trend-icon-display">launch</mat-icon>
+                <mat-icon id="trend-icon-display">bar_chart</mat-icon>
                 <span id="button-title-trend">Trend</span>
             </button>
 
-            <mat-menu #menuTrend="matMenu">
+            <mat-menu #menuTrend="matMenu" class="custom_select">
                 <mat-form-field appearance="fill" (click)="selectPrevent($event)" subscriptSizing="dynamic">
                     <mat-label>View</mat-label>
                     <mat-icon matSuffix id="expand-more-icon-trends">expand_more</mat-icon>
@@ -151,7 +151,7 @@
                 <mat-icon id="filter-icon-display">filter_list</mat-icon>
                 <span id="button-title">Filter by</span>
             </button>
-            <mat-menu #menu="matMenu">
+            <mat-menu #menu="matMenu" class="custom_select">
                 <mat-form-field appearance="fill" (click)="selectPrevent($event)" subscriptSizing="dynamic">
                     <mat-label>Status</mat-label>
                     <mat-icon matSuffix>expand_more</mat-icon>

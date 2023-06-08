@@ -13,9 +13,9 @@ export class SnackbarService {
 
   openSnackBar(message: string, panel?:string) {
     let config = new MatSnackBarConfig();
-    config.verticalPosition = 'top';
+    config.verticalPosition = 'bottom';
     config.horizontalPosition = 'center';
-    config.duration = 5000;
+    config.duration = 1600;
     config.panelClass = [panel || 'primary-snackbar' ]
     this.ngZone.run(() => {
       this.matSnackBar.open(message, 'DISMISS', config);
