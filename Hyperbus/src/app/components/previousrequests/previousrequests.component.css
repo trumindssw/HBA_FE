@@ -390,7 +390,7 @@ mat-divider {
     color: rgba(0,0,0,0.70);
 }
 
-::ng-deep .mat-mdc-select-arrow svg {
+::ng-deep .custom_select .mat-mdc-select-arrow svg {
      opacity: 0; 
 }
 

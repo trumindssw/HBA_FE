@@ -5,6 +5,7 @@ import { HostListener } from '@angular/core';
 import { Uploadservice } from 'src/app/_services/upload/upload.service';
 import { saveAs } from 'file-saver';
 import * as moment from 'moment';
+import { SnackbarService } from '../../_services/snackbar/snackbar.service';
 
 @Component({
 selector: 'app-upload',
@@ -26,11 +27,12 @@ export class UploadComponent implements OnInit {
   file:any
   public uploading: boolean = false;
   badgeContentNotification : any;
-
+  uploadExcelMessage="";
   constructor(
       private router: Router,
       private httpClient: HttpClient,
       private UploadService: Uploadservice,
+      private snackBar: SnackbarService
       ) { }
 
   ngOnInit(){
@@ -123,6 +125,8 @@ export class UploadComponent implements OnInit {
           this.colour = true;
           console.log("Res.message: ", res.message)
           this.message = res.message;
+          this.uploadExcelMessage= "Upload Successfully";
+          this.snackBar.openSnackBar(this.uploadExcelMessage, 'success-snackbar')
           this.UploadService.getAllFiles().subscribe(response => {
             this.files = response.data;
             this.timeFormatChange();
@@ -131,6 +135,8 @@ export class UploadComponent implements OnInit {
           this.error = true;
           this.colour = false;
           this.message = res.message;
+          this.uploadExcelMessage= "Please check and Re-upload";
+          this.snackBar.openSnackBar(this.uploadExcelMessage, 'error-snackbar')
           if(res.message instanceof Array) {
             this.array = true;
           } else {
