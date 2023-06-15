@@ -28,7 +28,7 @@
       <div class="col-md-9 col-sm-12">
         <div class="row">
           <div class="col-md-12 col-sm-12">
-            <a href = "/assets/Download Sample Format.xlsx" Download = "Sample_Format">
+            <a href = "/assets/Download Sample Format.xlsm" Download = "Sample Format">
             <button id="button">
               <p id="button-text">Download Sample File Format </p>
             </button>
@@ -75,7 +75,7 @@
                                  [multiple]="true"
                                  (change)="onFileChange($event)"
                                  style="display:none"
-                                 accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />
+                                 accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel,, application/vnd.ms-excel.sheet.macroenabled.12"/>
                    </div>      
                </div>
                <div class="row" *ngIf="uploading">
