@@ -1,17 +1,20 @@
+.container {
+    overflow-x: hidden;
+}
 .responseBox{
-    height: 700px;
-    width: 500px;
+    height: 100%;
+    width: 400px;
     padding-left: 30px;
     padding-top: 20px;
     padding-bottom: 20px;
-    padding-right: 30px;
-  
+    padding-right: 10px;
+    border-radius: 10px 0px 0px 10px;
+    box-sizing: border-box;
 }
 .checkedIcon {
-    margin-left: 30px;
+    margin-left: 10px;
     height: 20px;
-    width: 20px;
-    
+    width: 20px;  
 }
 .requestTitle{
     font-family: 'Lato';
@@ -20,17 +23,19 @@
     font-size: 24px;
     line-height: 29px;
     color: #101828;
+    margin-bottom: 10px;
 }
-.responseTilte{
+.responseTitle{
     font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
     line-height: 29px;
     color: #101828;
+    margin-bottom: 10px;
 }
 .requestDetail1{
-    width: 450px;
+    width: 350px;
     height: 250px;
     background:rgba(61, 133, 198, 0.09);
     padding-bottom: 20px;
@@ -40,22 +45,19 @@
     font-weight: 700;
     font-size: 16px;
     line-height: 19px;
-   
-    
 }
 .midLine{
     margin: 2rem 0;
+    margin-bottom: 24px;
     color: inherit;
     border: -1;
     border-top: var(--bs-border-width) solid;
     opacity: .25;
-    margin-right: -22px;
+    /* margin-right: -22px; */
 }
-
-
 .requestDetail2{
     background-color: rgba(61, 198, 75, 0.09);
-    width: 450px;
+    width: 350px;
     height: 250px;
     font-family: 'Lato';
     font-style: normal;
@@ -64,15 +66,11 @@
     line-height: 19px;
     padding-bottom: 20px;
     padding-left: 20px; 
- 
 }
 .close-button{
     float: right;
-    top: -20px;
-    right: -20px;
-   border: none;
-   background-color: white;
+    top: 10px; 
+    right: 10px;
+    border: none;
+    background-color: white;
 }
-
-
-

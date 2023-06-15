@@ -14,7 +14,7 @@ import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import { DatasharingService } from '../../_services/datasharing/datasharing.service';
 import { DatePipe } from '@angular/common';
 import { MatDividerModule } from '@angular/material/divider';
-
+import { MatDialogConfig } from '@angular/material/dialog';
 @Component({
   selector: 'app-previousrequests',
   templateUrl: './previousrequests.component.html',
@@ -173,11 +173,16 @@ export class PreviousrequestsComponent implements OnInit {
 
   openDialog(reqId: string,event: any) {
     event.target.style.color = 'violet';
-    const dialog = this.dialog.open(RequestdetailsComponent,{
-     data: { name: reqId },
-    });
-    dialog.afterClosed().subscribe(result =>{
-      console.log('result')
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = { name: reqId };
+    dialogConfig.position = {
+      right: '0',
+      bottom: '0',
+    };
+    const dialog = this.dialog.open(RequestdetailsComponent, dialogConfig);
+  
+    dialog.afterClosed().subscribe(result => {
+      console.log(result);
     });
   }
   
